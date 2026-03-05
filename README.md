@@ -1,1 +1,107 @@
 # Lyrics_sentiment_analysis
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>歌詞情緒分析專題</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root { --primary-color: #2c3e50; --secondary-color: #34495e; }
+        body { font-family: 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', sans-serif; background-color: #fdfdfd; line-height: 1.8; }
+        .navbar { background-color: var(--primary-color); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .navbar-brand, .nav-link { color: #ffffff !important; font-weight: 500; }
+        .dropdown-menu { border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .content-section { padding: 60px 0; margin:0 auto;}
+        footer { background-color: var(--primary-color); color: #bdc3c7; padding: 30px 0; text-align: center; }
+		.hero-section {
+            height: 100px;
+            background: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6));
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            letter-spacing: 15px;
+			justify-content: center;}
+		.mb-4 {margin: 20px;}
+		.card p-4 span {color : red;}
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">歌詞情緒分析</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">首頁</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">資料介紹</a>
+                    <ul class="dropdown-menu">
+						<li><a class="dropdown-item" href="data_lyrics.html">情緒分類</a></li>
+                        <li><a class="dropdown-item" href="data_lyrics.html">歌詞資料</a></li>
+                        <li><a class="dropdown-item" href="data_dimension.html">中文情緒維度資料集</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">模型介紹</a>
+                    <ul class="dropdown-menu">
+						<li><a class="dropdown-item" href="NLP.html">NLP介紹與模型比較</a></li>
+                        <li><a class="dropdown-item" href="model_1.html">詞典法</a></li>
+                        <li><a class="dropdown-item" href="model_2.html">BERT微調-情緒類別</a></li>
+                        <li><a class="dropdown-item" href="model_3.html">BERT微調-V/A值</a></li>
+                        <li><a class="dropdown-item" href="model_4.html">BERT微調-歌詞 </a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">資料處理</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="process_lyrics.html">歌詞清洗</a></li>
+                        <li><a class="dropdown-item" href="process_lexicon.html">詞典清洗</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="conclusion.html">結論與討論</a></li>
+                <li class="nav-item"><a class="nav-link" href="results.html">成果展示</a></li>
+                <li class="nav-item"><a class="nav-link" href="references.html">參考文獻</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="hero-section">
+    <h1 class="hero-title">結論</h1>
+</div>
+
+<div class="card p-4 border-0 shadow-sm">
+    <p>
+		<br>
+    </p>
+</div>
+</main>
+
+
+
+
+
+
+
+
+
+
+<footer>
+    <div class="container">
+        <p>© 2026 靜宜大學資料科學暨大數據分析與應用學系<br>歌詞情緒分析專題組 | 版權所有</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+
+
+
