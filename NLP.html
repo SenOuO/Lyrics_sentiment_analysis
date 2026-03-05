@@ -79,46 +79,40 @@
 		 <H3><strong>BERT 系列:Encoder-only(適合分類/理解)</strong></H3>
  <table>
 	<tr>
-		<th>模型</th>
-		<th>參數量(M:千萬)</th>
-		<th>特色</th>
+		<th>模型類別</th>
+		<th>核心架構</th>
+		<th>功能</th>
+		<th>優勢</th>
 		<th>使用情境</th>
 	</tr>
 	<tr>
-		<td>BERT-base</td>
-		<td>110</td>
-		<td>基礎</td>
-		<td>文字分類、情感分析、問答系統</td>
+        <td>BERT系列</td>
+        <td>Encoder-only</td>
+        <td>分類/理解</td>
+        <td>擅長語意理解、<br>分類精準</td>
+        <td>文字分類、情感分析、<br>問答系統</td>
+    </tr>
+	<tr>
+		<td>T5系列</td>
+        <td>Encoder-Decoder</td>
+        <td>理解＋生成</td>
+        <td>擅長多任務泛化</td>
+        <td>翻譯、摘要、<br>複雜指令任務</td>
 	</tr>
 	<tr>
-		<td>BERT-large</td>
-		<td>340</td>
-		<td>準確率較 base 高,但VRAM(顯存)</td>
-		<td>更精確的語言理解任務</td>
+		<td>GPT系列</td>
+        <td>Decoder-only</td>
+        <td>生成為主</td>
+        <td>文本生成最強，<br>續寫流暢</td>
+        <td>文本生成、故事創作、<br>對話生成</td>
 	</tr>
 	<tr>
-		<td>DistilBERT</td>
-		<td>66</td>
-		<td>精簡,速度快</td>
-		<td>部署在資源有限環境,推論快</td>
+		<td>傳統RNN<br>模型</td>
+        <td>RNN-based</td>
+        <td>序列建模</td>
+        <td>適合小模型、<br>可處理序列資料</td>
+        <td>時間序列預測、語音處理、<br>簡易文本序列</td>
 	</tr>
-	<tr>
-		<td>ALBERT-base</td>
-		<td>12(共享參數)</td>
-		<td>輕量化 BERT,效能接近</td>
-		<td>效能接近 BERT-base,但更省資源</td>
-	</tr>
-	<tr>
-		<td>BERT-large</td>
-		<td>Details2</td>
-		<td>Details2</td>
-		<td>Details2</td>
-	</tr>
-	 <tr>
-		<td>BERT-large</td>
-		<td>Details2</td>
-		<td>Details2</td>
-		<td>Details2</td>
 </table>
 		
     </div>
@@ -143,6 +137,7 @@
 </body>
 
 </html>
+
 
 
 
