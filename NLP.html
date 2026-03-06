@@ -130,15 +130,18 @@
 	<br><p>綜合比較之後，我們的目標是歌詞情緒分類，屬於語意理解，再加上我們的硬體資源有限，沒有辦法跑太複雜的模型，所以最後選擇使用 BERT 模型。</p>
     </div>
 	<h2 class="mb-4">BERT</h2>
-	<div class="BERT p-4 border-0 shadow-sm">
+	
 		
-	</div>
+	
 	<div style="width: 100%;">
   		<div style="display: inline-block; width: 60%;">
-			<p>&emsp;&emsp;以非監督的方式利用大量無標註文本「煉成」的語言代表模型，
-			其架構為 Transformer中的Encoder，並使用大量文本及兩個預訓練目標，
-			事先訓練好一個可以套用到多個NLP任務的BERT模型，再以此為基礎fine_tune多個下游任務。<br>
-			&emsp;&emsp;架構變化：保持BERT主體不變，只在最後加上一層簡單的Output Layer (分類器)，將「有標註」的資料進行訓練，達到分類情緒效果。</p>
+			<div class="BERT p-4 border-0 shadow-sm">
+				<p>&emsp;&emsp;以非監督的方式利用大量無標註文本「煉成」的語言代表模型，
+					其架構為 Transformer中的Encoder，並使用大量文本及兩個預訓練目標，
+					事先訓練好一個可以套用到多個NLP任務的BERT模型，再以此為基礎fine_tune多個下游任務。<br>
+					&emsp;&emsp;架構變化：保持BERT主體不變，只在最後加上一層簡單的Output Layer (分類器)，將「有標註」的資料進行訓練，達到分類情緒效果。</p>
+		
+			</div>
 		</div>
   		<div style="display: inline-block; width: 35%;">
 			<img src='https://i.imgur.com/0QSIATv.png'>
@@ -165,6 +168,7 @@
 </body>
 
 </html>
+
 
 
 
