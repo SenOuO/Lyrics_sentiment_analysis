@@ -25,6 +25,20 @@
 			justify-content: center;}
 		.mb-4 {margin: 20px;}
 		.card p-4 span {color : red;}
+		.box{
+			width:350px;
+			padding:20px;
+			margin-bottom:20px;}
+		img{
+			display:none;
+			width:250px;}
+		#toggle:checked + img{
+			display:inline-block;}
+		#toggle2:checked + img{
+			display:inline-block;}	
+		#toggle3:checked + img{
+			display:inline-block;}	
+		
     </style>
 </head>
 <body>
@@ -75,16 +89,36 @@
 	<div class="hero-section">
         <h1 class="hero-title">歌詞情緒分析</h1>
     </div>
+	
+	<h2 class="mb-4">歌詞清洗</h2>
     <div class="card p-4 border-0 shadow-sm">
-        <p>指導教授：林建華老師、郭珈妤老師<br>
-			專題成員：黃丞祥、王雅慧、郭晏慈、石宇婕、傅筱婷、陳俞蓁、侯進瑋、吳宗晏、彭英姿</p>
+        <p>讓歌詞資料在進入模型時，資料都有一致性。透過以下細項，讓歌詞資料能夠更準確的反映歌曲情緒。</p>
+		<ul>
+			<div>
+				<label for="toggle" class="box"><li>標點符號 &emsp; →&emsp;  一致性</li></label>
+				<input type="checkbox" id="toggle" hidden>
+				<img id="pic1" src="C:\Users\yanci\Desktop\專題網頁\符號.png">
+			</div>
+			<div>
+				<label for="toggle2" class="box"><li>合唱歌曲中的人名</li></label>
+				<input type="checkbox" id="toggle2" hidden>
+				<img id="pic2" src="C:\Users\yanci\Desktop\專題網頁\name.png">
+			</div>
+			<div>
+				<label for="toggle3" class="box"><li>無效狀聲詞</li></label>
+				<input type="checkbox" id="toggle3" hidden>
+				<img id="pic2" src="C:\Users\yanci\Desktop\專題網頁\狀聲詞.png">
+			</div>	
+			<li>人工檢查歌詞情緒分類</li>
+			
+		</ul>
+
     </div>
 </main>
 
 
 
-
-
+<style>
 
 
 
