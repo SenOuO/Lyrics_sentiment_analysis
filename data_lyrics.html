@@ -7,7 +7,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         :root { --primary-color: #2c3e50; --secondary-color: #34495e; }
-        body { font-family: 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', sans-serif; background-color: #fdfdfd; line-height: 1.8; }
+        body { font-family: 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', sans-serif,"Segoe UI", Arial;
+				background-color: #fdfdfd;
+				line-height: 1.8; }
         .navbar { background-color: var(--primary-color); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         .navbar-brand, .nav-link { color: #ffffff !important; font-weight: 500; }
         .dropdown-menu { border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
@@ -24,7 +26,70 @@
             letter-spacing: 15px;
 			justify-content: center;}
 		.mb-4 {margin: 20px;}
-		.card p-4 span {color : red;}
+		/* 流程圖區 */
+		.flowchart{
+			display:flex;
+			justify-content:center;
+			align-items:center;
+			flex-wrap:wrap;
+			gap:40px;
+			padding:40px;
+		}
+
+		/* 流程節點 */
+		.step{
+			position:relative;
+			padding:18px 35px;
+			background:white;
+			border-radius:40px;
+			font-weight:bold;
+			text-decoration:none;
+			color:#333;
+			box-shadow:0 4px 15px rgba(0,0,0,0.1);
+			transition:0.3s;
+		}
+
+		/* 箭頭 */
+		.step::after{
+			content:"→";
+			position:absolute;
+			right:-28px;
+			color:#999;
+		}
+
+		.step:last-child::after{
+			display:none;
+		}
+
+		/* hover */
+		.step:hover{
+			transform:translateY(-4px);
+			box-shadow:0 8px 25px rgba(0,0,0,0.15);
+		}
+
+		/* active */
+		.step.active{
+			background:#4facfe;
+			color:white;
+		}
+
+		/* 內容區 */
+		.section{
+			padding:80px 20px;
+			margin:30px auto;
+			border-radius:12px;
+			width:80%;
+			box-shadow:0 4px 15px rgba(0,0,0,0.08);
+		}
+
+		.section:nth-child(even){
+			background:#f9fbff;
+		}
+
+		.section h2{
+			color:#333;
+		}
+
     </style>
 </head>
 <body>
@@ -73,15 +138,56 @@
 
 <main class="container content-section">
 	<div class="hero-section">
-        <h1 class="hero-title">歌詞情緒分析</h1>
+        <h1 class="hero-title">歌詞資料</h1>
     </div>
-    <div class="card p-4 border-0 shadow-sm">
-        <p>指導教授：林建華老師、郭珈妤老師<br>
-			專題成員：黃丞祥、王雅慧、郭晏慈、石宇婕、傅筱婷、陳俞蓁、侯進瑋、吳宗晏、彭英姿</p>
-    </div>
+	
+	<div class="flowchart">
+		<a class="step" href="#start">蒐集歌曲</a>
+		<a class="step" href="#register">爬取歌詞</a>
+		<a class="step" href="#upload">歌詞清洗</a>
+		<a class="step" href="#review">情緒判別</a>
+		<a class="step" href="#finish">完成歌詞資料集</a>
+	</div>
 </main>
 
+	<div id="start" class="section">
+		<h2>蒐集歌曲</h2>
+		<p>
+			依照情緒類別，作為歌詞搜尋的收集方向。
+		</p>
+	</div>
 
+
+	<div id="register" class="section">
+		<h2>爬取歌詞</h2>
+		<p>
+			利用網路爬蟲自動化技術抓取完整歌詞，大幅提升資料收集效率，有效降低後續資料前處理的複雜度。
+		</p>
+	</div>
+
+
+	<div id="upload" class="section">
+		<h2>歌詞清洗</h2>
+		<p>
+			能確保所有歌詞文本在格式排版與資料結構上的一致性
+		</p>
+	</div>
+
+
+	<div id="review" class="section">
+		<h2>情緒判別</h2>
+		<p>
+			
+		</p>
+	</div>
+
+
+	<div id="finish" class="section">
+		<h2>完成歌詞資料集</h2>
+		<p>
+			
+		</p>
+	</div>
 
 
 
@@ -96,8 +202,45 @@
     </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+
+
+/* 自動高亮目前流程 */
+
+const sections = document.querySelectorAll(".section");
+const steps = document.querySelectorAll(".step");
+
+window.addEventListener("scroll",()=>{
+
+let current="";
+
+sections.forEach(section=>{
+const sectionTop = section.offsetTop;
+const sectionHeight = section.clientHeight;
+
+if(pageYOffset >= sectionTop - 200){
+current = section.getAttribute("id");
+}
+});
+
+steps.forEach(step=>{
+step.classList.remove("active");
+
+if(step.getAttribute("href") === "#"+current){
+step.classList.add("active");
+}
+
+});
+
+});
+
+
+
+
+
+</script>
 </body>
 
 </html>
+
 
