@@ -135,28 +135,39 @@ p{
 </div>
 
 </div>
+<div class="d-flex align-items-start gap-4">
 
-<h2 class="mb-4">Valence 與 Arousal</h2>
+  <div style="flex: 1; min-width: 300px;">
+    <h2 class="mb-4">Valence 與 Arousal</h2>
+    <div class="card p-4 border-0 shadow-sm">
+      <p>
+        <strong>Valence（情緒效價）</strong>表示情緒的正負向，
+        正向情緒如快樂、滿足，
+        負向情緒如悲傷、憤怒。
+      </p>
 
-<div class="card p-4 border-0 shadow-sm">
+      <p>
+        <strong>Arousal（情緒強度）</strong>表示情緒的激發程度，
+        例如興奮、激動屬於高 Arousal，
+        而放鬆、平靜則屬於低 Arousal。
+      </p>
 
-<p>
-<strong>Valence（情緒效價）</strong>表示情緒的正負向，
-正向情緒如快樂、滿足，
-負向情緒如悲傷、憤怒。
-</p>
+      <p>
+        透過這兩個維度，可以將不同情緒在平面座標中呈現，
+        使抽象的情緒概念能夠以<strong>數值與位置</strong>的方式具體化。
+      </p>
+    </div>
+  </div>
 
-<p>
-<strong>Arousal（情緒強度）</strong>表示情緒的激發程度，
-例如興奮、激動屬於高 Arousal，
-而放鬆、平靜則屬於低 Arousal。
-</p>
-
-<p>
-透過這兩個維度，可以將不同情緒在平面座標中呈現，
-使抽象的情緒概念能夠以<strong>數值與位置</strong>的方式具體化。
-</p>
-
+  <div style="flex: 1; min-width: 400px;">
+    <iframe 
+      src="https://senouo.github.io/emotion/new_emotion_scatter.html" 
+      width="100%" 
+      height="500px" 
+      style="border:1px solid #ccc; border-radius:8px;">
+    </iframe>
+  </div>
+</div>
 </div>
 
 </main>
