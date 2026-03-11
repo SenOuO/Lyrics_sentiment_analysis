@@ -158,32 +158,15 @@ p{
       </p>
     </div>
   </div>
-
-  <div style="flex: 1; min-width: 400px; border:1px solid #ccc; border-radius:8px; overflow:hidden;">
+<div style="flex: 1; min-width: 400px;">
     <iframe 
-      id="emotionIframe"
       src="https://senouo.github.io/emotion/new_emotion_scatter.html" 
       width="100%" 
-      style="border:none;">
+      height="500px" 
+      style="border:1px solid #ccc; border-radius:8px;">
     </iframe>
   </div>
-</div>
 
-<script>
-  const iframe = document.getElementById('emotionIframe');
-
-  // 當 iframe 加載完成後自動調整高度
-  iframe.onload = function() {
-    try {
-      const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-      // 設定 iframe 高度為內容高度
-      iframe.style.height = iframeDoc.body.scrollHeight + 'px';
-    } catch(e) {
-      // 跨域頁面無法直接讀取內容高度，需要固定高度或其他方法
-      iframe.style.height = '600px'; // fallback 固定高度
-    }
-  };
-</script>
 </div>
 </div>
 
