@@ -46,6 +46,7 @@
                         <li><a class="dropdown-item" href="data_dimension.html">中文情緒維度資料集</a></li>
 					</ul>
                 </li>
+				
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">模型介紹</a>
                     <ul class="dropdown-menu">
@@ -70,108 +71,104 @@
         </div>
     </div>
 </nav>
+<main class="container content-section">
+	<div class="hero-section">
+		<h1 class="hero-title">詞典法</h1>
+	</div>
 
-<div class="hero-section">
-    <h1 class="hero-title">詞典法</h1>
-</div>
-
-<div class="card p-4 border-0 shadow-sm">
-<p style="text-indent:2em;">
-這個模型採用情緒詞典法來進行情緒分析，核心概念是將歌詞中的詞彙，
-對應到事先定義好的情緒詞典，再透過數值平均或情緒字詞數量，
-判斷整段文字的整體情緒狀態。
-</p>
-<p style="text-indent:2em;">
-在實際分析時，模型會先對歌詞進行斷詞，接著逐詞查詢情緒詞典，最後將所有詞的情緒資訊進行加總、平均，作為整體情緒判斷的依據。
-</p>
-</div>
-
-
-<h2 class="mb-4">情緒詞典資料範例</h2>
-
-<div class="card p-4 border-0 shadow-sm">
-<p style="text-indent:2em;">
-在情緒詞典中，每一個詞都會有Valence跟Arousal，透過字詞的Valence跟Arousal，我們可以將情緒投影到四個象限中。
-</p>
-</div>
-
-<table class="table table-striped table-bordered">
-
-<thead>
-<tr>
-<th>Text</th>
-<th>Valence_Mean</th>
-<th>Arousal_Mean</th>
-<th>Emotion</th>
-<th>New_Emotion</th>
-</tr>
-</thead>
-
-<tbody>
-
-<tr>
-<td>不慎</td>
-<td>-1.9</td>
-<td>0.6</td>
-<td>Q2:憤怒/焦慮</td>
-<td>Q2:憤怒/焦慮</td>
-</tr>
-
-<tr>
-<td>不懈</td>
-<td>0.8</td>
-<td>-0.4</td>
-<td>Q4:平靜/滿足</td>
-<td>Q4:平靜/滿足</td>
-</tr>
-
-<tr>
-<td>不應該</td>
-<td>-1</td>
-<td>0</td>
-<td>Q3:悲傷/沮喪</td>
-<td>Q3:悲傷/沮喪</td>
-</tr>
-
-<tr>
-<td>不懷好意</td>
-<td>-1.3</td>
-<td>-0.5</td>
-<td>Q3:悲傷/沮喪</td>
-<td>Q3:悲傷/沮喪</td>
-</tr>
-
-<tr>
-<td>不堪</td>
-<td>0.4</td>
-<td>0.3</td>
-<td>Q1:快樂/興奮</td>
-<td>Q1:快樂/興奮</td>
-</tr>
-
-<tr>
-<td>不成</td>
-<td>-1.2</td>
-<td>-1.6</td>
-<td>Q3:悲傷/沮喪</td>
-<td>Q3:悲傷/沮喪</td>
-</tr>
-
-<tr>
-<td>不成功</td>
-<td>-1.5</td>
-<td>-1.6</td>
-<td>Q3:悲傷/沮喪</td>
-<td>Q3:悲傷/沮喪</td>
-</tr>
+	<div class="card p-4 border-0 shadow-sm">
+		<p style="text-indent:2em;">
+			這個模型採用情緒詞典法來進行情緒分析，核心概念是將歌詞中的詞彙，
+			對應到事先定義好的情緒詞典，再透過數值平均或情緒字詞數量，
+			判斷整段文字的整體情緒狀態。
+		</p>
+		<p style="text-indent:2em;">
+			在實際分析時，模型會先對歌詞進行斷詞，接著逐詞查詢情緒詞典，最後將所有詞的情緒資訊進行加總、平均，作為整體情緒判斷的依據。
+		</p>
+	</div>
 
 
+	<h2 class="mb-4">情緒詞典資料範例</h2>
 
-</tbody>
+	<div class="card p-4 border-0 shadow-sm">
+		<p style="text-indent:2em;">
+			在情緒詞典中，每一個詞都會有Valence跟Arousal，透過字詞的Valence跟Arousal，我們可以將情緒投影到四個象限中。
+		</p>
+	</div>
 
-</table>
+	<table class="table table-striped table-bordered">
 
-</div>
+		<thead>
+			<tr>
+			<th>Text</th>
+			<th>Valence_Mean</th>
+			<th>Arousal_Mean</th>
+			<th>Emotion</th>
+			<th>New_Emotion</th>
+			</tr>
+		</thead>
+
+		<tbody>
+
+		<tr>
+			<td>不慎</td>
+			<td>-1.9</td>
+			<td>0.6</td>
+			<td>Q2:憤怒/焦慮</td>
+			<td>Q2:憤怒/焦慮</td>
+		</tr>
+
+		<tr>
+			<td>不懈</td>
+			<td>0.8</td>
+			<td>-0.4</td>
+			<td>Q4:平靜/滿足</td>
+			<td>Q4:平靜/滿足</td>
+		</tr>
+
+		<tr>
+			<td>不應該</td>
+			<td>-1</td>
+			<td>0</td>
+			<td>Q3:悲傷/沮喪</td>
+			<td>Q3:悲傷/沮喪</td>
+		</tr>
+
+		<tr>
+			<td>不懷好意</td>
+			<td>-1.3</td>
+			<td>-0.5</td>
+			<td>Q3:悲傷/沮喪</td>
+			<td>Q3:悲傷/沮喪</td>
+		</tr>
+
+		<tr>
+			<td>不堪</td>
+			<td>0.4</td>
+			<td>0.3</td>
+			<td>Q1:快樂/興奮</td>
+			<td>Q1:快樂/興奮</td>
+		</tr>
+
+		<tr>
+			<td>不成</td>
+			<td>-1.2</td>
+			<td>-1.6</td>
+			<td>Q3:悲傷/沮喪</td>
+			<td>Q3:悲傷/沮喪</td>
+		</tr>
+
+		<tr>
+			<td>不成功</td>
+			<td>-1.5</td>
+			<td>-1.6</td>
+			<td>Q3:悲傷/沮喪</td>
+			<td>Q3:悲傷/沮喪</td>
+		</tr>
+
+		</tbody>
+
+	</table>
 
 </main>
 
@@ -194,8 +191,6 @@
 </body>
 
 </html>
-
-
 
 
 
