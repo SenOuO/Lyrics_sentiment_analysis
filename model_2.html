@@ -247,19 +247,10 @@
                 於是把「眼淚」動態歸類為【快樂】（喜極而泣）。</li>
         </ul>
 
-        <p class="text-indent">
-            以「眼淚」為例，傳統詞典通常會直接將它標記為悲傷，因此只要歌詞中出現
-            「眼淚」，系統就容易判定整體情緒偏向難過。
-        </p>
-
-        <p class="text-indent">
-            然而在 BERT 模型中，系統會先讀取整句歌詞，再依據語境進行動態判斷。
-            例如「終於等到你，流下了眼淚」中，模型會偵測到「終於」與「等到」等詞，
-            理解這裡表達的是喜悅與感動，因此將「眼淚」歸類為快樂情緒，而非單純的悲傷。
-        </p>
+        
     </div>
 
-    <h2 class="mb-4">模型介紹－BERT 微調【情緒類別】</h2>
+    <h2 class="mb-4">流程</h2>
 
     <div class="flow-wrapper">
         <div class="flow-left">
@@ -301,12 +292,6 @@
         </div>
     </div>
 
-    <p class="mt-4 text-indent">
-        傳統情緒詞典會將「眼淚」固定標記為悲傷；但在 BERT 微調模型中，
-        系統會依據歌詞上下文進行判斷。當語境呈現期待已久、願望實現時，
-        「眼淚」可能代表快樂或感動；當語境呈現失落與分離時，則會被判定為悲傷。
-        這種動態分類方式，能更準確地反映歌詞的真實情緒。
-    </p>
 
 </main>
 
@@ -319,6 +304,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
 
 
 
