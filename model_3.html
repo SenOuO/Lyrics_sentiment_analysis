@@ -98,7 +98,77 @@
 的情緒，進而更準確地還原歌詞所表達的情感。
 </p>
     </div>
-	
+<h2 class="text-center mb-4">模型介紹－BERT 微調【VA值】</h2>
+
+<div class="flow-wrapper">
+
+  <!-- 左側 -->
+  <div class="flow-left">
+      <div class="flow-box small-box">
+          眼淚<br>
+          VA值<br>
+          (-2.0 , 1.0)
+      </div>
+  </div>
+
+  <!-- 右側 -->
+  <div class="flow-right">
+
+      <!-- 上流程 -->
+      <div class="flow-row">
+          <div class="flow-label">久別<br>重逢</div>
+
+          <div class="flow-box quote-box">
+              「終於等到你，<br>流下了眼淚…」<br>
+              <br>
+              VA值<br>
+              (-2.0 , 1.0)
+          </div>
+
+          <div class="flow-box tall-box">
+              BERT<br>微調
+          </div>
+
+          <div class="flow-desc">
+              偵測語境<br>
+              [終於]
+          </div>
+
+          <div class="flow-box result-box">
+              VA值<br>
+              (3.5 , 3.0)
+          </div>
+      </div>
+
+      <!-- 下流程 -->
+      <div class="flow-row">
+          <div class="flow-label">失戀<br>分手</div>
+
+          <div class="flow-box quote-box">
+              「你轉身離開，<br>只剩下眼淚…」<br>
+              <br>
+              VA值<br>
+              (-2.5 , 1.0)
+          </div>
+
+          <div class="flow-box tall-box">
+              BERT<br>微調
+          </div>
+
+          <div class="flow-desc">
+              偵測語境<br>
+              [離開]、[只剩下]
+          </div>
+
+          <div class="flow-box result-box">
+              VA值<br>
+              (-3.8 , -1.5)
+          </div>
+      </div>
+
+  </div>
+
+</div>	
 </main>
 
 
@@ -120,6 +190,7 @@
 </body>
 
 </html>
+
 
 
 
