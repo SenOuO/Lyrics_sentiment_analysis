@@ -53,7 +53,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            letter-spacing: 8px;
+            letter-spacing: 15px;
         }
 
         .hero-title {
@@ -67,10 +67,6 @@
 
         .card p span {
             color: red;
-        }
-
-        .text-indent {
-            text-indent: 2em;
         }
 
         /* BERT流程圖 */
@@ -243,6 +239,13 @@
             無法隨語境變化而調整。為了解決這個問題，本研究導入 BERT 作為
             詞典的「語境雷達」，讓模型能根據上下文理解詞彙在歌詞中的實際情緒。
         </p>
+        <ul>
+            <li>傳統詞典：「眼淚」這個詞被貼上了悲傷的標籤。只要歌詞出現眼淚，系統就會判定這首歌是難過的。</li>
+            <li>BERT模型：讀取語境並進行動態微調。當模型讀到上下文關
+                係，例如：「終於等到你，流下了眼淚」，雷達偵測到了「終
+                於」和「等到」代表圓滿的詞彙，理解當下的氣氛是喜悅的，
+                於是把「眼淚」動態歸類為【快樂】（喜極而泣）。</li>
+        </ul>
 
         <p class="text-indent">
             以「眼淚」為例，傳統詞典通常會直接將它標記為悲傷，因此只要歌詞中出現
@@ -256,7 +259,7 @@
         </p>
     </div>
 
-    <h2 class="text-center mb-4">模型介紹－BERT 微調【情緒類別】</h2>
+    <h2 class="mb-4">模型介紹－BERT 微調【情緒類別】</h2>
 
     <div class="flow-wrapper">
         <div class="flow-left">
@@ -316,6 +319,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
 
 
 
