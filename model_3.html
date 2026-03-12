@@ -25,6 +25,117 @@
 			justify-content: center;}
 		.mb-4 {margin: 20px;}
 		.card p-4 span {color : red;}
+		.flow-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .flow-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .flow-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+
+        .flow-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .flow-box {
+            border: 2px solid #198754;
+            border-radius: 12px;
+            padding: 16px 22px;
+            background: white;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        .small-box {
+            width: 90px;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .tall-box {
+            width: 120px;
+            height: 160px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .quote-box {
+            min-width: 220px;
+        }
+
+        .result-box {
+            min-width: 150px;
+            font-weight: bold;
+        }
+
+        .flow-label {
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-align: center;
+            min-width: 70px;
+        }
+
+        .flow-desc {
+            text-align: center;
+            font-size: 1rem;
+            min-width: 120px;
+        }
+
+        .flow-arrow {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .flow-wrapper {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .flow-left {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .flow-row {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .flow-right {
+                width: 100%;
+            }
+
+            .quote-box,
+            .result-box {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -190,6 +301,7 @@
 </body>
 
 </html>
+
 
 
 
