@@ -105,8 +105,62 @@
 </p>
 
 </div>
-	
-</div>
+
+<h2 class="text-center mb-4">模型介紹－BERT 微調【情緒類別】</h2>
+
+    <div class="flow-wrapper">
+      
+      <div class="flow-left">
+        <div class="flow-box small-box">眼淚</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box tall-box">BERT<br>微調</div>
+      </div>
+
+      
+      <div class="flow-right">
+       
+        <div class="flow-row">
+          <div class="flow-label">久別<br>重逢</div>
+          <div class="flow-box quote-box">
+            「終於等到你，<br>流下了眼淚...」
+          </div>
+          <div class="flow-desc">
+            偵測語境<br>
+            [終於]、[等到]
+          </div>
+          <div class="flow-box result-box">
+            動態歸類<br>
+            [快樂／感動]
+          </div>
+        </div>
+
+        
+        <div class="flow-row">
+          <div class="flow-label">失戀<br>分手</div>
+          <div class="flow-box quote-box">
+            「你轉身離開，<br>只剩下眼淚...」
+          </div>
+          <div class="flow-desc">
+            偵測語境<br>
+            [離開]、[只剩下]
+          </div>
+          <div class="flow-box result-box">
+            動態歸類<br>
+            [悲傷]
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="mt-4 text-indent">
+      傳統情緒詞典通常會將「眼淚」固定標記為悲傷，但在 BERT 微調模型中，
+      系統會根據上下文語境進行判斷。當歌詞出現「終於等到你，流下了眼淚」時，
+      模型會辨識出期待已久、願望實現的語意，因此將其歸類為快樂或感動；而當歌詞出現
+      「你轉身離開，只剩下眼淚」時，模型則會根據失落與分離的語境，將其歸類為悲傷。
+      這樣的動態判斷方式，能更準確反映歌詞中的真實情緒。
+    </p>
+  </div>	
+
 </main>
 
 
@@ -128,6 +182,7 @@
 </body>
 
 </html>
+
 
 
 
