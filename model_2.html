@@ -72,13 +72,26 @@
 </nav>
 
 <main class="container content-section">
-	<div class="hero-section">
-        <h1 class="hero-title">歌詞情緒分析</h1>
-    </div>
-    <div class="card p-4 border-0 shadow-sm">
-        <p>指導教授：林建華老師、郭珈妤老師<br>
-			專題成員：黃丞祥、王雅慧、郭晏慈、石宇婕、傅筱婷、陳俞蓁、侯進瑋、吳宗晏、彭英姿</p>
-    </div>
+	
+<div class="hero-section">
+<h1 class="hero-title">歌詞情緒分析</h1>
+</div>
+    
+<div class="card p-4 border-0 shadow-sm">
+        
+<p style="text-indent:2em;">
+傳統情緒詞典最大的問題在於全域靜態數值，同一個詞的分數
+都是固定的，忽略了歌詞中最重要的語境變化。因此使用BERT的
+上下文感知技術。簡單來說就是在詞典裝上環境雷達：
+	1.讀取語境：模型先讀取整句歌詞，理解當下的氣氛。
+	2.動態微調：根據上下文特徵，對詞典中的原始VA值進行動態加權。
+實現了情緒的去標籤化，詞彙的情緒不再是天生的，而是由環境賦
+予的。讓同一個詞在不同歌詞中代表不同情緒，還原了詞彙當下真
+實的情緒溫度。
+</p>
+
+
+</div>
 </main>
 
 
@@ -100,4 +113,5 @@
 </body>
 
 </html>
+
 
