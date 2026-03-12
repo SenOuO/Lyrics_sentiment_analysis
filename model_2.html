@@ -159,7 +159,129 @@
       「你轉身離開，只剩下眼淚」時，模型則會根據失落與分離的語境，將其歸類為悲傷。
       這樣的動態判斷方式，能更準確反映歌詞中的真實情緒。
     </p>
-  </div>	
+  </div>
+.bert-section h2 {
+  font-weight: bold;
+  color: #222;
+}
+
+.flow-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.flow-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-width: 220px;
+  justify-content: center;
+}
+
+.flow-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.flow-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.flow-box {
+  border: 2px solid #198754;
+  border-radius: 14px;
+  background: #fff;
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  padding: 18px 22px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.small-box {
+  width: 90px;
+  min-height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.tall-box {
+  width: 120px;
+  min-height: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.quote-box {
+  min-width: 220px;
+  max-width: 260px;
+}
+
+.result-box {
+  min-width: 170px;
+  font-weight: bold;
+}
+
+.flow-arrow {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.flow-label {
+  min-width: 70px;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.flow-desc {
+  min-width: 120px;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.8;
+}
+
+.text-indent {
+  text-indent: 2em;
+  line-height: 2;
+  font-size: 1.05rem;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .flow-wrapper {
+    flex-direction: column;
+  }
+
+  .flow-left {
+    margin-bottom: 20px;
+  }
+
+  .flow-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .flow-label,
+  .flow-desc {
+    min-width: auto;
+  }
+}
 
 </main>
 
@@ -182,6 +304,7 @@
 </body>
 
 </html>
+
 
 
 
