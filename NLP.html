@@ -25,10 +25,6 @@
 			justify-content: center;}
 		.mb-4 {margin: 20px;}
 		.card p-4 span {color : red;}
-		table, th, td {border: 1px solid black;
-					  text-align:center; 
-						vertical-align:middle;}
-		.BERT {display:inline-block;}
     </style>
 	
 </head>
@@ -90,61 +86,64 @@
 	<h2 class="mb-4">模型比較</h2>
     <div class="card p-4 border-0 shadow-sm">
 		 
- <table border="1" style="width:100%; height:100px;">
-	<tr>
-		<th>模型類別</th>
-		<th>核心架構</th>
-		<th>功能</th>
-		<th>優勢</th>
-		<th>使用情境</th>
-	</tr>
-	<tr>
-        <td>BERT系列</td>
-        <td>Encoder-only</td>
-        <td>分類/理解</td>
-        <td>擅長語意理解、分類精準</td>
-        <td>文字分類、情感分析、問答系統</td>
-    </tr>
-	<tr>
-		<td>T5系列</td>
-        <td>Encoder-Decoder</td>
-        <td>理解＋生成</td>
-        <td>擅長多任務泛化</td>
-        <td>翻譯、摘要、複雜指令任務</td>
-	</tr>
-	<tr>
-		<td>GPT系列</td>
-        <td>Decoder-only</td>
-        <td>生成為主</td>
-        <td>文本生成最強，續寫流暢</td>
-        <td>文本生成、故事創作、對話生成</td>
-	</tr>
-	<tr>
-		<td>傳統RNN模型</td>
-        <td>RNN-based</td>
-        <td>序列建模</td>
-        <td>適合小模型、可處理序列資料</td>
-        <td>時間序列預測、語音處理、簡易文本序列</td>
-	</tr>
-</table>
-	<br><p>綜合比較之後，我們的目標是歌詞情緒分類，屬於語意理解，再加上我們的硬體資源有限，沒有辦法跑太複雜的模型，所以最後選擇使用 BERT 模型。</p>
+		<table  class="table table-striped table-hover text-center">
+			<tr>
+				<th>模型類別</th>
+				<th>核心架構</th>
+				<th>功能</th>
+				<th>優勢</th>
+				<th>使用情境</th>
+			</tr>
+			<tr>
+				<td>BERT系列</td>
+				<td>Encoder-only</td>
+				<td>分類/理解</td>
+				<td>擅長語意理解、分類精準</td>
+				<td>文字分類、情感分析、問答系統</td>
+			</tr>
+			<tr>
+				<td>T5系列</td>
+				<td>Encoder-Decoder</td>
+				<td>理解＋生成</td>
+				<td>擅長多任務泛化</td>
+				<td>翻譯、摘要、複雜指令任務</td>
+			</tr>
+			<tr>
+				<td>GPT系列</td>
+				<td>Decoder-only</td>
+				<td>生成為主</td>
+				<td>文本生成最強，續寫流暢</td>
+				<td>文本生成、故事創作、對話生成</td>
+			</tr>
+			<tr>
+				<td>傳統RNN模型</td>
+				<td>RNN-based</td>
+				<td>序列建模</td>
+				<td>適合小模型、可處理序列資料</td>
+				<td>時間序列預測、語音處理、簡易文本序列</td>
+			</tr>
+		</table>
+		<br><p>綜合比較之後，我們的目標是歌詞情緒分類，屬於語意理解，再加上我們的硬體資源有限，沒有辦法跑太複雜的模型，所以最後選擇使用 BERT 模型。</p>
     </div>
 	<h2 class="mb-4">BERT</h2>
 	
 		
 	
-	<div style="width: 100%;">
-  		<div style="display: inline-block; width: 40%;">
-			<div class="BERT p-4 border-0 shadow-sm">
-				<p>&emsp;&emsp;以非監督的方式利用大量無標註文本「煉成」的語言代表模型，
+	
+	<div class="card p-4 border-0 shadow-sm">
+		<div class="row align-items-center">
+
+			<div class="col-md-6">
+				<p>
+					&emsp;&emsp;以非監督的方式利用大量無標註文本「煉成」的語言代表模型，
 					其架構為 Transformer中的Encoder，並使用大量文本及兩個預訓練目標，
 					事先訓練好一個可以套用到多個NLP任務的BERT模型，再以此為基礎fine_tune多個下游任務。<br>
-					&emsp;&emsp;架構變化：保持BERT主體不變，只在最後加上一層簡單的Output Layer (分類器)，將「有標註」的資料進行訓練，達到分類情緒效果。</p>
-		
+					&emsp;&emsp;架構變化：保持BERT主體不變，只在最後加上一層簡單的Output Layer (分類器)，將「有標註」的資料進行訓練，達到分類情緒效果。
+				</p>
 			</div>
-		</div>
-  		<div style="display: inline-block; width: 50%;">
-			<img src='https://i.imgur.com/0QSIATv.png'>
+			<div class="col-md-6 text-center">
+				<img src="C:\Users\yanci\Desktop\專題網頁\src\NLP.png" class="img-fluid" style="max-height:500px;">
+			</div>
 		</div>
 	</div>
 </main>
@@ -168,7 +167,6 @@
 </body>
 
 </html>
-
 
 
 
