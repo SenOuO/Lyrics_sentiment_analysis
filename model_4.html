@@ -25,6 +25,27 @@
 			justify-content: center;}
 		.mb-4 {margin: 20px;}
 		.card p-4 span {color : red;}
+		.training-flow{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:25px;
+    margin:40px 0;
+    flex-wrap:wrap;
+}
+
+.train-box{
+    background:#9fb9d6;
+    padding:20px 35px;
+    border-radius:35px;
+    font-size:1.2rem;
+    text-align:center;
+    min-width:180px;
+}
+
+.arrow{
+    font-size:2rem;
+}
     </style>
 </head>
 <body>
@@ -85,6 +106,28 @@
 			掛接分類層：在BERT輸出的[CLS]向量上面，接一個簡單的全連接
 			層，把BERT讀完歌詞後產生的複雜特徵 (768維向量)，壓縮成設
 			定的分類數量 (4種情緒)</p>
+		<p style="text-indent:2em;">第三步：反向傳播更新 (TRAINING)</p>
+		
+		<div class="training-flow">
+
+    <div class="train-box">丟入歌詞</div>
+
+    <div class="arrow">→</div>
+
+    <div class="train-box">模型預測情緒</div>
+
+    <div class="arrow">→</div>
+
+    <div class="train-box">真實標籤比對</div>
+
+    <div class="arrow">→</div>
+
+    <div class="train-box">計算誤差</div>
+
+    <div class="arrow">→</div>
+
+    <div class="train-box">微調整個模型<br>的參數</div>
+
 
     </div>
 	
@@ -109,6 +152,7 @@
 </body>
 
 </html>
+
 
 
 
