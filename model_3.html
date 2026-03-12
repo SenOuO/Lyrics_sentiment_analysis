@@ -67,22 +67,23 @@
         }
 
         .small-box {
-            width: 90px;
-            height: 120px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-        }
+    width: 140px;
+    height: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    flex-direction: column;
+}
 
         .tall-box {
-            width: 120px;
-            height: 160px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-        }
+    width: 110px;
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
 
         .quote-box {
             min-width: 220px;
@@ -191,8 +192,8 @@
 傳統情緒詞典最大的限制在於採用「全域靜態數值」，同一個詞彙
 在任何情境下都會被賦予固定的情緒分數，因而忽略了歌詞中最重
 要的語境變化。為了解決此問題，本研究導入 BERT 的上下文感知
-技術，使模型能夠理解語境並進行情緒判斷。簡單來說，可以將其
-理解為「在情緒詞典中加入語境雷達」：
+技術，使模型能夠理解語境並進行情緒判斷。簡單來說就是在詞典
+裝上環境雷達：
 </p>
 
 <p style="text-indent:2em;">
@@ -209,7 +210,7 @@
 的情緒，進而更準確地還原歌詞所表達的情感。
 </p>
     </div>
-<h2 class="text-center mb-4">模型介紹－BERT 微調【VA值】</h2>
+<h2 class="mb-4">模型介紹－BERT 微調【VA值】</h2>
 
 <div class="flow-wrapper">
 
@@ -301,6 +302,7 @@
 </body>
 
 </html>
+
 
 
 
