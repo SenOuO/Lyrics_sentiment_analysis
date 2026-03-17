@@ -1,220 +1,345 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>歌詞情緒分析專題</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        :root { --primary-color: #2c3e50; --secondary-color: #34495e; }
-        body { font-family: 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', sans-serif,"Segoe UI", Arial;
-				background-color: #fdfdfd;
-				line-height: 1.8; }
-        .navbar { background-color: var(--primary-color); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .navbar-brand, .nav-link { color: #ffffff !important; font-weight: 500; }
-        .dropdown-menu { border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        .content-section { padding: 60px 0; margin:0 auto;}
-        footer { background-color: var(--primary-color); color: #bdc3c7; padding: 30px 0; text-align: center; }
-		.hero-section {
-            height: 100px;
-            background: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6));
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            letter-spacing: 15px;
-			justify-content: center;}
-		.mb-4 {margin: 20px;}
-		/* 流程圖區 */
-		.flowchart{
-			display:flex;
-			justify-content:center;
-			align-items:center;
-			flex-wrap:wrap;
-			gap:40px;
-			padding:40px;
-		}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		/* 流程節點 */
-		.step{
-			position:relative;
-			padding:18px 35px;
-			background:white;
-			border-radius:40px;
-			font-weight:bold;
-			text-decoration:none;
-			color:#333;
-			box-shadow:0 4px 15px rgba(0,0,0,0.1);
-			transition:0.3s;
-		}
+<title>歌詞情緒分析專題</title>
 
-		/* 箭頭 */
-		.step::after{
-			content:"→";
-			position:absolute;
-			right:-28px;
-			color:#999;
-		}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-		.step:last-child::after{
-			display:none;
-		}
+<style>
 
-		/* hover */
-		.step:hover{
-			transform:translateY(-4px);
-			box-shadow:0 8px 25px rgba(0,0,0,0.15);
-		}
+:root{
+--primary-color:#2c3e50;
+--secondary-color:#34495e;
+}
 
-		/* active */
-		.step.active{
-			background:#4facfe;
-			color:white;
-		}
+html{
+scroll-behavior:smooth;
+}
 
-		/* 內容區 */
-		.section{
-			padding:50px 20px;
-			margin:30px auto;
-			border-radius:12px;
-			width:80%;
-			box-shadow:0 4px 15px rgba(0,0,0,0.08);
-		}
+body{
+font-family:'PingFang TC','Heiti TC','Microsoft JhengHei',"Segoe UI",Arial;
+background-color:#fdfdfd;
+line-height:1.8;
+}
 
-		.section:nth-child(even){
-			background:#f9fbff;
-		}
+/* Navbar */
 
-		.section h2{
-			color:#333;
-		}
+.navbar{
+background-color:var(--primary-color);
+box-shadow:0 2px 4px rgba(0,0,0,0.1);
+}
 
-    </style>
+.navbar-brand,
+.nav-link{
+color:#ffffff !important;
+font-weight:500;
+}
+
+.dropdown-menu{
+border:none;
+box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Hero */
+
+.hero-section{
+height:100px;
+background:linear-gradient(rgba(255,255,255,0.6),rgba(255,255,255,0.6));
+display:flex;
+justify-content:center;
+align-items:center;
+letter-spacing:15px;
+}
+
+/* 主內容 */
+
+.content-section{
+padding:60px 0;
+margin:0 auto;
+}
+
+/* 流程圖 */
+
+.flowchart{
+display:flex;
+justify-content:center;
+align-items:center;
+flex-wrap:wrap;
+gap:40px;
+padding:40px;
+}
+
+.step{
+position:relative;
+padding:18px 35px;
+background:white;
+border-radius:40px;
+font-weight:bold;
+text-decoration:none;
+color:#333;
+box-shadow:0 4px 15px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.step::after{
+content:"→";
+position:absolute;
+right:-28px;
+color:#999;
+}
+
+.step:last-child::after{
+display:none;
+}
+
+.step:hover{
+transform:translateY(-4px);
+box-shadow:0 8px 25px rgba(0,0,0,0.15);
+}
+
+.step.active{
+background:#4facfe;
+color:white;
+}
+
+/* 內容區 */
+
+.section{
+padding:50px 20px;
+margin:30px auto;
+border-radius:12px;
+width:80%;
+box-shadow:0 4px 15px rgba(0,0,0,0.08);
+
+/* 避免定位點被navbar遮住 */
+scroll-margin-top:120px;
+}
+
+.section:nth-child(even){
+background:#f9fbff;
+}
+
+.section h2{
+color:#333;
+}
+
+p{
+margin:0 0 0 30px;
+}
+
+/* Footer */
+
+footer{
+background-color:var(--primary-color);
+color:#bdc3c7;
+padding:30px 0;
+text-align:center;
+}
+
+</style>
 </head>
+
+
 <body>
 
+<!-- Navbar -->
+
 <nav class="navbar navbar-expand-lg sticky-top">
-    <div class="container">
-        <a class="navbar-brand" href="index.html">歌詞情緒分析</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="index.html">首頁</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">資料介紹</a>
-                    <ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="data_emotion.html">情緒分類</a></li>
-                        <li><a class="dropdown-item" href="data_lyrics.html">歌詞資料</a></li>
-                        <li><a class="dropdown-item" href="data_dimension.html">中文情緒維度資料集</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">模型介紹</a>
-                    <ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="NLP.html">NLP介紹與模型比較</a></li>
-                        <li><a class="dropdown-item" href="model_1.html">詞典法</a></li>
-                        <li><a class="dropdown-item" href="model_2.html">BERT微調-情緒類別</a></li>
-                        <li><a class="dropdown-item" href="model_3.html">BERT微調-V/A值</a></li>
-                        <li><a class="dropdown-item" href="model_4.html">BERT微調-歌詞 </a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">資料處理</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="process_lyrics.html">歌詞清洗</a></li>
-                        <li><a class="dropdown-item" href="process_lexicon.html">詞典清洗</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="conclusion.html">結論與討論</a></li>
-                <li class="nav-item"><a class="nav-link" href="results.html">成果展示</a></li>
-                <li class="nav-item"><a class="nav-link" href="references.html">參考文獻</a></li>
-            </ul>
-        </div>
-    </div>
+<div class="container">
+
+<a class="navbar-brand" href="index.html">歌詞情緒分析</a>
+
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarNav">
+
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item">
+<a class="nav-link" href="index.html">首頁</a>
+</li>
+
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">資料介紹</a>
+
+<ul class="dropdown-menu">
+<li><a class="dropdown-item" href="data_emotion.html">情緒分類</a></li>
+<li><a class="dropdown-item" href="data_lyrics.html">歌詞資料</a></li>
+<li><a class="dropdown-item" href="data_dimension.html">中文情緒維度資料集</a></li>
+</ul>
+
+</li>
+
+<li class="nav-item dropdown">
+
+<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">模型介紹</a>
+
+<ul class="dropdown-menu">
+<li><a class="dropdown-item" href="NLP.html">NLP介紹與模型比較</a></li>
+<li><a class="dropdown-item" href="model_1.html">詞典法</a></li>
+<li><a class="dropdown-item" href="model_2.html">BERT微調-情緒類別</a></li>
+<li><a class="dropdown-item" href="model_3.html">BERT微調-V/A值</a></li>
+<li><a class="dropdown-item" href="model_4.html">BERT微調-歌詞</a></li>
+</ul>
+
+</li>
+
+<li class="nav-item dropdown">
+
+<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">資料處理</a>
+
+<ul class="dropdown-menu">
+<li><a class="dropdown-item" href="process_lyrics.html">歌詞清洗</a></li>
+<li><a class="dropdown-item" href="process_lexicon.html">詞典清洗</a></li>
+</ul>
+
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="conclusion.html">結論與討論</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="results.html">成果展示</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="references.html">參考文獻</a>
+</li>
+
+</ul>
+
+</div>
+</div>
 </nav>
 
+<!-- 主內容 -->
+
 <main class="container content-section">
-	<div class="hero-section">
-        <h1 class="hero-title">歌詞資料</h1>
-    </div>
-	
-	<div class="flowchart">
-		<a class="step" href="#start">蒐集歌曲</a>
-		<a class="step" href="#register">爬取歌詞</a>
-		<a class="step" href="#upload">歌詞清洗</a>
-		<a class="step" href="#review">情緒判別</a>
-		<a class="step" href="#finish">完成歌詞資料集</a>
-	</div>
+
+<div class="hero-section">
+<h1>歌詞資料</h1>
+</div>
+
+<div class="flowchart">
+
+<a class="step" href="#start">蒐集歌曲</a>
+<a class="step" href="#register">爬取歌詞</a>
+<a class="step" href="#upload">歌詞清洗</a>
+<a class="step" href="#review">情緒判別</a>
+<a class="step" href="#finish">完成歌詞資料集</a>
+
+</div>
+
 </main>
 
-	<div id="start" class="section">
-		<h2>蒐集歌曲</h2>
-		<p>
-			依照情緒類別，作為歌詞搜尋的收集方向。<br>
-			歌曲來源包含人工收集及KKBOX、Spotify的歌單，KKBOX及Spotify以情緒做為關鍵字&emsp; 例如:開心 興奮 去搜尋歌單 <br>
-			再以網路爬蟲的方式收集歌單中的歌名及歌手
-		</p>
-	</div>
+<!-- Section -->
+
+<div id="start" class="section">
+<h2>蒐集歌曲</h2>
+
+<p>
+依照情緒類別，作為歌詞搜尋的收集方向。<br>
+歌曲來源包含人工收集及KKBOX、Spotify的歌單。<br>
+KKBOX及Spotify以情緒做為關鍵字，例如：開心、興奮等搜尋歌單。<br>
+再以網路爬蟲方式收集歌單中的歌名及歌手。
+</p>
+
+</div>
 
 
-	<div id="register" class="section">
-		<h2>爬取歌詞</h2>
-		<p>
-			利用網路爬蟲自動化技術在KKBOX抓取完整歌詞，大幅提升資料收集效率。<br>
-			有三個版本
-		</p>
-		<ol>
-			<li>直接爬取:以歌名 + 歌手為搜尋 未加任何判斷抓取第一筆結果 <span style='color : red;'> 失誤率高 </span> 因為有些歌曲第一筆中未提供歌詞</li>
-			<li>爬取+範圍檢查：在1的基礎上加上檢查是否提供歌詞 <span style='color : red;'>失誤率降低　但不夠完善 </span> 因發現實際搜尋有時候會不符合預期搜尋</li>
-			<li>最終版：在2的基礎上加上歌名模糊對比 <span style='color : red;'>有效降低失誤率 </span> 在此版本失誤的歌曲通常為未提供歌詞 或關鍵字有誤</li>
-		</ol>
-		
-	</div>
+<div id="register" class="section">
+
+<h2>爬取歌詞</h2>
+
+<p>
+利用網路爬蟲自動化技術在KKBOX抓取完整歌詞，大幅提升資料收集效率。
+</p>
+
+<ol>
+
+<li>
+直接爬取：以歌名 + 歌手搜尋，未加判斷抓取第一筆結果  
+<span style="color:red;">失誤率高</span>
+</li>
+
+<li>
+爬取 + 範圍檢查：檢查是否提供歌詞  
+<span style="color:red;">失誤率降低，但不夠完善</span>
+</li>
+
+<li>
+最終版：加入歌名模糊比對  
+<span style="color:red;">有效降低失誤率</span>
+</li>
+
+</ol>
+
+</div>
 
 
-	<div id="upload" class="section">
-		<h2>歌詞清洗</h2>
-		<p>
-			確保所有歌詞文本在格式排版與資料結構上的一致性<br>
-			由於KKBOX歌詞提供有些源自於非官方，常有特殊符號或標點符號，不利於歌詞分析<br>
-			以爬蟲技術以一致的標準清洗歌詞中的符號
-		</p>
-	</div>
+<div id="upload" class="section">
+
+<h2>歌詞清洗</h2>
+
+<p>
+確保所有歌詞文本在格式與資料結構上的一致性。<br>
+由於KKBOX歌詞來源有些為非官方版本，常含特殊符號或標點符號，不利於歌詞分析。<br>
+因此透過程式統一清洗歌詞中的符號。
+</p>
+
+</div>
 
 
-	<div id="review" class="section">
-		<h2>情緒判別</h2>
-		<p>
-			
-		</p>
-	</div>
+<div id="review" class="section">
+
+<h2>情緒判別</h2>
+
+<p>
+透過建立的情緒模型，對歌詞內容進行情緒分類或情緒維度分析，  
+判斷歌曲所傳達的情緒類型。
+</p>
+
+</div>
 
 
-	<div id="finish" class="section">
-		<h2>完成歌詞資料集</h2>
-		<img  src="src\lyrics.jpg" width='50%'>
-	</div>
+<div id="finish" class="section">
 
+<h2>完成歌詞資料集</h2>
 
+<p>
+<img src="src/lyrics.jpg" width="600">
+</p>
 
+</div>
 
-
-
-
+<!-- Footer -->
 
 <footer>
-    <div class="container">
-        <p>© 2026 靜宜大學資料科學暨大數據分析與應用學系<br>歌詞情緒分析專題組 | 版權所有</p>
-    </div>
+
+<div class="container">
+
+<p>
+© 2026 靜宜大學資料科學暨大數據分析與應用學系<br>
+歌詞情緒分析專題組 | 版權所有
+</p>
+
+</div>
+
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+<!-- Bootstrap -->
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-/* 自動高亮目前流程 */
+<!-- 流程自動高亮 -->
+
+<script>
 
 const sections = document.querySelectorAll(".section");
 const steps = document.querySelectorAll(".step");
@@ -224,18 +349,20 @@ window.addEventListener("scroll",()=>{
 let current="";
 
 sections.forEach(section=>{
+
 const sectionTop = section.offsetTop;
-const sectionHeight = section.clientHeight;
 
 if(pageYOffset >= sectionTop - 200){
 current = section.getAttribute("id");
 }
+
 });
 
 steps.forEach(step=>{
+
 step.classList.remove("active");
 
-if(step.getAttribute("href") === "#"+current){
+if(step.getAttribute("href")==="#"+current){
 step.classList.add("active");
 }
 
@@ -243,15 +370,7 @@ step.classList.add("active");
 
 });
 
-
-
-
-
 </script>
+
 </body>
-
 </html>
-
-
-
-
