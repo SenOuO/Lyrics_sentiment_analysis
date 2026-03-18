@@ -183,12 +183,12 @@
 			</p>
 
 			<p>
-			<strong>Q2（憤怒/焦慮）</strong>的正確預測數為 6，但有高達<strong> 12</strong> 筆被誤分類為 Q3（悲傷/沮喪），
+			<strong>Q2（憤怒/焦慮）</strong>的正確預測數為 6，但有高達<strong> 12</strong> 筆被誤分類為 Q3，
 			顯示模型容易將高激發的負向情緒誤判為低激發的負向情緒。
 			</p>
 
 			<p>
-			<strong>Q4（平靜/滿足）</strong>的正確預測數為 7，但有<strong> 9</strong> 筆被誤判為 Q1（快樂/興奮），
+			<strong>Q4（平靜/滿足）</strong>的正確預測數為 7，但有<strong> 9</strong> 筆被誤判為 Q1，
 			顯示模型在區分「高 Valence（正向）」但不同激發程度（Arousal）時存在困難。
 			</p>
 
@@ -216,7 +216,40 @@
 
 			<div class="col-md-6">
 				<p>
-					模型在 Q4 上預測準確度較高尤其在相鄰的情感區間比較模糊。
+				此圖為以<strong> Valence-Arousal（VA）</strong>數值為主導的混淆矩陣，
+				用來呈現模型在不同情緒象限中的分類表現。
+				橫軸為<strong>預測結果（Predicted）</strong>，縱軸為<strong>實際標籤（True）</strong>，
+				對角線上的數值代表預測正確的樣本數。
+				</p>
+
+				<p>
+				在四個象限中，<strong>Q3（悲傷/沮喪</strong>）與 <strong>Q4（平靜/滿足）</strong>表現最佳，
+				正確預測數皆為 <strong>13</strong>；其次為 Q1（快樂/興奮）為 <strong>11</strong>，
+				而 Q2（憤怒/焦慮）為<strong> 10</strong>，整體表現較前一模型有所提升。
+				</p>
+
+				<p>
+				然而仍存在明顯的誤分類情形。例如 Q1 有 <strong>12</strong> 筆被誤判為 Q4，
+				顯示模型在高 Valence（正向）情緒中，
+				較難區分高激發（Arousal）與低激發之差異。
+				</p>
+
+				<p>
+				此外，Q3 有部分樣本被誤分類為 <strong>Q2（7筆）</strong>與<strong> Q4（8筆）</strong>，
+				顯示在低激發情緒之間仍存在混淆情形。
+				而 Q2 亦有樣本分散至其他象限（如 Q1、Q3、Q4），
+				顯示負向高激發情緒的辨識仍具挑戰性。
+				</p>
+
+				<p>
+				整體而言，模型在 Valence（情緒正負向）的判斷上表現穩定，
+				但在 Arousal（情緒強度）的區分仍存在困難，
+				尤其是在同為正向或同為負向的情緒之間，
+				容易出現跨象限的誤分類。
+				</p>
+				<p>
+				相較於前一模型，本模型在 Q2 與 Q4 的分類表現有所改善，
+				但仍存在不同 Arousal 層級之間的混淆問題。
 				</p>
 				<ul>
 					<li><strong>總樣本數：</strong>103</li>
