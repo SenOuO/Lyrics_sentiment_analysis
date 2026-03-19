@@ -98,15 +98,12 @@
     </div>
     <div class="card p-4 border-0 shadow-sm">
           <p style="text-indent:2em;">第一步：資料準備 - 加上特殊標記<br>
-			在原始歌詞進入模型微調前，加入BERT專用的特殊Token。
-			在句首加入[CLS](Classification Token)，是用來代表整句話
-			語意特徵的向量位置，句尾加上 [SEP] 表示句子結束。</p>
+			在原始歌詞進入模型微調前，加入BERT專用的特殊Token。在句首加入[CLS](Classification Token)，是用來代表整句話語意特徵的向量位置，句尾加上 [SEP] 表示句子結束。</p>
 		<p style="text-indent:2em;">第二步：搭建模型<br>
-			主體：使用預訓練好的bert-base-chinese模型<br>
-			掛接分類層：在BERT輸出的[CLS]向量上面，接一個簡單的全連接
-			層，把BERT讀完歌詞後產生的複雜特徵 (768維向量)，壓縮成設
-			定的分類數量 (4種情緒)</p>
-		<p style="text-indent:2em;">第三步：反向傳播更新 (TRAINING)</p>
+			主體：使用預訓練好的BERT-BASE-CHINESE模型<br>
+			掛接分類層：在BERT輸出的[CLS]向量上面，接一個簡單的全連接層，把BERT讀完歌詞後產生的複雜特徵 (768維向量)，壓縮成設定的分類數量 (4種情緒)</p>
+		<p style="text-indent:2em;">第三步：反向傳播更新 (TRAINING)<br>
+			在模型訓練過程中，系統會透過反向傳播更新機制，根據預測結果與真實標籤之間的誤差，調整模型內部參數，讓後續的情緒判斷更加準確。</p>
 		
 		<div class="training-flow">
 
