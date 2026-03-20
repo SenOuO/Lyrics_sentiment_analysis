@@ -1,103 +1,355 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>歌詞情緒分析專題</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        :root { --primary-color: #2c3e50; --secondary-color: #34495e; }
-        body { font-family: 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', sans-serif; background-color: #fdfdfd; line-height: 1.8; }
-        .navbar { background-color: var(--primary-color); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .navbar-brand, .nav-link { color: #ffffff !important; font-weight: 500; }
-        .dropdown-menu { border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        .content-section { padding: 60px 0; margin:0 auto;}
-        footer { background-color: var(--primary-color); color: #bdc3c7; padding: 30px 0; text-align: center; }
-		.hero-section {
-            height: 100px;
-            background: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6));
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            letter-spacing: 15px;
-			justify-content: center;}
-		.mb-4 {margin: 20px;}
-		.card p-4 span {color : red;}
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>歌詞情緒分析專題</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+:root{
+  --primary-color:#2c3e50;
+  --secondary-color:#34495e;
+  --highlight-color:#4facfe;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'PingFang TC','Heiti TC','Microsoft JhengHei',"Segoe UI",Arial;
+  background-color:#fdfdfd;
+  line-height:1.8;
+}
+
+/* Navbar */
+.navbar{
+  background-color:var(--primary-color);
+  box-shadow:0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand,
+.nav-link{
+  color:#ffffff !important;
+  font-weight:500;
+}
+
+.dropdown-menu{
+  border:none;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Hero */
+.hero-section{
+  min-height:100px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  letter-spacing:10px;
+  text-align:center;
+  margin-bottom:10px;
+}
+
+.hero-section h1{
+  font-size:2.4rem;
+  color:#2c3e50;
+  margin:0;
+}
+
+/* 主內容 */
+.content-section{
+  padding:60px 0 30px 0;
+  margin:0 auto;
+}
+
+/* 流程圖 */
+.flowchart{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:25px;
+  padding:30px 20px 10px 20px;
+}
+
+.step{
+  position:relative;
+  padding:18px 30px;
+  background:white;
+  border-radius:40px;
+  font-weight:bold;
+  text-decoration:none;
+  color:#333;
+  box-shadow:0 4px 15px rgba(0,0,0,0.1);
+  transition:0.3s;
+}
+
+.step::after{
+  content:"→";
+  position:absolute;
+  right:-22px;
+  color:#999;
+  font-size:20px;
+}
+
+.step:last-child::after{
+  display:none;
+}
+
+.step:hover{
+  transform:translateY(-4px);
+  box-shadow:0 8px 25px rgba(0,0,0,0.15);
+}
+
+.step.active{
+  background:var(--highlight-color);
+  color:white;
+}
+
+/* 內容區 */
+.section{
+  padding:50px 30px;
+  margin:30px auto;
+  border-radius:16px;
+  width:85%;
+  background:#ffffff;
+  box-shadow:0 4px 15px rgba(0,0,0,0.08);
+  scroll-margin-top:120px;
+}
+
+.section:nth-of-type(even){
+  background:#f9fbff;
+}
+
+.section h2{
+  color:#2c3e50;
+  margin-bottom:20px;
+  font-weight:700;
+}
+
+.section p,
+.section li{
+  font-size:1.05rem;
+}
+
+.section img{
+  max-width:100%;
+  border-radius:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+  margin-top:20px;
+}
+
+.note-box{
+  background:#eef6ff;
+  border-left:6px solid #4facfe;
+  padding:18px 20px;
+  border-radius:10px;
+  margin-top:20px;
+}
+
+/* Footer */
+footer{
+  background-color:var(--primary-color);
+  color:#bdc3c7;
+  padding:30px 0;
+  text-align:center;
+  margin-top:50px;
+}
+</style>
 </head>
+
 <body>
 
+<!-- Navbar -->
 <nav class="navbar navbar-expand-lg sticky-top">
-    <div class="container">
-        <a class="navbar-brand" href="index.html">歌詞情緒分析</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="index.html">首頁</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">資料介紹</a>
-                    <ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="data_emotion.html">情緒分類</a></li>
-                        <li><a class="dropdown-item" href="data_lyrics.html">歌詞資料</a></li>
-                        <li><a class="dropdown-item" href="data_dimension.html">中文情緒維度資料集</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">模型介紹</a>
-                    <ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="NLP.html">NLP介紹與模型比較</a></li>
-                        <li><a class="dropdown-item" href="model_1.html">詞典法</a></li>
-                        <li><a class="dropdown-item" href="model_2.html">BERT微調-情緒類別</a></li>
-                        <li><a class="dropdown-item" href="model_3.html">BERT微調-V/A值</a></li>
-                        <li><a class="dropdown-item" href="model_4.html">BERT微調-歌詞 </a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">資料處理</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="process_lyrics.html">歌詞清洗</a></li>
-                        <li><a class="dropdown-item" href="process_lexicon.html">詞典清洗</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="conclusion.html">結論與討論</a></li>
-                <li class="nav-item"><a class="nav-link" href="results.html">成果展示</a></li>
-                <li class="nav-item"><a class="nav-link" href="references.html">參考文獻</a></li>
-            </ul>
-        </div>
+  <div class="container">
+
+    <a class="navbar-brand" href="index.html">歌詞情緒分析</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">首頁</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">資料介紹</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="data_emotion.html">情緒分類</a></li>
+            <li><a class="dropdown-item" href="data_lyrics.html">歌詞資料</a></li>
+            <li><a class="dropdown-item" href="data_dimension.html">中文情緒維度資料集</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">模型介紹</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="NLP.html">NLP介紹與模型比較</a></li>
+            <li><a class="dropdown-item" href="model_1.html">詞典法</a></li>
+            <li><a class="dropdown-item" href="model_2.html">BERT微調-情緒類別</a></li>
+            <li><a class="dropdown-item" href="model_3.html">BERT微調-V/A值</a></li>
+            <li><a class="dropdown-item" href="model_4.html">BERT微調-歌詞</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">資料處理</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="process_lyrics.html">歌詞清洗</a></li>
+            <li><a class="dropdown-item" href="process_lexicon.html">詞典清洗</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="conclusion.html">結論與討論</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="results.html">成果展示</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="references.html">參考文獻</a>
+        </li>
+
+      </ul>
     </div>
+  </div>
 </nav>
 
+<!-- 主內容 -->
 <main class="container content-section">
-	<div class="hero-section">
-        <h1 class="hero-title">歌詞情緒分析</h1>
-    </div>
-    <div class="card p-4 border-0 shadow-sm">
-        <p>指導教授：林建華老師、郭珈妤老師<br>
-			專題成員：黃丞祥、王雅慧、郭晏慈、石宇婕、傅筱婷、陳俞蓁、侯進瑋、吳宗晏、彭英姿</p>
-    </div>
+
+  <div class="hero-section">
+    <h1>詞典處理</h1>
+  </div>
+
+  <div class="flowchart">
+    <a class="step" href="#merge">合併檔案</a>
+    <a class="step" href="#check">檢查異常值</a>
+    <a class="step" href="#convert">數值轉換</a>
+    <a class="step" href="#classify">情緒象限分類</a>
+    <a class="step" href="#review">視覺化與人工檢查</a>
+    <a class="step" href="#bert">BERT+SVM 細分</a>
+  </div>
+
 </main>
 
+<!-- Section 1 -->
+<div id="merge" class="section">
+  <h2>先將單詞與片語檔合併</h2>
+  <p>
+    在進行詞典分析之前，先將原始資料中的單詞與片語檔案整合為同一份資料表，
+    方便後續統一清理、檢查與分類。
+  </p>
+  <div class="note-box">
+    將不同來源或不同粒度的詞彙資料整併後，可避免後續分析流程重複處理。
+  </div>
+</div>
 
+<!-- Section 2 -->
+<div id="check" class="section">
+  <h2>檢查是否有異常值或重複的字詞</h2>
+  <p>
+    合併完成後，先檢查資料中是否存在異常值、缺漏值或重複詞彙。
+    若發現數值明顯不合理或文字重複，則先予以移除或整理，以提升資料品質。
+  </p>
 
+  <img src="images/process_lexicon_chart.png" alt="詞典處理流程圖">
 
+  <div class="note-box">
+    這裡可以放你簡報中的檢查畫面、異常值範例，或直接放整張流程圖。
+  </div>
+</div>
 
+<!-- Section 3 -->
+<div id="convert" class="section">
+  <h2>將檔案的數值由 1～9 變成 -4～4</h2>
+  <p>
+    為了讓情緒維度更容易以中心點做解讀，將原本 1～9 的量表平移轉換成 -4～4。
+    轉換後，0 可視為中性位置，正值與負值也更容易用來判斷情緒方向。
+  </p>
+  <ul>
+    <li>1 對應到 -4</li>
+    <li>5 對應到 0</li>
+    <li>9 對應到 4</li>
+  </ul>
+</div>
 
+<!-- Section 4 -->
+<div id="classify" class="section">
+  <h2>VA 值劃分四個情緒象限（軸上為中性）</h2>
+  <p>
+    依據 Valence（愉悅度）與 Arousal（喚起度）的數值，
+    將詞彙劃分到四個不同的情緒象限中，並將落在座標軸上的資料視為中性區域，
+    作為後續進一步分析的基礎。
+  </p>
+</div>
 
+<!-- Section 5 -->
+<div id="review" class="section">
+  <h2>資料視覺化及人工字詞檢查</h2>
+  <p>
+    完成象限分類後，透過資料視覺化方式觀察分布情形，
+    並搭配人工檢查字詞內容，確認分類結果是否合理。
+    這一步能協助修正少數自動分類不精確的詞彙。
+  </p>
+</div>
 
+<!-- Section 6 -->
+<div id="bert" class="section">
+  <h2>將中性情緒用 BERT + SVM 細分</h2>
+  <p>
+    對於落在中性區域的詞彙，僅依靠 VA 值可能不足以準確描述其細微情緒差異，
+    因此進一步結合 BERT 與 SVM 模型做更細緻的分類，
+    以提升整體詞典情緒標註的精確度。
+  </p>
+</div>
 
-
+<!-- Footer -->
 <footer>
-    <div class="container">
-        <p>© 2026 靜宜大學資料科學暨大數據分析與應用學系<br>歌詞情緒分析專題組 | 版權所有</p>
-    </div>
+  <div class="container">
+    <p>
+      © 2026 靜宜大學資料科學暨大數據分析與應用學系<br>
+      歌詞情緒分析專題組 | 版權所有
+    </p>
+  </div>
 </footer>
 
+<!-- Bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- 流程自動高亮 -->
+<script>
+const sections = document.querySelectorAll(".section");
+const steps = document.querySelectorAll(".step");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    if (pageYOffset >= sectionTop - 200) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  steps.forEach(step => {
+    step.classList.remove("active");
+    if (step.getAttribute("href") === "#" + current) {
+      step.classList.add("active");
+    }
+  });
+});
+</script>
+
 </body>
-
 </html>
-
