@@ -369,6 +369,33 @@
         <div class="box mb-3">眼淚 → BERT 微調</div>
         <div class="box mb-3">久別重逢 → 「終於等到你，流下了眼淚…」 → 偵測語境 [終於]、[等到] → 動態歸類 [快樂／感動]</div>
         <div class="box">失戀分手 → 「你轉身離開，只剩下眼淚…」 → 偵測語境 [離開]、[只剩下] → 動態歸類 [悲傷]</div>
+        <div class="card p-4 border-0 shadow-sm">
+    <p style="text-indent:2em;">
+        BERT 微調在情緒類別分類任務中的整體準確率約為 <strong>38%</strong>。
+        從混淆矩陣可以觀察到，不同情緒類別之間的辨識能力存在明顯差異。
+    </p>
+
+    <p style="text-indent:2em;">
+        首先，在 <strong>Q2 類別</strong> 上，模型表現最佳，具有相對較高的預測準確率，
+        顯示模型對於較為明確或強烈的情緒特徵具有良好的辨識能力。
+    </p>
+
+    <p style="text-indent:2em;">
+        在 <strong>Q1 與 Q3 類別</strong> 方面，模型仍具備一定程度的辨識能力，
+        但預測結果較為分散，容易與其他情緒類別產生混淆，
+        代表這些情緒之間在語意上具有一定重疊性。
+    </p>
+
+    <p style="text-indent:2em;">
+        然而，在 <strong>Q4 類別</strong> 上，模型表現明顯不佳，幾乎無法有效辨識，
+        顯示該類別的情緒特徵較為細微或模糊，僅依賴文字資訊難以進行準確區分。
+    </p>
+
+    <p style="text-indent:2em;">
+        整體而言，雖然 BERT 能透過上下文理解提升情緒判斷能力，
+        但對於細微或相近的情緒差異，仍存在辨識上的限制。
+    </p>
+</div>
     </div>
 </main>
 
