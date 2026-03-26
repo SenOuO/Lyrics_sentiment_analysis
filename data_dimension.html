@@ -90,11 +90,11 @@
     </div>
 	<h2 class="mb-4">中文單詞CVAW</h2>
 	<div class="card p-4 border-0 shadow-sm">
-        <p>單詞意思通常比較固定明確，情緒標註也比較穩定，適合作為模型的基礎辭典。 </p>
+        <p>單詞的意思通常比較固定，所以它的情緒標註也會比較穩定， 適合拿來當模型學習情緒的「基礎辭典」。 </p>
         EX :<br>
 				 <ul>
-				 <li>「不安」這個詞一看到都會想到<span style='color : red;'>負面的</span>、<span style='color : red;'>讓人緊張</span>的感覺，所以低 Valence、高 Arousal。</li>
-                 <li>「不可思議」這個詞，可能會因為<span style='color : red;'>情況不同</span>，有時是驚訝、開心，有時是傻眼、負面的，所以這類詞的情緒評分就比較不一致，<span style='color : red;'>讓它的標準差變高 </span>，
+				 <li>「不安」這個詞大部分人看到都會聯想到<span style='color : red;'>負面的</span>、<span style='color : red;'>讓人緊張</span>的感覺，所以它會是低 Valence、高 Arousal。</li>
+                 <li>「不可思議」這個詞比較特別，可能會因為<span style='color : red;'>情況不同</span>， 有時候是正向的驚喜，有時候也可能是負面的傻眼，所以這類詞的<span style='color : red;'>標準差就會比較高 </span>，
 		         <span style='color : red;'>代表它的情緒解讀比較多元</span>、<span style='color : red;'>比較不固定</span>。</li>
 				 </ul>
     </div>
@@ -115,7 +115,7 @@
 		<ul>
 		<li>Valence_Mean：愉悅程度平均值(連續數值1~9)。</li>	
 		<li>Arousal_Mean：情緒強度平均值（連續數值1~9）。</li>
-		<li>Valence_SD / Arousal_SD：反映語意的模糊程度</li>
+		<li>Valence_SD / Arousal_SD：反映語意的模糊程度。</li>
 		</ul>
 	</div>
 	<h2 class="mb-4">中文片語CVAP</h2>
@@ -145,12 +145,13 @@
 		<ul>
 		<li>Valence_Mean：愉悅程度平均值(連續數值1~9)。</li>	
 		<li>Arousal_Mean：情緒強度平均值（連續數值1~9）。</li>
-		<li>Valence_SD / Arousal_SD：反映語意的模糊程度</li>
+		<li>Valence_SD / Arousal_SD：反映語意的模糊程度。</li>
 		</ul>
 	</div>
 	<div class="d-flex align-items-start gap-4">
 		<div style="flex: 1; min-width: 300px;">
 			<h2 class="mb-4">互動式字詞情緒分布圖</h2>
+			<p>這張圖是用 Valence 跟 Arousal 兩個維度，把字詞的情緒分布畫出來。當滑鼠移到某個點時，可以看到這個詞的情緒數值與分類，讓我們更直觀了解每個詞的情緒位置。</p>
 			  <div style="flex: 1; min-width: 400px; display: flex; justify-content: center;">
 			    <iframe 
 			      src="https://senouo.github.io/emotion/new_emotion_scatter.html" 
