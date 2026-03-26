@@ -138,6 +138,35 @@ main { font-size: 26px;
 
     <div class="train-box">微調整個模型<br>的參數</div>
 
+<h3 class="mb-4">混淆矩陣分析</h3>        
+
+<div class="card p-4 border-0 shadow-sm mt-4">
+    <div class="row align-items-center">
+
+        <!-- 左 -->
+        <div class="col-md-6" style="font-size:1.1rem;">
+            <p>
+               模型在 <strong>Q3（悲傷／沮喪）</strong>表現最佳，正確預測數達 <strong>26筆</strong>，
+				在<strong>Q1（快樂／興奮）</strong>與 <strong>Q2（憤怒／焦慮）</strong>也有不錯表現，分別正確預測 <strong>20筆</strong>與 <strong>18筆</strong>，代表模型已能掌握較明顯的情緒特徵。
+				然而，在 <strong>Q4（平靜／滿足）</strong>strong>上仍存在明顯困難，僅正確預測 <strong>10筆</strong>，且有多數樣本被誤判為其他類別，顯示較低強度的情緒在語意上較為模糊，即使透過深度學習模型仍不易精準區分。
+            </p>
+	
+			<p>整體而言，情緒表現有顯著提升，表示相較於逐字或單一特徵分析，保留完整語境的歌詞文本，更有助於模型理解情緒走向。。</p>
+
+            <ul class="mt-3">
+                <li>總樣本數：<strong>105</strong></li>
+                <li>預測正確筆數：<strong>74</strong></li>
+                <li>成功機率：<strong style="color:#198754;">74.28%</strong></li>
+                <li>失誤機率：<strong style="color:#dc3545;">29.52%</strong></li>
+            </ul>
+
+        </div>
+
+        <!-- 右 -->
+        <div class="col-md-6 text-center">
+            <img src="src\model_4.png" class="img-fluid " alt="BERT微調情緒類別混淆矩陣"style="max-height:400px;">
+        </div>
+
 
     </div>
 	
