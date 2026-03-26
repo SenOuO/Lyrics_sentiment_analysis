@@ -369,7 +369,9 @@
         <div class="box mb-3">眼淚 → BERT 微調</div>
         <div class="box mb-3">久別重逢 → 「終於等到你，流下了眼淚…」 → 偵測語境 [終於]、[等到] → 動態歸類 [快樂／感動]</div>
         <div class="box">失戀分手 → 「你轉身離開，只剩下眼淚…」 → 偵測語境 [離開]、[只剩下] → 動態歸類 [悲傷]</div>
-<h3 class="mb-4">結論分析</h3>        
+    </div>
+  
+<h3 class="mb-4">混淆矩陣</h3>        
 <div class="card p-4 border-0 shadow-sm mt-4">
     <p style="text-indent:2em;">
         BERT 微調在情緒類別分類任務中的整體準確率約為 <strong>38%</strong>。
@@ -396,6 +398,12 @@
         整體而言，雖然 BERT 能透過上下文理解提升情緒判斷能力，
         但對於細微或相近的情緒差異，仍存在辨識上的限制。
     </p>
+    <ul>
+            <li>總樣本數：<strong>105</strong></li>
+            <li>預測正確筆數：<strong>40</strong></li>
+            <li>成功機率：<strong style="color:#198754;">38.10%</strong></li>
+            <li>失誤機率：<strong style="color:#dc3545;">61.90%</strong></li>
+    </ul>
 </div>
     </div>
 </main>
