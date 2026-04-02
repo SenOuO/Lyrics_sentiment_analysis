@@ -87,7 +87,7 @@
 <div class="card p-4 border-0 shadow-sm">
 
 <p style="text-indent:2em;">
-首先，詞典資料不平衡是影響模型預測結果的重要因素之一。
+首先，情緒詞典資料不平衡是影響模型預測結果的重要因素之一。
 不同情緒象限中的字詞數量並不平均，容易使模型在訓練過程中偏向學習樣本數較多的情緒類型，
 進而影響整體預測表現。
 </p>
@@ -105,7 +105,7 @@
 
 <p style="text-indent:2em;">
 綜合而言，本研究結果顯示，
-在歌詞情緒分析任務中，
+在歌詞情緒預測中，
 結合深度學習方法並保留完整文本語境的模型，
 能夠獲得較佳的預測效果。
 然而，資料品質、標註方式以及情緒分類標準等因素，
@@ -159,28 +159,28 @@ table a:hover {
 <td>
 <a href="model_1.html#VA">詞典法【VA值】</a>
 </td>
-<td>46%</td>
+<td>49%</td>
 </tr>
 
 <tr>
 <td>
 <a href="model_2.html">BERT微調【情緒類別】</a>
 </td>
-<td>38%</td>
+<td>45%</td>
 </tr>
 
 <tr>
 <td>
 <a href="model_3.html">BERT微調【VA值】</a>
 </td>
-<td>44%</td>
+<td>47%</td>
 </tr>
 
 <tr class="table-danger fw-bold">
 <td>
 <a href="model_4.html">BERT微調【歌詞】</a>
 </td>
-<td>70%</td>
+<td>74%</td>
 </tr>
 
 </tbody>
@@ -188,7 +188,7 @@ table a:hover {
 </table>
 <p class="mt-3">
 結果顯示，使用 <strong>BERT微調【歌詞】</strong> 的模型表現最佳，
-成功率達到 <strong>70%</strong>，顯著優於詞典法與其他模型。
+成功率達到 <strong>74%</strong>，顯著優於詞典法與其他模型。
 </p>
 </div>
 </div>
