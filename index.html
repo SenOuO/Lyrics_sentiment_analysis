@@ -9,7 +9,7 @@
     <link rel="icon" href="favicon.ico">
     <style>
         :root { --primary-color: #2c3e50; --secondary-color: #34495e; }
-        body { font-family: 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', sans-serif; background-color: #fdfdfd; line-height: 1.8; }
+     	 body { font-family: 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', sans-serif; background-color: #fdfdfd; line-height: 1.8; }
         .navbar { background-color: var(--primary-color); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         .navbar-brand, .nav-link { color: #ffffff !important; font-weight: 500; }
         .dropdown-menu { border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
@@ -27,17 +27,12 @@
 			justify-content: center;}
 		.mb-4 {margin: 20px;}
 		.card span{color : red;}
-		main { font-size: 26px; 
+		main { font-size: 28px; 
 		    line-height: 2;
 		    letter-spacing: 2px;
 		  }
-
-		 @font-face {font-family: "我的字體";
-  					src: url("ToneOZ-Tsuipita-TC.woff2") format("woff2");
-					}
-		  * {
-    		font-family: "我的字體", sans-serif;
-			}
+		 @font-face {font-family: "我的字體";src: url("ToneOZ-Tsuipita-TC.woff2") format("woff2");}
+		  * {font-family: "我的字體", sans-serif;}
 		#backToTop {
 		position: fixed;
 		bottom: 30px;
@@ -58,8 +53,7 @@
 		#backToTop:hover {
 			background-color: #34495e;
 		}
-		H2 {  text-align: center;
-		  }
+		
     </style>
 </head>
 <body>
@@ -102,23 +96,14 @@
 <main class="container content-section">
 	<div class="hero-section">
         <h1 class="hero-title">歌詞情緒分析</h1>
-
-	<div class="card p-4 border-0 shadow-sm">
-		<div class="row align-items-center">
-
-			<div class="col-md-6">
-				 <p>指導教授：林建華老師、郭珈妤老師<br>
-			專題成員：黃丞祥、王雅慧、郭晏慈、石宇婕、傅筱婷、陳俞蓁、侯進瑋、吳宗晏、彭英姿</p>
-			</div>
-			<div class="col-md-6 text-center">
-				<img src="https://pin.it/YCtUJCKBD" class="img-fluid" style="max-height:500px;">
-			</div>
-		</div>
-	</div>
-</main>
-
-		
     </div>
+    <div class="card p-4 border-0 shadow-sm" >
+        <p>指導教授：林建華老師、郭珈妤老師<br>
+			專題成員：黃丞祥、王雅慧、郭晏慈、石宇婕、傅筱婷、陳俞蓁、侯進瑋、吳宗晏、彭英姿</p>
+		<img src='' >
+    </div>
+	
+	
 	<h2 class="mb-4">摘要</h2>
     <div class="card p-4 border-0 shadow-sm">
         <p>&emsp;&emsp;傳統的情緒分析技術多侷限於「正向／負向」的二元分類，然而這種劃分難以捕捉音樂情緒的細膩層次。舉例而言，「憂鬱」與「放鬆」雖同屬低能量情緒，但在心理感受上卻截然不同；「熱血」與「憤怒」雖同屬高能量情緒，但在愉悅度上卻背道而馳。人類對音樂的感知是連續且多維的，單純的標籤分類已無法滿足現代音樂推薦系統的需求。此外，現今主流串流平台（如 Spotify, KKBOX）的「情緒歌單」標籤，多源自人工標註或用戶行為數據，代表的是聽眾對於「旋律、節奏、歌詞」的綜合聽感。
@@ -132,9 +117,11 @@
 		能更直接地揭示創作者的心理狀態與情感脈絡</span>。因此透過文字內容分析歌曲情緒，不僅能更精準掌握音樂的<span>情感傾向</span>，也能作為後續自動化音樂生成的依據，使系統能根據<span>語意情緒對應出適合的旋律與風格</span>。</p>
     </div>
 </main>
+
 <button id="backToTop">
     <i class="bi bi-arrow-up">top</i>
 </button>
+
 <footer>
     <div class="container">
         <p>© 2026 靜宜大學資料科學暨大數據分析與應用學系<br>歌詞情緒分析專題組 | 版權所有</p>
