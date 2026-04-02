@@ -230,59 +230,56 @@
 	
 	<h2 id="VA" class="mb-4">詞典法【VA值】</h2>
 	<div class="card p-4 border-0 shadow-sm">
-		<div class="row align-items-center">
 
 			<div class="col-md-6">
 				<p>
-				此圖為以<strong> Valence-Arousal（VA）</strong>數值為主導的混淆矩陣，
-				用來呈現模型在不同情緒象限中的分類表現。
-				橫軸為<strong>預測結果（Predicted）</strong>，縱軸為<strong>實際標籤（True）</strong>，
-				對角線上的數值代表預測正確的樣本數。
+				此圖為以<strong> Valence-Arousal（VA）</strong>數值為主導的混淆矩陣。
 				</p>
 				<p>
-       			 <strong>Q1（快樂／興奮）</strong>的表現最佳，
-        		 正確預測數為 <strong>15筆</strong>。
-        		 但仍有部分樣本被誤判為 Q3（4筆）與 Q4（8筆），
-        		 顯示模型在區分不同正向或跨象限情緒時仍存在混淆。
-   			   </p>
+        		<strong>Q1（快樂／興奮）</strong> 表現最為出色，正確預測為 <strong>16 筆</strong>；
+        		然而有 9 筆被誤判為 Q4，顯示在正向情緒中，強烈程度（Arousal）的界線較模糊。
+   				</p>
 
-   			   <p>
-        		<strong>Q2（憤怒／焦慮）</strong>正確預測為 <strong>9筆</strong>，
-        		但有 <strong>8筆</strong> 被誤分類為 Q3，
-        		顯示模型容易將負向情緒之間互相混淆，
-        		尤其在情緒強度（Arousal）上較難區分。
-    		  </p>
+    			<p>
+        		<strong>Q4（平靜／滿足）</strong> 表現次之，正確預測為 <strong>14 筆</strong>，
+        		其主要的誤判發生在 Q1（6 筆），同樣印證了模型在區分正向情緒的高低強度時存在挑戰。
+    			</p>
 
-    		  <p>
-        	  <strong>Q3（悲傷／沮喪）</strong>正確預測為 <strong>11筆</strong>，表現僅次於 Q1。
-        	  但仍有樣本被誤判為 Q1（7筆）與 Q4（7筆），
-        	  顯示情緒詞在不同語境下可能產生重疊。
-    		 </p>
+    			<p>
+        		<strong>Q2（憤怒／焦慮）</strong> 正確預測為 <strong>13 筆</strong>，
+        		誤判分布較散，其中 7 筆被誤判為 Q3（悲傷），反映了負向情緒間的轉移。
+    			</p>
 
-    		  <p>
-        	  <strong>Q4（平靜／滿足）</strong>正確預測為 <strong>8筆</strong>，
-        	  其中有 <strong>11筆</strong> 被誤判為 Q1，
-        	  顯示模型在正向情緒中難以區分高激發與低激發的差異。
-    		  </p>
-    		  <p>
-        	  整體而言，模型在<strong>Valence（情緒正負向）</strong>的判斷上相對穩定，
-        	  但在<strong>Arousal（情緒強度）</strong>的區分上較容易產生混淆，
-        	  特別是在相鄰象限之間（如 Q1 與 Q4、Q2 與 Q3）。
-    		  </p>
-				<ul>
-					<li><strong>總樣本數：</strong>108</li>
-					<li><strong>預測正確筆數：</strong>43</li>
-					<li><strong>成功機率：</strong>39.81%</li>
-					<li><strong>失誤機率：</strong>60.19%</li>
-				</ul>
-			</div>
-			<div class="text-center mt-4">
-        <img src="Emotion_by_Count.png" 
-             class="img-fluid rounded shadow-sm"
-             style="max-width: 800px; width: 100%;">
+    			<p>
+        		<strong>Q3（悲傷／沮喪）</strong> 正確預測為 <strong>10 筆</strong>，
+        		是四個象限中表現相對較弱的，有 11 筆被誤判為 Q4，
+        		顯示模型容易將「低能量負向情緒」誤認為「低能量正向情緒」。
+    			</p>
+
+    			<p>
+        		整體而言，此模型在 <strong>Q1 與 Q4</strong> 的辨識度較高，
+        		但在處理 <strong>Q3（低能量負向）</strong> 時容易與其他象限混淆，
+        		特別是容易產生橫向（Valence）的判斷偏移。
+    			</p>
+
+    			<div class="row align-items-center mt-4">
+       		 	<div class="col-md-4">
+           		 <div class="p-3 bg-light rounded">
+                <ul class="mb-0">
+                    <li><strong>總樣本數：</strong>108</li>
+                    <li><strong>預測正確筆數：</strong>53</li>
+                    <li><strong>成功機率：</strong>49.07%</li>
+                    <li><strong>失誤機率：</strong>50.93%</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-6 text-center">
+            <img src="Emotion_by_Value.png" class="img-fluid" style="max-height:400px;">
 			</div>
 		</div>
 	</div>
+
 </main>
 
 
