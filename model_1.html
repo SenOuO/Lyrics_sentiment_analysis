@@ -179,36 +179,8 @@
 	<h2 id="emotion" class="mb-4">詞典法【情緒類別】</h2>
 		<div class="card p-4 border-0 shadow-sm">
 	<p>
-		此圖為以<strong> 字詞數量</strong>為主導的混淆矩陣，
-        橫軸為<strong>預測類別（Predicted）</strong>，
-        縱軸為<strong>實際類別（True）</strong>，
-        對角線上的數值代表預測正確的樣本數。
+		此圖為以<strong> 字詞數量</strong>為主導的混淆矩陣，橫軸為<strong>預測類別（Predicted）</strong>，縱軸為<strong>實際類別（True）</strong>，對角線上的數值代表預測正確的樣本數。
     </p>
-
-    <p>
-        <strong>Q1（快樂／興奮）</strong>表現最佳，正確預測為 <strong>15筆</strong>；
-        <strong>Q3（悲傷／沮喪）</strong>次之，為 <strong>11筆</strong>。
-    </p>
-
-    <p>
-        <strong>Q2（憤怒／焦慮）</strong>正確預測為 <strong>9筆</strong>，
-        但有 <strong>8筆</strong> 被誤判為 Q3，
-        顯示負向情緒之間容易混淆。
-    </p>
-
-    <p>
-        <strong>Q4（平靜／滿足）</strong>正確預測為 <strong>8筆</strong>，
-        但有 <strong>11筆</strong> 被誤判為 Q1，
-        顯示模型難以區分正向情緒中的強度差異。
-    </p>
-
-    <p>
-        整體而言，模型在<strong>Valence（情緒正負向）</strong>判斷較穩定，
-        但在<strong>Arousal（情緒強度）</strong>上容易混淆，
-        特別是在相鄰象限之間（Q1↔Q4、Q2↔Q3）。
-    </p>
-
-
     <div class="row align-items-center mt-4">
 
         <div class="col-md-4">
@@ -217,7 +189,6 @@
                     <li><strong>總樣本數：</strong>108</li>
                     <li><strong>預測正確筆數：</strong>43</li>
                     <li><strong>成功機率：</strong>39.81%</li>
-                    <li><strong>失誤機率：</strong>60.19%</li>
                 </ul>
             </div>
         </div>
@@ -226,6 +197,25 @@
 		<img src="Emotion_by_Count.png" class="img-fluid" style="max-height:400px;">
 			</div>
 		</div>
+			<div class="card p-4 border-0 shadow-sm">
+			<p>
+        Q1（快樂／興奮):顯示出「正向且高激起」的特徵在詞頻統計上相對明顯。
+    </p>
+<p>
+        Q3（悲傷／沮喪):顯示出「負向且低激起」的特徵在數量上有一定的辨識基準。
+    </p>
+
+    <p>
+        Q2（憤怒／焦慮):能辨識出負向情緒，但常與Q3產生混淆，表示在處理「負向且高激起」情緒時，容易抓不到情緒強度導致誤判。
+    </p>
+
+    <p>
+        Q4（平靜／滿足):顯示出「正向且低激起」說明在單純計數的方法下，特徵極易被其他類別掩蓋。
+    </p>
+
+    <p>
+        整體而言，模型在<strong>Valence（情緒正負向）</strong>判斷較穩定，但在<strong>Arousal（情緒強度）</strong>上容易混淆，特別是在相鄰象限之間（Q1↔Q4、Q2↔Q3）。
+    </p>
 	</div>
 	
 	<h2 id="VA" class="mb-4">詞典法【VA值】</h2>
@@ -267,7 +257,6 @@
                     <li><strong>總樣本數：</strong>108</li>
                     <li><strong>預測正確筆數：</strong>53</li>
                     <li><strong>成功機率：</strong>49.07%</li>
-                    <li><strong>失誤機率：</strong>50.93%</li>
                 </ul>
             </div>
         </div>
