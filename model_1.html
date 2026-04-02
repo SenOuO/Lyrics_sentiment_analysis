@@ -105,9 +105,7 @@
 		透過字詞的 Valence 與 Arousal，我們可以將情緒投影到四個象限中。
 		</p>		
 		<p style="text-indent:2em;">
-		四個象限分別是Q1快樂（High Valence / High Arousal）、Q2憤怒（Low Valence / High Arousal）、Q3悲傷（Low Valence / Low Arousal）、<br>
-		&nbsp;&nbsp;Q4平靜（High Valence / Low Arousal）
-		
+		四個象限分別是Q1快樂（High Valence / High Arousal）、Q2憤怒（Low Valence / High Arousal）、Q3悲傷（Low Valence / Low Arousal）、Q4平靜（High Valence / Low Arousal）
 		</p>	
 		<div class="table-responsive">
 
@@ -208,14 +206,14 @@
 			特別是在相鄰象限之間（如 Q2 與 Q3、Q1 與 Q4）。
 			</p>
 				<ul>
-					<li><strong>總樣本數：</strong>103</li>
-					<li><strong>預測正確筆數：</strong>40</li>
-					<li><strong>成功機率：</strong>38.83%</li>
-					<li><strong>失誤機率：</strong>61.17%</li>
+					<li><strong>總樣本數：</strong>108</li>
+					<li><strong>預測正確筆數：</strong>43</li>
+					<li><strong>成功機率：</strong>39.81%</li>
+					<li><strong>失誤機率：</strong>60.19%</li>
 				</ul>
 			</div>
 			<div class="col-md-6 text-center">
-				<img src="src\model1-1.png" class="img-fluid" style="max-height:400px;">
+				<img src="src\Emotion_by_Count.png" class="img-fluid" style="max-height:400px;">
 			</div>
 		</div>
 	</div>
@@ -231,45 +229,47 @@
 				橫軸為<strong>預測結果（Predicted）</strong>，縱軸為<strong>實際標籤（True）</strong>，
 				對角線上的數值代表預測正確的樣本數。
 				</p>
+				<p>
+       			 <strong>Q1（快樂／興奮）</strong>的表現最佳，
+        		 正確預測數為 <strong>15筆</strong>。
+        		 但仍有部分樣本被誤判為 Q3（4筆）與 Q4（8筆），
+        		 顯示模型在區分不同正向或跨象限情緒時仍存在混淆。
+   			   </p>
 
-				<p>
-				在四個象限中，<strong>Q3（悲傷/沮喪</strong>）與 <strong>Q4（平靜/滿足）</strong>表現最佳，
-				正確預測數皆為 <strong>13筆</strong>；其次為 Q1（快樂/興奮）為 <strong>11筆</strong>，
-				而 Q2（憤怒/焦慮）為<strong> 10筆</strong>，整體表現較前一模型有所提升。
-				</p>
+   			   <p>
+        		<strong>Q2（憤怒／焦慮）</strong>正確預測為 <strong>9筆</strong>，
+        		但有 <strong>8筆</strong> 被誤分類為 Q3，
+        		顯示模型容易將負向情緒之間互相混淆，
+        		尤其在情緒強度（Arousal）上較難區分。
+    		  </p>
 
-				<p>
-				然而仍存在明顯的誤分類情形。例如 Q1 有 <strong>12筆</strong> 被誤判為 Q4，
-				顯示模型在高 Valence情緒中，
-				較難區分高Arousal與低Arousal之差異。
-				</p>
+    		  <p>
+        	  <strong>Q3（悲傷／沮喪）</strong>正確預測為 <strong>11筆</strong>，表現僅次於 Q1。
+        	  但仍有樣本被誤判為 Q1（7筆）與 Q4（7筆），
+        	  顯示情緒詞在不同語境下可能產生重疊。
+    		 </p>
 
-				<p>
-				此外，Q3 有部分樣本被誤分類為 <strong>Q2（7筆）</strong>與<strong> Q4（8筆）</strong>，
-				顯示在低激發情緒之間仍存在混淆情形。
-				而 Q2 亦有樣本分散至其他象限（如 Q1、Q3、Q4），
-				顯示負向高激發情緒的辨識仍具挑戰性。
-				</p>
-
-				<p>
-				整體而言，模型在 Valence的判斷上表現穩定，
-				但在 Arousal的區分仍存在困難，
-				尤其是在同為正向或同為負向的情緒之間，
-				容易出現跨象限的誤分類。
-				</p>
-				<p>
-				相較於前一模型，<strong>本模型在 Q2 與 Q4 的分類表現有所改善</strong>，
-				但仍存在不同 Arousal 層級之間的混淆問題。
-				</p>
+    		  <p>
+        	  <strong>Q4（平靜／滿足）</strong>正確預測為 <strong>8筆</strong>，
+        	  其中有 <strong>11筆</strong> 被誤判為 Q1，
+        	  顯示模型在正向情緒中難以區分高激發與低激發的差異。
+    		  </p>
+    		  <p>
+        	  整體而言，模型在<strong>Valence（情緒正負向）</strong>的判斷上相對穩定，
+        	  但在<strong>Arousal（情緒強度）</strong>的區分上較容易產生混淆，
+        	  特別是在相鄰象限之間（如 Q1 與 Q4、Q2 與 Q3）。
+    		  </p>
 				<ul>
-					<li><strong>總樣本數：</strong>103</li>
-					<li><strong>預測正確筆數：</strong>47</li>
-					<li><strong>成功機率：</strong>45.63%</li>
-					<li><strong>失誤機率：</strong>54.37%</li>
+					<li><strong>總樣本數：</strong>108</li>
+					<li><strong>預測正確筆數：</strong>43</li>
+					<li><strong>成功機率：</strong>39.81%</li>
+					<li><strong>失誤機率：</strong>60.19%</li>
 				</ul>
 			</div>
-			<div class="col-md-6 text-center">
-				<img src="src\model1_2.png" class="img-fluid" style="max-height:400px;">
+			<div class="text-center mt-4">
+        <img src="src/Emotion_by_Count.png" 
+             class="img-fluid rounded shadow-sm"
+             style="max-width: 800px; width: 100%;">
 			</div>
 		</div>
 	</div>
