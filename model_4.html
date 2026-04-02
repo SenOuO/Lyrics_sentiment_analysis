@@ -156,24 +156,39 @@ main { font-size: 26px;
 
 <h3 class="mb-4">混淆矩陣分析</h3>        
 
-<div class="card p-4 border-0 shadow-sm mt-4">
-    <div class="row align-items-center">
-
-        <!-- 左 -->
-        <div class="col-md-6" style="font-size:1.1rem;">
+<div class="card p-4 border-0 shadow-sm">
             <p>
-               模型在 <strong>Q3（悲傷／沮喪）</strong>表現最佳，正確預測數達 <strong>26筆</strong>，
-				在<strong>Q1（快樂／興奮）</strong>與 <strong>Q2（憤怒／焦慮）</strong>也有不錯表現，分別正確預測 <strong>20筆</strong>與 <strong>18筆</strong>，代表模型已能掌握較明顯的情緒特徵。
-				然而，在 <strong>Q4（平靜／滿足）</strong>上仍存在明顯困難，僅正確預測 <strong>10筆</strong>，且有多數樣本被誤判為其他類別，顯示較低強度的情緒在語意上較為模糊，即使透過深度學習模型仍不易精準區分。
+              此圖為<strong>歌詞微調模型</strong>的混淆矩陣，用來呈現模型在四個情緒象限（Q1～Q4）上的分類表現。
             </p>
 	
-			<p>整體而言，情緒表現有顯著提升，表示相較於逐字或單一特徵分析，保留完整語境的歌詞文本，更有助於模型理解情緒走向。</p>
+			<p>
+				在四個象限中，<strong>Q1（快樂／興奮）</strong> 表現非常出色，正確預測達 <strong>24 筆</strong>， 幾乎沒有誤判，顯示模型對於<strong>高能量正向情緒</strong>具有高度辨識能力。
+			</p>
+			<p> 
+				<strong>Q2（憤怒／焦慮）</strong> 正確預測為 <strong>20 筆</strong>， 僅有少量誤判（5 筆為 Q3、1 筆為 Q4）， 整體表現穩定，顯示模型對於<strong>負向高強度情緒</strong>也具備良好判斷能力。 
+			</p>
+	
+			<p> 
+				<strong>Q3（悲傷／沮喪）</strong> 表現同樣優異，正確預測為 <strong>24 筆</strong>， 誤判數量極少，代表模型在<strong>低能量負向情緒</strong>的辨識上已有明顯提升。
+			</p>
 
-            <ul class="mt-3">
-                <li>總樣本數：<strong>105</strong></li>
-                <li>預測正確筆數：<strong>74</strong></li>
-                <li>成功機率：<strong style="color:#198754;">70.28%</strong></li>
-                <li>失誤機率：<strong style="color:#dc3545;">29.52%</strong></li>
+			<p>
+				<strong>Q4（平靜／滿足）</strong> 正確預測為 <strong>12 筆</strong>， 雖然仍有部分誤判（如 Q1、Q2、Q3）， 但整體相比前幾個模型已有明顯改善。 
+			</p>
+
+			<p>
+				整體而言，經過歌詞語料微調後，模型在四個情緒象限的表現皆大幅提升， 特別是在<strong>Q1 與 Q3</strong>的辨識上達到相當高的準確度， 顯示模型已能有效理解<strong>歌詞中的語境與情緒表達</strong>。
+			</p>
+
+     <div class="row align-items-center mt-4">
+    	 <div class="col-md-4">
+            <div class="p-3 bg-light rounded">
+                <ul class="mb-0">
+                <li>總樣本數：<strong>108</strong></li>
+                <li>預測正確筆數：<strong>80</strong></li>
+                <li>成功機率：<strong style="color:#198754;">74.07%</strong></li>
+                <li>失誤機率：<strong style="color:#dc3545;">25.93%</strong></li>
+
             </ul>
 
         </div>
