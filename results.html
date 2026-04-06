@@ -343,6 +343,9 @@
 <script>
 window.currentResults = null;
 
+// 1. 將 BASE_URL 移到最外層，讓所有函數都能共用
+const BASE_URL = "https://jerlene-unobjective-zina.ngrok-free.dev";
+
 // 快速點選按鈕的事件綁定
 document.querySelectorAll('.quick-pick').forEach(button => {
     button.onclick = function() {
@@ -366,43 +369,66 @@ document.getElementById('predict-form').addEventListener('submit', async functio
 
     submitBtn.disabled = true;
     submitBtn.innerText = '運算中...';
-    lyricsDiv.innerHTML = '<p class="text-primary fw-bold">⏳ 正在爬取歌詞並執行 5 個模型運算，請稍候約 15 秒...</p>';
+    lyricsDiv.innerHTML = '<p class="text-primary fw-bold">⏳ 正在爬取歌詞並執行 5 個模型運算，請稍候...</p>';
 
     // 先隱藏回饋表單，等這次分析完再顯示新的
     document.getElementById('feedback-section').style.display = 'none';
 
-    const BASE_URL = "https://jerlene-unobjective-zina.ngrok-free.dev";
+
+    function getEmotionBadge(emotionText) {
+        if (!emotionText) return '<span class="text-muted">無資料</span>';
+
+        // 定義純文字顏色
+        let color = "#6c757d"; // 預設灰色
+
+        if (emotionText.includes("Q1:快樂/興奮")) {
+            color = "#d4ac0d"; // 深金黃色 (比原先的黃更清晰)
+        } else if (emotionText.includes("Q2:憤怒/焦慮")) {
+            color = "#e74c3c"; // 紅色
+        } else if (emotionText.includes("Q3:悲傷/沮喪")) {
+            color = "#3498db"; // 藍色
+        } else if (emotionText.includes("Q4:平靜/滿足")) {
+            color = "#27ae60"; // 綠色 (稍深一點的綠，對比度更好)
+        }
+
+        // 回傳純文字，不帶外框
+        return `<span style="color: ${color}; font-weight: bold; font-size: 1.6rem; letter-spacing: 1px;">${emotionText}</span>`;
+    }
 
     try {
-        const response = await fetch(`${BASE_URL}/analyze`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ song_name: songName, artist: singerName })
-        });
-        const data = await response.json();
-
-        if (data.status === 'success') {
-            window.currentResults = data.results; 
-            lyricsDiv.innerHTML = data.lyrics;
+            const response = await fetch(`${BASE_URL}/analyze`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ song_name: songName, artist: singerName })
+            });
             
-            document.getElementById('model-1-result').innerText = data.results.model1;
-            document.getElementById('model-2-result').innerText = data.results.model2;
-            document.getElementById('model-3-result').innerText = data.results.model3;
-            document.getElementById('model-4-result').innerText = data.results.model4;
-            document.getElementById('model-5-result').innerText = data.results.model5;
+            const data = await response.json();
 
-            document.getElementById('feedback-section').style.display = 'block';
-            console.log("分析成功，已顯示回饋表單");
-        } else {
-            lyricsDiv.innerHTML = `<p class="text-danger">錯誤：${data.message}</p>`;
+            if (data.status === 'success') {
+                window.currentResults = data.results; 
+                lyricsDiv.innerHTML = `<pre style="white-space: pre-wrap; font-family: '我的字體';">${data.lyrics}</pre>`;
+                
+                const results = data.results; // 這裡改用 results 避免混淆
+                
+                // --- 修正點：ID 必須與 HTML 的 model-1-result 對齊 ---
+                document.getElementById('model-1-result').innerHTML = getEmotionBadge(results.model1);
+                document.getElementById('model-2-result').innerHTML = getEmotionBadge(results.model2);
+                document.getElementById('model-3-result').innerHTML = getEmotionBadge(results.model3);
+                document.getElementById('model-4-result').innerHTML = getEmotionBadge(results.model4);
+                document.getElementById('model-5-result').innerHTML = getEmotionBadge(results.model5);
+
+                document.getElementById('feedback-section').style.display = 'block';
+            } else {
+                lyricsDiv.innerHTML = `<p class="text-danger">錯誤：${data.message}</p>`;
+            }
+        } catch (e) {
+            console.error("Debug 錯誤資訊:", e);
+            lyricsDiv.innerHTML = `<p class="text-danger">執行失敗。請檢查：1. 後端 Ngrok 是否過期 2. 瀏覽器 Console 是否有報錯。</p>`;
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerText = '開始預測並抓取歌詞';
         }
-    } catch (e) {
-        lyricsDiv.innerHTML = `<p class="text-danger">連線失敗，請確認後端服務是否正常。</p>`;
-    } finally {
-        submitBtn.disabled = false;
-        submitBtn.innerText = '開始預測並抓取歌詞';
-    }
-});
+    });
 
 const detailModal = new bootstrap.Modal(document.getElementById('unifiedModal'));
 
@@ -418,9 +444,9 @@ document.getElementById('model-1-detail-btn').onclick = function() {
             // 根據 Q1~Q4 給予不同的標籤顏色
             let badgeColor = "bg-secondary";
             if (q.includes("Q1")) badgeColor = "bg-warning text-dark";
-            if (q.includes("Q2")) badgeColor = "bg-danger";
-            if (q.includes("Q3")) badgeColor = "bg-primary";
-            if (q.includes("Q4")) badgeColor = "bg-success";
+            if (q.includes("Q2")) badgeColor = "bg-danger text-dark";
+            if (q.includes("Q3")) badgeColor = "bg-primary text-dark";
+            if (q.includes("Q4")) badgeColor = "bg-success text-dark";
 
             wordsHtml += `
                 <div class="mb-2 d-flex align-items-start">
@@ -432,16 +458,16 @@ document.getElementById('model-1-detail-btn').onclick = function() {
 
     document.getElementById('modal-body-content').innerHTML = `
         <div class="px-2">
-            <h6 class="fw-bold text-dark mb-2" style="font-size: 0.9rem;">各象限命中詞數：</h6>
+            <h5 class="fw-bold text-dark mb-2" style="font-size: 0.9rem;">各象限命中詞數：</h5>
             
             <table class="table table-sm table-bordered text-center mx-auto mb-4" 
                    style="table-layout: fixed; max-width: 480px; font-size: 0.85rem; border: 2px solid #dee2e6;">
                 <thead>
                     <tr class="text-white">
-                        <th style="background-color: #f1c40f; color: #000; border-color: #f1c40f;">Q1<br>快樂</th>
-                        <th style="background-color: #e74c3c; border-color: #e74c3c;">Q2<br>憤怒</th>
-                        <th style="background-color: #3498db; border-color: #3498db;">Q3<br>悲傷</th>
-                        <th style="background-color: #2ecc71; border-color: #2ecc71;">Q4<br>平靜</th>
+                        <th style="background-color: #f1c40f; color: #000; border-color: #f1c40f;font-size: 1.2rem;">Q1<br>快樂</th>
+                        <th style="background-color: #e74c3c; border-color: #e74c3c;font-size: 1.2rem;">Q2<br>憤怒</th>
+                        <th style="background-color: #3498db; border-color: #3498db;font-size: 1.2rem;">Q3<br>悲傷</th>
+                        <th style="background-color: #2ecc71; border-color: #2ecc71;font-size: 1.2rem;">Q4<br>平靜</th>
                     </tr>
                 </thead>
                 <tbody class="fw-bold" style="font-size: 1.2rem; background-color: #fff;">
@@ -454,9 +480,9 @@ document.getElementById('model-1-detail-btn').onclick = function() {
                 </tbody>
             </table>
 
-            <h6 class="fw-bold text-dark mb-2" style="font-size: 0.9rem;">匹配關鍵詞清單：</h6>
+            <h5 class="fw-bold text-dark mb-2" style="font-size: 0.9rem;">匹配關鍵詞清單：</h5>
             <div class="p-3 border rounded bg-light" style="max-height: 200px; overflow-y: auto; border: 1px solid #dee2e6 !important;">
-                ${wordsHtml || '<span class="text-muted">無匹配詞彙</span>'}
+                ${wordsHtml || '<span class="text-muted";style=font-size: 1.2rem;>無匹配詞彙</span>'}
             </div>
         </div>
     `;
@@ -552,10 +578,10 @@ document.getElementById('model-2-detail-btn').onclick = function() {
     document.getElementById('modal-title-text').innerText = "模型 2：詞典 V/A 值平均運算過程";
     document.getElementById('modal-body-content').innerHTML = `
         <div class="p-2">
-            <h6 class="fw-bold text-primary">Valence (愉悅度) 平均值: <span class="text-dark">${details.v_score}</span></h6>
+            <h5 class="fw-bold text-primary">Valence (愉悅度) 平均值: <span class="text-dark">${details.v_score}</span></h5>
             <div class="p-2 bg-light rounded mb-3" style="font-size:0.9rem;"><code>${details.v_process}</code></div>
             
-            <h6 class="fw-bold text-danger">Arousal (喚起度) 平均值: <span class="text-dark">${details.a_score}</span></h6>
+            <h5 class="fw-bold text-danger">Arousal (喚起度) 平均值: <span class="text-dark">${details.a_score}</span></h5>
             <div class="p-2 bg-light rounded mb-3" style="font-size:0.9rem;"><code>${details.a_process}</code></div>
             
             <hr>
@@ -582,7 +608,6 @@ document.getElementById('model-4-detail-btn').onclick = function() {
                 <div class="col-6"><h5 class="text-primary">Valence</h5><h3>${res.model4_v}</h3></div>
                 <div class="col-6"><h5 class="text-danger">Arousal</h5><h3>${res.model4_a}</h3></div>
             </div>
-            <div class="mt-2 text-muted">判定情緒：<span>${res.model4}</span></div>
         </div>
         <hr>
         <div style="height: 350px; width: 100%;">
