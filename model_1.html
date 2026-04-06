@@ -197,105 +197,73 @@
 			</table>
 		</div>
 	</div>
-	</div>
 	
 	<h2 id="emotion" class="mb-4">詞典法【情緒類別】</h2>
 	<div class="card p-4 border-0 shadow-sm">
-    <p>
-        此圖為以<strong>字詞數量</strong>為主導的混淆矩陣，橫軸為<strong>預測類別（Predicted）</strong>，縱軸為<strong>實際類別（True）</strong>，對角線上的數值代表預測正確的樣本數。
-    </p>
+		<p>此圖為以<strong>字詞數量</strong>為主導的混淆矩陣，橫軸為<strong>預測類別（Predicted）</strong>，縱軸為<strong>實際類別（True）</strong>，對角線上的數值代表預測正確的樣本數。</p>
 
-    <div class="row align-items-center">
-        <div class="col-md-6">
-            <p><strong>四象限預測正確數量</strong>:<br>
-				Q1：15筆<br>
-                Q2：9筆<br>
-                Q3：11筆<br>
-				Q4：8筆<br>
-			</p>
-			
-			<ul>
-				<li><strong>總樣本數：</strong>108</li>
-                <li><strong>預測正確筆數：</strong>43</li>
-                <li><strong>成功機率：</strong>39.81%</li>
-            </ul>
-        </div>
+		<div class="row align-items-center">
+			<div class="col-md-3">
+				<p><strong>四象限預測正確數量</strong>:<br>
+					Q1：15筆<br>
+					Q2：9筆<br>
+					Q3：11筆<br>
+					Q4：8筆<br>
+				</p>
+			</div>
+			<div class="col-md-3">
+				<ul>
+					<li><strong>總樣本數：</strong>108</li>
+					<li><strong>預測正確筆數：</strong>43</li>
+					<li><strong>成功機率：</strong>39.81%</li>
+				</ul>
+			</div>
 
-        <div class="col-md-6 text-center">
-            <img src="Emotion_by_Count.png" class="img-fluid" style="max-height:400px;" alt="情緒類別混淆矩陣">
-        </div>
-    </div>
-</div>
-			<div class="card p-4 border-0 shadow-sm">
-			<p>
-        Q1（快樂／興奮):顯示出「正向且高激起」的特徵在詞頻統計上相對明顯。
-    </p>
- <p>
-        Q2（憤怒／焦慮):能辨識出負向情緒，但常與Q3產生混淆，表示在處理「負向且高激起」情緒時，容易抓不到情緒強度導致誤判。
-    </p>
-				<p>
-        Q3（悲傷／沮喪):顯示出「負向且低激起」的特徵在數量上有一定的辨識基準。
-    </p>
-
-   
-
-    <p>
-        Q4（平靜／滿足):顯示出「正向且低激起」說明在單純計數的方法下，特徵極易被其他類別掩蓋。
-    </p>
-
-    <p>
-        整體而言，模型在<strong>Valence（情緒正負向）</strong>判斷較穩定，但在<strong>Arousal（情緒強度）</strong>上容易混淆，特別是在相鄰象限之間（Q1↔Q4、Q2↔Q3）。
-    </p>
+			<div class="col-md-6 text-center">
+				<img src="Emotion_by_Count.png" class="img-fluid" style="max-height:400px;" alt="情緒類別混淆矩陣">
+			</div>
+		</div>
 	</div>
+			<div class="card p-4 border-0 shadow-sm">
+				<p>Q1（快樂／興奮):顯示出「正向且高激起」的特徵在詞頻統計上相對明顯。</p>
+				<p>Q2（憤怒／焦慮):能辨識出負向情緒，但常與Q3產生混淆，表示在處理「負向且高激起」情緒時，容易抓不到情緒強度導致誤判。</p>
+				<p>Q3（悲傷／沮喪):顯示出「負向且低激起」的特徵在數量上有一定的辨識基準。</p>
+				<p>Q4（平靜／滿足):顯示出「正向且低激起」說明在單純計數的方法下，特徵極易被其他類別掩蓋。</p>
+				<p>整體而言，模型在<strong>Valence（情緒正負向）</strong>判斷較穩定，但在<strong>Arousal（情緒強度）</strong>上容易混淆，特別是在相鄰象限之間（Q1↔Q4、Q2↔Q3）。</p>
+			</div>
 	
 	<h2 id="VA" class="mb-4">詞典法【VA值】</h2>
 	<div class="card p-4 border-0 shadow-sm">
-
-				<p>
-				此圖為以<strong> Valence-Arousal（VA）</strong>數值為主導的混淆矩陣。
-				</p>
-
-    	 <div class="row align-items-center">
-        <div class="col-md-6">
+		<p>此圖為以<strong> Valence-Arousal（VA）</strong>數值為主導的混淆矩陣。</p>
+		<div class="row align-items-center">
+			<div class="col-md-3">
 				<p><strong>四象限預測正確數量</strong>:<br>
-				Q1：16筆<br>
-                Q2：13筆<br>
-                Q3：10筆<br>
-				Q4：14筆<br>
-			</p>
-                <ul class="mb-0">
+					Q1：16筆<br>
+					Q2：13筆<br>
+					Q3：10筆<br>
+					Q4：14筆<br>
+				</p>
+			</div>
+			<div class="col-md-3">
+                <ul >
                     <li><strong>總樣本數：</strong>108</li>
                     <li><strong>預測正確筆數：</strong>53</li>
                     <li><strong>成功機率：</strong>49.07%</li>
                 </ul>
             </div>
-		 </div>
-        <div class="col-md-6 text-center">
-            <img src="Emotion_by_Value.png" class="img-fluid" style="max-height:400px;">
+			<div class="col-md-6 text-center">
+				<img src="Emotion_by_Value.png" class="img-fluid" style="max-height:400px;">
 			</div>
+		 </div>
     </div>
 </div>
 		<div class="card p-4 border-0 shadow-sm">
-			<p>
-        Q1（快樂／興奮):顯示出「正向且高激起」的特徵具有極強的鎖定能力，顯示此類歌詞在數值特徵上最為鮮明且不具歧義。
-    </p>
-		  <p>
-        Q2（憤怒／焦慮):能捕捉到部分負向情緒的特徵，但其辨識力極不穩定。這反映出在僅依賴「數值加權」的邏輯下，歌詞中的「低能量負向情緒」（如：消極、失落、無力感）往往缺乏足夠強烈的關鍵詞權重，導致其在數值座標軸上容易偏離原有的負向區間。 
-    </p>	
-<p>
-        Q3（悲傷／沮喪):顯示出「負向且低激起」的特徵在數量上有一定的辨識基準。
-    </p>
-
-  
-
-    <p>
-        Q4（平靜／滿足):能有效識別低激起的正向情緒，說明數值權重法對於捕捉溫和、正面的語境具有穩定效果。
-    </p>
-
-    <p>
-        整體而言，模型在<strong>Valence（情緒正負向）</strong>判斷較穩定，但在<strong>Arousal（情緒強度）</strong>上容易混淆，特別是在相鄰象限之間（Q1↔Q4、Q2↔Q3）。
-    </p>
-	</div>
+			<p>Q1（快樂／興奮):顯示出「正向且高激起」的特徵具有極強的鎖定能力，顯示此類歌詞在數值特徵上最為鮮明且不具歧義。</p>
+			<p>Q2（憤怒／焦慮):能捕捉到部分負向情緒的特徵，但其辨識力極不穩定。這反映出在僅依賴「數值加權」的邏輯下，歌詞中的「低能量負向情緒」（如：消極、失落、無力感）往往缺乏足夠強烈的關鍵詞權重，導致其在數值座標軸上容易偏離原有的負向區間。</p>	
+			<p>Q3（悲傷／沮喪):顯示出「負向且低激起」的特徵在數量上有一定的辨識基準。</p>
+			<p>Q4（平靜／滿足):能有效識別低激起的正向情緒，說明數值權重法對於捕捉溫和、正面的語境具有穩定效果。</p>
+			<p>整體而言，模型在<strong>Valence（情緒正負向）</strong>判斷較穩定，但在<strong>Arousal（情緒強度）</strong>上容易混淆，特別是在相鄰象限之間（Q1↔Q4、Q2↔Q3）。</p>
+		</div>
 	</div>
 
 </main>
