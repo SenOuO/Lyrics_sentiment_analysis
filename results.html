@@ -415,20 +415,36 @@ document.getElementById('model-1-detail-btn').onclick = function() {
     let wordsHtml = '';
     for (const q in details.words) {
         if (details.words[q].length > 0) {
-            wordsHtml += `<div class="mb-2"><span class="badge bg-dark me-2">${q}</span><span style="font-size: 1.1rem;">${details.words[q].join(', ')}</span></div>`;
+            // 根據 Q1~Q4 給予不同的標籤顏色
+            let badgeColor = "bg-secondary";
+            if (q.includes("Q1")) badgeColor = "bg-warning text-dark";
+            if (q.includes("Q2")) badgeColor = "bg-danger";
+            if (q.includes("Q3")) badgeColor = "bg-primary";
+            if (q.includes("Q4")) badgeColor = "bg-success";
+
+            wordsHtml += `
+                <div class="mb-2 d-flex align-items-start">
+                    <span class="badge ${badgeColor} me-2" style="min-width: 35px;">${q.split(':')[0]}</span>
+                    <span style="font-size: 1rem; line-height: 1.4;">${details.words[q].join(', ')}</span>
+                </div>`;
         }
     }
 
     document.getElementById('modal-body-content').innerHTML = `
-        <h6 class="fw-bold text-success mb-3">各象限命中詞數：</h6>
-        <div class="table-responsive">
-            <table class="table table-bordered text-center mb-4 w-100" style="table-layout: fixed; min-width: 300px;">
-                <thead class="table-dark">
-                    <tr style="font-size: 0.9rem;">
-                        <th>Q1 快樂</th><th>Q2 憤怒</th><th>Q3 悲傷</th><th>Q4 平靜</th>
+        <div class="px-2">
+            <h6 class="fw-bold text-dark mb-2" style="font-size: 0.9rem;">各象限命中詞數：</h6>
+            
+            <table class="table table-sm table-bordered text-center mx-auto mb-4" 
+                   style="table-layout: fixed; max-width: 480px; font-size: 0.85rem; border: 2px solid #dee2e6;">
+                <thead>
+                    <tr class="text-white">
+                        <th style="background-color: #f1c40f; color: #000; border-color: #f1c40f;">Q1<br>快樂</th>
+                        <th style="background-color: #e74c3c; border-color: #e74c3c;">Q2<br>憤怒</th>
+                        <th style="background-color: #3498db; border-color: #3498db;">Q3<br>悲傷</th>
+                        <th style="background-color: #2ecc71; border-color: #2ecc71;">Q4<br>平靜</th>
                     </tr>
                 </thead>
-                <tbody style="font-size: 1.2rem; font-weight: bold;">
+                <tbody class="fw-bold" style="font-size: 1.2rem; background-color: #fff;">
                     <tr>
                         <td>${details.counts["Q1:快樂/興奮"]}</td>
                         <td>${details.counts["Q2:憤怒/焦慮"]}</td>
@@ -437,9 +453,12 @@ document.getElementById('model-1-detail-btn').onclick = function() {
                     </tr>
                 </tbody>
             </table>
+
+            <h6 class="fw-bold text-dark mb-2" style="font-size: 0.9rem;">匹配關鍵詞清單：</h6>
+            <div class="p-3 border rounded bg-light" style="max-height: 200px; overflow-y: auto; border: 1px solid #dee2e6 !important;">
+                ${wordsHtml || '<span class="text-muted">無匹配詞彙</span>'}
+            </div>
         </div>
-        <h6 class="fw-bold text-info mb-2">匹配關鍵詞清單：</h6>
-        <div class="p-2 border rounded bg-light">${wordsHtml || '無匹配詞彙'}</div>
     `;
     detailModal.show();
 };
