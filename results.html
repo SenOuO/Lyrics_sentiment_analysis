@@ -440,6 +440,15 @@ document.getElementById('model-1-detail-btn').onclick = function() {
 
 let vaChart = null; 
 
+// --- 新增：象限顏色判斷函式 ---
+function getQuadrantColor(v, a) {
+    if (v >= 0 && a >= 0) return '#f1c40f'; // Q1 黃色 (快樂)
+    if (v < 0 && a >= 0)  return '#e74c3c'; // Q2 紅色 (憤怒)
+    if (v < 0 && a < 0)   return '#3498db'; // Q3 藍色 (悲傷)
+    if (v >= 0 && a < 0)  return '#2ecc71'; // Q4 綠色 (平靜)
+    return '#2c3e50'; // 預設 深藍色
+}
+
 function initVAChart(v, a) {
     const ctx = document.getElementById('vaCanvas').getContext('2d');
     
@@ -447,17 +456,21 @@ function initVAChart(v, a) {
         vaChart.destroy();
     }
 
+    // 取得當前落點的象限顏色
+    const pointColor = getQuadrantColor(v, a);
+
     vaChart = new Chart(ctx, {
         type: 'scatter',
         data: {
             datasets: [{
                 label: '情緒落點',
                 data: [{ x: v, y: a }],
-                backgroundColor: '#e74c3c', // 使用更醒目的紅色點
-                pointRadius: 10,
-                pointHoverRadius: 12,
-                borderWidth: 2,
-                borderColor: '#fff'
+                backgroundColor: pointColor, // ✅ 關鍵修正：使用自動判斷的顏色
+                pointRadius: 12, // 稍微加大一點，更清晰
+                pointHoverRadius: 14,
+                borderWidth: 3,
+                borderColor: '#fff', // 白色邊框，讓點更突出
+                showLine: false
             }]
         },
         options: {
