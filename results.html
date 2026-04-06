@@ -375,33 +375,29 @@ document.getElementById('predict-form').addEventListener('submit', async functio
     document.getElementById('feedback-section').style.display = 'none';
 
 
-function getEmotionBadge(emotionText) {
-    if (!emotionText || emotionText === "無資料" || emotionText === "無匹配") {
-        return '<span class="text-muted" style="font-weight: bold; font-size: 1.3rem;">無資料</span>';
-    }
+    function getEmotionBadge(emotionText) {
+        if (!emotionText || emotionText === "無資料" || emotionText === "無匹配") {
+                return '<span class="text-muted" style="font-weight: bold; font-size: 1.3rem;">無資料</span>';
+            }
 
-    // 1. 依照 " & " 拆分多個情緒
-    const emotions = emotionText.split(" & ");
-    
-    // 2. 處理每個情緒的專屬顏色
-    const styledEmotions = emotions.map(text => {
-        let color = "#6c757d"; // 預設灰
+            // 1. 依照 " & " 拆分多個情緒
+            const emotions = emotionText.split(" & ");
+            
+            // 2. 處理每個情緒的專屬顏色
+            const styledEmotions = emotions.map(text => {
+                let color = "#6c757d"; // 預設灰
 
-        if (text.includes("Q1")) color = "#d4ac0d";      // Q1 金黃
-        else if (text.includes("Q2")) color = "#e74c3c"; // Q2 紅
-        else if (text.includes("Q3")) color = "#3498db"; // Q3 藍
-        else if (text.includes("Q4")) color = "#27ae60"; // Q4 綠
+                if (text.includes("Q1")) color = "#d4ac0d";      // Q1 金黃
+                else if (text.includes("Q2")) color = "#e74c3c"; // Q2 紅
+                else if (text.includes("Q3")) color = "#3498db"; // Q3 藍
+                else if (text.includes("Q4")) color = "#27ae60"; // Q4 綠
 
-        return `<span style="color: ${color}; font-weight: bold; font-size: 1.3rem;">${text}</span>`;
-    });
+                return `<span style="color: ${color}; font-weight: bold; font-size: 1.3rem;">${text}</span>`;
+            });
 
-    // 3. 用斜線符號將彩色文字連起來
-    return styledEmotions.join(' <span style="color: #ccc; margin: 0 5px;">/</span> ');
-}
-
-        // 回傳純文字，不帶外框
-        return `<span style="color: ${color}; font-weight: bold; font-size: 1.6rem; letter-spacing: 1px;">${emotionText}</span>`;
-    }
+            // 3. 用斜線符號將彩色文字連起來
+            return styledEmotions.join(' <span style="color: #ccc; margin: 0 5px;">/</span> ');
+        }
 
     try {
             const response = await fetch(`${BASE_URL}/analyze`, {
@@ -439,6 +435,7 @@ function getEmotionBadge(emotionText) {
     });
 
 const detailModal = new bootstrap.Modal(document.getElementById('unifiedModal'));
+
 // 模型 1：數量主導細節
 document.getElementById('model-1-detail-btn').onclick = function() {
     if (!window.currentResults) return alert("請先進行預測！");
