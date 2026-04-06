@@ -271,99 +271,80 @@ letter-spacing: 2px;
 
 </div>
 
-</main>
-
 <!-- Section -->
 
 <div id="start" class="section">
 <h2>蒐集歌曲</h2>
 
 <p>
-首先依照情緒類別，作為歌曲搜尋的收集方向。<br>到各個音樂平台如:KKBOX、Spotify以情緒做為關鍵字，例如：開心、興奮等搜尋歌單以及人工的方式尋找歌曲並收集<br>
-再以網路爬蟲方式收集歌單中的歌名及歌手。
+首先依照情緒類別，作為歌曲搜尋的收集方向。<br>整合 Spotify 與 KKBOX 的公開歌單，以「開心」、「興奮」等情緒作為搜尋關鍵字，再以網路爬蟲方式收集歌單中的歌名及歌手，並結合部分人工精選收集。
 </p>
-
 </div>
 
 
 <div id="register" class="section">
-
-<h2>擷取歌詞</h2>
-
-<p>
-利用網路爬蟲自動化技術在KKBOX抓取完整歌詞，大幅提升資料收集效率。
-</p>
-
-<table  class="table table-striped table-hover text-center" style="font-size: 20px; ">
-			<tr>
-				<th>版本階段</th>
-				<th>技術核心</th>
-				<th>面臨挑戰</th>
-				<th>解決成效</th>
-			</tr>
-			<tr>
-				<td>V1：直接爬取</td>
-				<td>搜尋「歌名 + 歌手」後，直接抓取搜尋結果的第一筆資料。</td>
-				<td>失誤率高。第一筆結果不一定提供歌詞，或並非最正確的匹配。</td>
-				<td>建立基礎自動化框架。</td>
-			</tr>
-			
-			<tr>
-				<td>V2：範圍檢索</td>
-				<td>擴大範圍至前三筆結果，並逐筆判斷是否提供歌詞。</td>
-				<td>匹配偏差。雖然有歌詞，但可能搜尋到同名但不同版本的歌曲。</td>
-				<td>顯著提升歌詞獲取成功率。</td>
-			</tr>
-			<tr>
-				<td>V3：模糊比對 (最終版)</td>
-				<td>引入 String Fuzzy Matching (模糊比對)，計算預期歌名與目標歌名的相似度。</td>
-				<td>克服特殊符號、括號備註（如：Live版、Remix）造成的判斷干擾。</td>
-				<td>極大化準確率，確保數據純淨。</td>
-			</tr>
-		</table>
-
+	<h2>擷取歌詞</h2>
+	<p>
+	利用網路爬蟲自動化技術在KKBOX抓取完整歌詞，大幅提升資料收集效率。
+	</p>
+	<table  class="table table-striped table-hover text-center" style="font-size: 20px; ">
+				<tr>
+					<th>版本階段</th>
+					<th>技術核心</th>
+					<th>面臨挑戰</th>
+					<th>解決成效</th>
+				</tr>
+				<tr>
+					<td>V1：直接爬取</td>
+					<td>搜尋「歌名 + 歌手」後，直接抓取搜尋結果的第一筆資料。</td>
+					<td>失誤率高。第一筆結果不一定提供歌詞，或並非最正確的匹配。</td>
+					<td>建立基礎自動化框架。</td>
+				</tr>
+				<tr>
+					<td>V2：範圍檢索</td>
+					<td>擴大範圍至前三筆結果，並逐筆判斷是否提供歌詞。</td>
+					<td>匹配偏差。雖然有歌詞，但可能搜尋到同名但不同版本的歌曲。</td>
+					<td>顯著提升歌詞獲取成功率。</td>
+				</tr>
+				<tr>
+					<td>V3：模糊比對 (最終版)</td>
+					<td>引入 String Fuzzy Matching (模糊比對)，計算預期歌名與目標歌名的相似度。</td>
+					<td>克服特殊符號、括號備註（如：Live版、Remix）造成的判斷干擾。</td>
+					<td>極大化準確率，確保數據純淨。</td>
+				</tr>
+			</table>
 </div>
 
 <div id="upload" class="section">
-
-<h2>歌詞清洗</h2>
-
-        <p>為了讓模型學得更準確，我們會先把所有收集來的歌詞，透過下列細項讓它們格式統一、乾乾淨淨。當資料變整齊了，模型判斷歌曲情緒時就不會因為格式不一至而出錯，準確度自然大幅提升。</p>
-		<ul>
-			<div>
-				<p >標點符號 → 一致性</p>
-				<img id="pic1" src="src\符號.png">
-			</div>
-			<div>
-				<p><br>合唱歌曲中的人名</p>
-				<img id="pic2" src="src\name.png">
-			</div>
-			<div>
-				<p >無效狀聲詞</p>
-				<img id="pic2" src="src\狀聲詞.png">
-			</div>	
-		</ul>
-
-
+	<h2>歌詞清洗</h2>
+    <p>為了讓模型學得更準確，我們會先把所有收集來的歌詞，透過下列細項讓歌詞格式統一、乾乾淨淨。當資料變整齊了，模型判斷歌曲情緒時就不會因為格式不一至而出錯，準確度自然大幅提升。</p>
+	<ul>
+		<div>
+			<p >標點符號 → 一致性</p>
+			<img id="pic1" src="src\符號.png">
+		</div>
+		<div>
+			<p><br>合唱歌曲中的人名</p>
+			<img id="pic2" src="src\name.png">
+		</div>
+		<div>
+			<p >無效狀聲詞</p>
+			<img id="pic2" src="src\狀聲詞.png">
+		</div>	
+	</ul>
 </div>
 
 <div id="review" class="section">
-
-<h2>情緒判別</h2>
-
-<p>
-透過建立的情緒模型，對歌詞內容進行情緒分類或情緒維度分析，  
-判斷歌曲所傳達的情緒類型。
-</p>
-
+	<h2>情緒判別</h2>
+	<p>
+	透過建立的情緒模型，對歌詞內容進行情緒分類或情緒維度分析，  
+	判斷歌曲所傳達的情緒類型。
+	</p>
 </div>
 
 <div id="finish" class="section">
-
-<h2>完成歌詞資料集</h2>
-
-<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT6ErZhW-qYXxyulpDFjuJ_yIBwY_S8Tjw24gDG6Sl9ziZMZ42O8yblm0gxxRowv-B2kr1PkWj86pV3/pubhtml?widget=true&amp;headers=false" width="100%" height="400"></iframe>
-
+	<h2>完成歌詞資料集</h2>
+	<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT6ErZhW-qYXxyulpDFjuJ_yIBwY_S8Tjw24gDG6Sl9ziZMZ42O8yblm0gxxRowv-B2kr1PkWj86pV3/pubhtml?widget=true&amp;headers=false" width="100%" height="400"></iframe>
 </div>
 	
 <button id="backToTop">
@@ -372,16 +353,12 @@ letter-spacing: 2px;
 <!-- Footer -->
 
 <footer>
-
-<div class="container">
-
-<p>
-© 2026 靜宜大學資料科學暨大數據分析與應用學系<br>
-歌詞情緒分析專題組 | 版權所有
-</p>
-
-</div>
-
+	<div class="container">
+		<p>
+		© 2026 靜宜大學資料科學暨大數據分析與應用學系<br>
+		歌詞情緒分析專題組 | 版權所有
+		</p>
+	</div>
 </footer>
 
 <!-- Bootstrap -->
