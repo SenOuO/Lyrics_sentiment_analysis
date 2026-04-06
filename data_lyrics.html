@@ -292,23 +292,34 @@ letter-spacing: 2px;
 利用網路爬蟲自動化技術在KKBOX抓取完整歌詞，大幅提升資料收集效率。
 </p>
 
-<ol>
-
-<li style=" font-size : 26px; " >
-直接爬取：以歌名 + 歌手搜尋，未加判斷直接抓取第一筆結果<span style="color:red;">失誤率高</span> 因為第一筆結果不一定有提供歌詞或是最正確的結果
-</li>
-
-<li style=" font-size : 26px; " >
-爬取 + 範圍檢查：在版本1的基礎加上檢查是否提供歌詞  
-<span style="color:red;">失誤率降低，但不夠完善</span>
-</li >
-
-<li style=" font-size : 26px; " >
-最終版：加入歌名模糊比對  
-<span style="color:red;">有效降低失誤率</span>
-</li>
-
-</ol>
+<table  class="table table-striped table-hover text-center" style="font-size: 20px; ">
+			<tr>
+				<th>版本階段</th>
+				<th>技術核心</th>
+				<th>面臨挑戰</th>
+				<th>解決成效</th>
+			</tr>
+			<tr>
+				<td>V1：直接爬取</td>
+				<td>搜尋「歌名 + 歌手」後，直接抓取搜尋結果的第一筆資料。</td>
+				<td>失誤率高。第一筆結果不一定提供歌詞，或並非最正確的匹配。</td>
+				<td>建立基礎自動化框架。</td>
+			</tr>
+			
+			<tr>
+				<td>V2：範圍檢索</td>
+				<td>擴大範圍至前三筆結果，並逐筆判斷是否提供歌詞。</td>
+				<td>匹配偏差。雖然有歌詞，但可能搜尋到同名但不同版本的歌曲。</td>
+				<td>顯著提升歌詞獲取成功率。</td>
+			</tr>
+			<tr>
+				<td>V3：模糊比對 (最終版)</td>
+				<td>引入 String Fuzzy Matching (模糊比對)，計算預期歌名與目標歌名的相似度。</td>
+				<td>克服特殊符號、括號備註（如：Live版、Remix）造成的判斷干擾。</td>
+				<td>極大化準確率，確保數據純淨。</td>
+				
+			</tr>
+		</table>
 
 </div>
 
@@ -317,26 +328,28 @@ letter-spacing: 2px;
 
 <h2>歌詞清洗</h2>
 
-        <p>讓歌詞資料在進入模型時，資料都有一致性。透過以下細項，讓歌詞資料能夠更準確的反映歌曲情緒。</p>
+        <p>為了讓模型學得更準確，我們會先把所有收集來的歌詞，讓它們格式統一、乾乾淨淨。當資料變整齊了，模型判斷歌曲情緒時就不會因為格式不一至而出錯，準確度自然大幅提升。。</p>
 		<ul>
-			<div  >
-				<li style = 'font-size : 26px;  line-height: 2;'>標點符號 &emsp; →&emsp;  一致性</li>
+			<div>
+				<p style = 'font-size : 26px;  line-height: 2; margin:0 auto; text-align: center;'>標點符號 &emsp; →&emsp;  一致性</p>
 				<img id="pic1" src="src\符號.png">
 			</div>
-			<div >
-				<li style = 'font-size : 26px;  line-height: 2;'>合唱歌曲中的人名</li>
+			<div>
+				<p style = 'font-size : 26px;  line-height: 2; margin:0 auto; text-align: center;'>合唱歌曲中的人名</p>
 				<img id="pic2" src="src\name.png">
 			</div>
-			<div >
-				<li style = 'font-size : 26px;  line-height: 2;'>無效狀聲詞</li>
+			<div>
+				<p style = 'font-size : 26px;  line-height: 2; margin:0 auto; text-align: center;'>無效狀聲詞</p>
 				<img id="pic2" src="src\狀聲詞.png">
 			</div>	
-			<li style = "display : inline-block; font-size : 26px;  line-height: 2; ">人工檢查歌詞情緒分類</li>
-			
+			<div>
+				<p style = "display : inline-block; font-size : 26px;  line-height: 2; margin:0 auto; text-align: center; ">人工檢查歌詞情緒分類</p>
+			</div>	
 		</ul>
 
 
 </div>
+
 
 
 <div id="review" class="section">
