@@ -440,23 +440,48 @@ document.getElementById('model-1-detail-btn').onclick = function() {
 
 let vaChart = null; 
 
-// --- 新增：象限顏色判斷函式 ---
+// --- 1. 定義象限文字插件 ---
+const quadrantLabels = {
+    id: 'quadrantLabels',
+    afterDraw(chart) {
+        const { ctx, chartArea: { top, bottom, left, right, width, height }, scales: { x, y } } = chart;
+        
+        ctx.save();
+        ctx.font = "bold 16px 'Microsoft JhengHei'";
+        ctx.fillStyle = "rgba(0, 0, 0, 0.3)"; // 使用半透明灰色，避免搶走落點的焦點
+        ctx.textAlign = 'center';
+
+        // 計算四個象限的中心點位置
+        const centerX = x.getPixelForValue(0);
+        const centerY = y.getPixelForValue(0);
+
+        // Q1: 右上 (快樂/興奮)
+        ctx.fillText("Q1 快樂 / 興奮", (centerX + right) / 2, (top + centerY) / 2);
+        // Q2: 左上 (憤怒/焦慮)
+        ctx.fillText("Q2 憤怒 / 焦慮", (left + centerX) / 2, (top + centerY) / 2);
+        // Q3: 左下 (悲傷/沮喪)
+        ctx.fillText("Q3 悲傷 / 沮喪", (left + centerX) / 2, (centerY + bottom) / 2);
+        // Q4: 右下 (平靜/滿足)
+        ctx.fillText("Q4 平靜 / 滿足", (centerX + right) / 2, (centerY + bottom) / 2);
+
+        ctx.restore();
+    }
+};
+
+// --- 2. 顏色判斷函式 ---
 function getQuadrantColor(v, a) {
-    if (v >= 0 && a >= 0) return '#f1c40f'; // Q1 黃色 (快樂)
-    if (v < 0 && a >= 0)  return '#e74c3c'; // Q2 紅色 (憤怒)
-    if (v < 0 && a < 0)   return '#3498db'; // Q3 藍色 (悲傷)
-    if (v >= 0 && a < 0)  return '#2ecc71'; // Q4 綠色 (平靜)
-    return '#2c3e50'; // 預設 深藍色
+    if (v >= 0 && a >= 0) return '#f1c40f'; // Q1 黃
+    if (v < 0 && a >= 0)  return '#e74c3c'; // Q2 紅
+    if (v < 0 && a < 0)   return '#3498db'; // Q3 藍
+    if (v >= 0 && a < 0)  return '#2ecc71'; // Q4 綠
+    return '#2c3e50';
 }
 
+// --- 3. 初始化圖表 ---
 function initVAChart(v, a) {
     const ctx = document.getElementById('vaCanvas').getContext('2d');
-    
-    if (vaChart) {
-        vaChart.destroy();
-    }
+    if (vaChart) vaChart.destroy();
 
-    // 取得當前落點的象限顏色
     const pointColor = getQuadrantColor(v, a);
 
     vaChart = new Chart(ctx, {
@@ -465,40 +490,32 @@ function initVAChart(v, a) {
             datasets: [{
                 label: '情緒落點',
                 data: [{ x: v, y: a }],
-                backgroundColor: pointColor, // ✅ 關鍵修正：使用自動判斷的顏色
-                pointRadius: 12, // 稍微加大一點，更清晰
-                pointHoverRadius: 14,
+                backgroundColor: pointColor,
+                pointRadius: 12,
                 borderWidth: 3,
-                borderColor: '#fff', // 白色邊框，讓點更突出
-                showLine: false
+                borderColor: '#fff'
             }]
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
             scales: {
-                x: {
-                    min: -4, max: 4,
+                x: { 
+                    min: -4, max: 4, 
                     title: { display: true, text: 'Valence (愉悅度)' },
-                    // 在 0 的位置畫黑色粗線
-                    grid: { color: (context) => context.tick.value === 0 ? '#000' : '#eee' }
+                    grid: { color: (c) => c.tick.value === 0 ? '#000' : '#eee' } 
                 },
-                y: {
-                    min: -4, max: 4,
+                y: { 
+                    min: -4, max: 4, 
                     title: { display: true, text: 'Arousal (喚起度)' },
-                    // 在 0 的位置畫黑色粗線
-                    grid: { color: (context) => context.tick.value === 0 ? '#000' : '#eee' }
+                    grid: { color: (c) => c.tick.value === 0 ? '#000' : '#eee' } 
                 }
             },
             plugins: {
-                legend: { display: false },
-                tooltip: {
-                    callbacks: {
-                        label: (ctx) => `落點座標: (${ctx.raw.x}, ${ctx.raw.y})`
-                    }
-                }
+                legend: { display: false }
             }
-        }
+        },
+        plugins: [quadrantLabels] // 這裡啟動插件
     });
 }
 	
