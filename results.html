@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>歌詞情緒分析專題</title>
+    <title>歌詞情緒分析專題 - 成果展示</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon.ico">
     <style>
         :root { --primary-color: #2c3e50; --secondary-color: #34495e; }
         body { font-family: 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', sans-serif; background-color: #fdfdfd; line-height: 1.8; }
@@ -26,13 +24,42 @@
             letter-spacing: 15px;
 			justify-content: center;}
 		.card span {color : red ;}
+        .btn-gradient {
+            background: linear-gradient(90deg, #2c3e50 0%, #5a7ba3 50%, #2c3e50 100%) !important;
+            color: white !important;
+            border: none;
+            border-radius: 30px;
+            padding: 10px 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(44, 62, 80, 0.3);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+        .btn-gradient:hover {
+            background: linear-gradient(70deg, #34495e 0%, #7091b9 50%, #34495e 100%) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(44, 62, 80, 0.4);
+            filter: none !important;
+        }
+        .result-card-horizontal {
+            transition: all 0.3s ease;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .result-card-horizontal:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+        }
     </style>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
-        <a class="navbar-brand" href="index.html">歌詞情緒分析</a>
+        <a class="navbar-brand" href="index.html">
+            <img src="logo.png" alt="Logo" width="60" height="60" class="d-inline-block me-3" onerror="this.style.display='none'">
+            <span style="line-height: 1; font-weight: 700; font-size: 1.5rem;">歌詞情緒分析</span>
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -42,7 +69,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">資料介紹</a>
                     <ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="data_emotion.html">情緒分類</a></li>
+                        <li><a class="dropdown-item" href="data_emotion.html">情緒分類</a></li>
                         <li><a class="dropdown-item" href="data_lyrics.html">歌詞資料</a></li>
                         <li><a class="dropdown-item" href="data_dimension.html">中文情緒維度資料集</a></li>
                     </ul>
@@ -50,7 +77,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">模型介紹</a>
                     <ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="NLP.html">NLP介紹與模型比較</a></li>
+                        <li><a class="dropdown-item" href="NLP.html">NLP介紹與模型比較</a></li>
                         <li><a class="dropdown-item" href="model_1.html">詞典法</a></li>
                         <li><a class="dropdown-item" href="model_2.html">BERT微調-情緒類別</a></li>
                         <li><a class="dropdown-item" href="model_3.html">BERT微調-V/A值</a></li>
@@ -67,22 +94,212 @@
 
 <main class="container content-section">
 	<div class="hero-section">
-        <h1 class="hero-title">歌詞情緒分析</h1>
+        <h1 class="hero-title">成果展示</h1>
     </div>
+    
     <div class="card p-4 border-0 shadow-sm">
-        <p>指導教授：林建華老師、郭珈妤老師<br>
-			專題成員：黃丞祥、王雅慧、郭晏慈、石宇婕、傅筱婷、陳俞蓁、侯進瑋、吳宗晏、彭英姿</p>
+        <div class="row">
+            <div class="col-md-5 border-end">
+                <h5 class="mb-3">歌曲資訊輸入</h5>
+                <div class="mb-4">
+                <label class="form-label text-muted" style="font-size: 1.0em;">快速選擇 (免爬蟲，直接預測)：</label>
+                    <div class="d-flex flex-wrap gap-2">
+                        <button type="button" class="btn btn-outline-secondary btn-sm quick-pick" data-song="我只在乎你" data-singer="鄧麗君">我只在乎你</button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm quick-pick" data-song="倔強" data-singer="五月天">倔強</button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm quick-pick" data-song="痴心絕對" data-singer="李聖傑">痴心絕對</button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm quick-pick" data-song="一場遊戲一場夢" data-singer="王傑">一場遊戲一場夢</button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm quick-pick" data-song="左邊的人" data-singer="陳華">左邊的人</button>
+                    </div>
+                </div>
+                <form id="predict-form">
+                    <div class="mb-3">
+                        <label for="song" class="form-label">歌名</label>
+                        <input type="text" class="form-control" id="song" placeholder="例如：稻香">
+                    </div>
+                    <div class="mb-3">
+                        <label for="singer" class="form-label">歌手 <span class="text-muted" style="font-size: 0.85em;">(選填)</span></label>
+                        <input type="text" class="form-control" id="singer" placeholder="例如：周杰倫">
+                    </div>
+                    <button type="submit" id="submit-btn" class="btn btn-gradient w-100">開始預測並抓取歌詞</button>
+                </form>
+            </div>
+            <div class="col-md-7 ps-md-4 mt-4 mt-md-0">
+                <h5 class="mb-3">網路抓取歌詞結果</h5>
+                <div id="lyrics-result" class="p-3 bg-light rounded" style="min-height: 250px; max-height: 400px; overflow-y: auto; white-space: pre-wrap;">
+                    <p class="text-muted fst-italic">等待輸入中... 歌詞將顯示於此</p>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <section class="mt-5">
+        <div class="analysis-flow">
+            <div class="analysis-item mb-5">
+                <div class="row align-items-center">
+                    <div class="col-md-3 text-md-end text-center mb-3">
+                        <span class="badge rounded-pill bg-secondary mb-2">模型1</span>
+                        <h4 class="fw-bold">詞典法-類別計數</h4>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card border-0 shadow-sm result-card-horizontal">
+                            <div class="card-body d-flex justify-content-between align-items-center p-4">
+                                <h3 id="model-1-result" class="text-primary fw-bold mb-0">等待預測...</h3>
+                                <button type="button" id="model-1-detail-btn" class="btn btn-gradient">查看字詞匹配細節</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="analysis-item mb-5">
+                <div class="row align-items-center">
+                    <div class="col-md-3 text-md-end text-center mb-3">
+                        <span class="badge rounded-pill bg-secondary mb-2">模型2</span>
+                        <h4 class="fw-bold">詞典法-V/A運算</h4>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card border-0 shadow-sm result-card-horizontal">
+                            <div class="card-body d-flex justify-content-between align-items-center p-4">
+                                <h3 id="model-2-result" class="text-success fw-bold mb-0">等待預測...</h3>
+                                <button type="button" id="model-2-detail-btn" class="btn btn-gradient">查看數值運算過程</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="analysis-item mb-5">
+                <div class="row align-items-center">
+                    <div class="col-md-3 text-md-end text-center mb-3">
+                        <span class="badge rounded-pill bg-secondary mb-2">模型3</span>
+                        <h4 class="fw-bold">BERT-情緒類別</h4>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card border-0 shadow-sm result-card-horizontal">
+                            <div class="card-body d-flex justify-content-between align-items-center p-4">
+                                <h3 id="model-3-result" class="text-info fw-bold mb-0">等待預測...</h3>
+                                <button type="button" id="model-3-detail-btn" class="btn btn-gradient">查看情緒判斷機率</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="analysis-item mb-5">
+                <div class="row align-items-center">
+                    <div class="col-md-3 text-md-end text-center mb-3">
+                        <span class="badge rounded-pill bg-secondary mb-2">模型4</span>
+                        <h4 class="fw-bold">BERT-V/A數值</h4>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card border-0 shadow-sm result-card-horizontal">
+                            <div class="card-body d-flex justify-content-between align-items-center p-4">
+                                <h3 id="model-4-result" class="text-danger fw-bold mb-0">等待預測...</h3>
+                                <button type="button" id="model-4-detail-btn" class="btn btn-gradient">查看預測 VA 值</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="analysis-item mb-5">
+                <div class="row align-items-center">
+                    <div class="col-md-3 text-md-end text-center mb-3">
+                        <span class="badge rounded-pill bg-dark mb-2">模型5</span>
+                        <h4 class="fw-bold">BERT-歌詞語境</h4>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card border-0 shadow-sm result-card-horizontal">
+                            <div class="card-body d-flex justify-content-between align-items-center p-4">
+                                <h3 id="model-5-result" class="text-warning fw-bold mb-0">等待預測...</h3>
+                                <button type="button" id="model-5-detail-btn" class="btn btn-gradient">查看情緒判斷機率</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="feedback-section" class="mt-5 p-4 border rounded shadow-sm bg-white" style="display: none;">
+    <h4 class="fw-bold text-dark mb-3">您的回饋</h4>
+    <form id="feedback-form">
+        <div class="feedback-container">
+            <div class="mb-4 border-bottom pb-3">
+                <label class="form-label fw-bold d-block mb-3">1. 您覺得這首歌真正的類別是？</label>
+                <div class="d-flex flex-wrap gap-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="true_emotion" value="Q1:快樂/興奮" id="true_q1" required>
+                        <label class="form-check-label" for="true_q1">Q1:快樂/興奮</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="true_emotion" value="Q2:憤怒/焦慮" id="true_q2">
+                        <label class="form-check-label" for="true_q2">Q2:憤怒/焦慮</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="true_emotion" value="Q3:悲傷/沮喪" id="true_q3">
+                        <label class="form-check-label" for="true_q3">Q3:悲傷/沮喪</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="true_emotion" value="Q4:平靜/滿足" id="true_q4">
+                        <label class="form-check-label" for="true_q4">Q4:平靜/滿足</label>
+                    </div>
+                    <div class="form-check d-flex align-items-center gap-2">
+                        <input class="form-check-input" type="radio" name="true_emotion" value="其他" id="true_other">
+                        <label class="form-check-label" for="true_other">其他:</label>
+                        <input type="text" class="form-control form-control-sm" id="other_emotion_text" placeholder="請填寫情緒" style="width: 150px;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label fw-bold d-block mb-3">2. 您覺得哪個模型最準確？(可多選)</label>
+                <div id="model-votes" class="d-flex flex-wrap align-items-center gap-3">
+                    <div class="form-check">
+                        <input class="form-check-input model-vote" type="checkbox" value="模型1" id="vote1">
+                        <label class="form-check-label" for="vote1">模型1</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input model-vote" type="checkbox" value="模型2" id="vote2">
+                        <label class="form-check-label" for="vote2">模型2</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input model-vote" type="checkbox" value="模型3" id="vote3">
+                        <label class="form-check-label" for="vote3">模型3</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input model-vote" type="checkbox" value="模型4" id="vote4">
+                        <label class="form-check-label" for="vote4">模型4</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input model-vote" type="checkbox" value="模型5" id="vote5">
+                        <label class="form-check-label" for="vote5">模型5</label>
+                    </div>
+
+                    <div style="margin-left: 30px; padding-left: 30px; border-left: 2px solid #dee2e6;">
+                        <div class="form-check mb-0">
+                            <input class="form-check-input" type="checkbox" value="無" id="vote_none">
+                            <label class="form-check-label fw-bold text-danger" for="vote_none">皆不準確 (無)</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="submit" id="feedback-btn" class="btn btn-primary w-100">送出回饋資料</button>
+    </form>
+</section>
 </main>
 
-
-
-
-
-
-
-
-
+<div class="modal fade" id="unifiedModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal-title-text">分析細節</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="modal-body-content"></div>
+        </div>
+    </div>
+</div>
 
 <footer>
     <div class="container">
@@ -91,9 +308,244 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+window.currentResults = null;
+
+// 快速點選按鈕的事件綁定
+document.querySelectorAll('.quick-pick').forEach(button => {
+    button.onclick = function() {
+        // 1. 自動填入輸入框
+        document.getElementById('song').value = this.getAttribute('data-song');
+        document.getElementById('singer').value = this.getAttribute('data-singer');
+        
+        // 2. 自動觸發提交按鈕
+        document.getElementById('submit-btn').click();
+    };
+});
+
+document.getElementById('predict-form').addEventListener('submit', async function(event) {
+    event.preventDefault();
+    const songName = document.getElementById('song').value.trim();
+    const singerName = document.getElementById('singer').value.trim();
+    const lyricsDiv = document.getElementById('lyrics-result');
+    const submitBtn = document.getElementById('submit-btn');
+
+    if (!songName) { alert('請輸入歌名！'); return; }
+
+    submitBtn.disabled = true;
+    submitBtn.innerText = '運算中...';
+    lyricsDiv.innerHTML = '<p class="text-primary fw-bold">⏳ 正在爬取歌詞並執行 5 個模型運算，請稍候約 15 秒...</p>';
+
+    // 先隱藏回饋表單，等這次分析完再顯示新的
+    document.getElementById('feedback-section').style.display = 'none';
+
+    const BASE_URL = "https://jerlene-unobjective-zina.ngrok-free.dev";
+
+    try {
+        const response = await fetch(`${BASE_URL}/analyze`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ song_name: songName, artist: singerName })
+        });
+        const data = await response.json();
+
+        if (data.status === 'success') {
+            window.currentResults = data.results; 
+            lyricsDiv.innerHTML = data.lyrics;
+            
+            document.getElementById('model-1-result').innerText = data.results.model1;
+            document.getElementById('model-2-result').innerText = data.results.model2;
+            document.getElementById('model-3-result').innerText = data.results.model3;
+            document.getElementById('model-4-result').innerText = data.results.model4;
+            document.getElementById('model-5-result').innerText = data.results.model5;
+
+            document.getElementById('feedback-section').style.display = 'block';
+            console.log("分析成功，已顯示回饋表單");
+        } else {
+            lyricsDiv.innerHTML = `<p class="text-danger">錯誤：${data.message}</p>`;
+        }
+    } catch (e) {
+        lyricsDiv.innerHTML = `<p class="text-danger">連線失敗，請確認後端服務是否正常。</p>`;
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerText = '開始預測並抓取歌詞';
+    }
+});
+
+const detailModal = new bootstrap.Modal(document.getElementById('unifiedModal'));
+
+// 模型 1：數量主導細節
+document.getElementById('model-1-detail-btn').onclick = function() {
+    if (!window.currentResults) return alert("請先進行預測！");
+    const details = window.currentResults.model1_details;
+    document.getElementById('modal-title-text').innerText = "模型 1：詞典命中計數統計";
+    
+    let wordsHtml = '';
+    for (const q in details.words) {
+        if (details.words[q].length > 0) {
+            wordsHtml += `<div class="mb-2"><span class="badge bg-dark me-2">${q}</span><span>${details.words[q].join(', ')}</span></div>`;
+        }
+    }
+
+    document.getElementById('modal-body-content').innerHTML = `
+        <h6 class="fw-bold text-success mb-3">各象限命中詞數：</h6>
+        <table class="table table-bordered text-center mb-4">
+            <thead class="table-dark">
+                <tr><th>Q1 快樂</th><th>Q2 憤怒</th><th>Q3 悲傷</th><th>Q4 平靜</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>${details.counts["Q1:快樂/興奮"]}</td><td>${details.counts["Q2:憤怒/焦慮"]}</td>
+                    <td>${details.counts["Q3:悲傷/沮喪"]}</td><td>${details.counts["Q4:平靜/滿足"]}</td>
+                </tr>
+            </tbody>
+        </table>
+        <h6 class="fw-bold text-info mb-2">匹配關鍵詞清單：</h6>
+        <div>${wordsHtml || '無匹配詞彙'}</div>
+    `;
+    detailModal.show();
+};
+
+// 模型 2：VA 算式細節 (解決 undefined)
+document.getElementById('model-2-detail-btn').onclick = function() {
+    if (!window.currentResults) return alert("請先進行預測！");
+    const details = window.currentResults.model1_details;
+    document.getElementById('modal-title-text').innerText = "模型 2：詞典 V/A 值平均運算過程";
+    
+    document.getElementById('modal-body-content').innerHTML = `
+        <h6 class="fw-bold text-primary">Valence (愉悅度) 平均值算式：<code>${details.v_score}</code></h6>
+        <div class="p-3 bg-light rounded mb-4"><code>${details.v_process} = ${details.v_score}</code></div>
+        <h6 class="fw-bold text-danger">Arousal (喚起度) 平均值算式：<code>${details.a_score}</code></h6>
+        <div class="p-3 bg-light rounded"><code>${details.a_process} = ${details.a_score}</code></div>
+    `;
+    detailModal.show();
+};
+
+// 模型 4：VA 數值細節
+document.getElementById('model-4-detail-btn').onclick = function() {
+    if (!window.currentResults) return alert("請先進行預測！");
+    const res = window.currentResults;
+    document.getElementById('modal-title-text').innerText = "模型 4：BERT 座標預測數值";
+    document.getElementById('modal-body-content').innerHTML = `
+        <div class="text-center p-4">
+            <div class="row">
+                <div class="col-6"><h4 class="text-primary">Valence</h4><h2 class="display-4">${res.model4_v}</h2></div>
+                <div class="col-6"><h4 class="text-danger">Arousal</h4><h2 class="display-4">${res.model4_a}</h2></div>
+            </div>
+            <hr><p>判定情緒：<strong>${res.model4}</strong></p>
+        </div>
+    `;
+    detailModal.show();
+};
+
+// 模型 3 & 5：機率分布
+function showProbs(title, probs) {
+    document.getElementById('modal-title-text').innerText = title;
+    let html = '<div class="p-3">';
+    for (const [label, prob] of Object.entries(probs)) {
+        const percent = (prob * 100).toFixed(2);
+        html += `
+            <div class="mb-3">
+                <div class="d-flex justify-content-between mb-1"><strong>${label}</strong><span>${percent}%</span></div>
+                <div class="progress" style="height: 20px;"><div class="progress-bar bg-info" style="width: ${percent}%"></div></div>
+            </div>`;
+    }
+    html += '</div>';
+    document.getElementById('modal-body-content').innerHTML = html;
+    detailModal.show();
+}
+
+document.getElementById('model-3-detail-btn').onclick = () => showProbs("模型 3：BERT 情緒類別信心指數", window.currentResults.model3_probs);
+document.getElementById('model-5-detail-btn').onclick = () => showProbs("模型 5：BERT 歌詞語境信心指數", window.currentResults.model5_probs);
+
+//接收成果
+
+// --- 互斥邏輯處理 ---
+const modelCheckboxes = document.querySelectorAll('.model-vote');
+const noneCheckbox = document.getElementById('vote_none');
+
+// 如果點選了「無」，取消所有模型的勾選
+noneCheckbox.addEventListener('change', function() {
+    if (this.checked) {
+        modelCheckboxes.forEach(cb => cb.checked = false);
+    }
+});
+
+// 如果點選了任何一個模型，取消「無」的勾選
+modelCheckboxes.forEach(cb => {
+    cb.addEventListener('change', function() {
+        if (this.checked) {
+            noneCheckbox.checked = false;
+        }
+    });
+});
+
+// --- 回饋表單送出邏輯 ---
+document.getElementById('feedback-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('feedback-btn');
+    
+    // 1. 處理情緒類別
+    let finalEmotion = "";
+    const selectedEmotion = document.querySelector('input[name="true_emotion"]:checked').value;
+    if (selectedEmotion === "其他") {
+        const otherText = document.getElementById('other_emotion_text').value.trim();
+        if (!otherText) {
+            alert("請填寫其他情緒內容！");
+            return;
+        }
+        finalEmotion = `其他: ${otherText}`;
+    } else {
+        finalEmotion = selectedEmotion;
+    }
+
+    // 2. 處理準確模型
+    let accurateModels = [];
+    if (noneCheckbox.checked) {
+        accurateModels = ["無"];
+    } else {
+        accurateModels = Array.from(modelCheckboxes)
+            .filter(cb => cb.checked)
+            .map(cb => cb.value);
+            
+        if (accurateModels.length === 0) {
+            alert("請至少勾選一個模型或選擇「皆不準確」！");
+            return;
+        }
+    }
+
+    btn.disabled = true;
+    btn.innerText = "傳送中...";
+
+    const feedbackData = {
+        song_name: document.getElementById('song').value,
+        lyrics: document.getElementById('lyrics-result').innerText,
+        user_label: finalEmotion,
+        accurate_models: accurateModels.join(', '),
+        timestamp: new Date().toLocaleString()
+    };
+
+    // 發送到後端 (與之前邏輯一致)
+    try {
+        const res = await fetch("https://your-ngrok-url/save_feedback", {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(feedbackData)
+        });
+        const result = await res.json();
+        if (result.status === "success") {
+            alert("感謝您的專業回饋！");
+            document.getElementById('feedback-section').style.display = 'none';
+        }
+    } catch (err) {
+        alert("儲存失敗，請檢查後端連線。");
+    } finally {
+        btn.disabled = false;
+        btn.innerText = "送出回饋資料";
+    }
+});
+</script>
+
 </body>
-
 </html>
-
-
-
