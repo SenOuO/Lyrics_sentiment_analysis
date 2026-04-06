@@ -151,11 +151,13 @@ letter-spacing: 2px;
 		  * {font-family: "我的字體", sans-serif;}
 .section img{ width:300px; }
 
-#upload div {display : inline-block; 
+#upload div {
+	display : inline-block; 
 	width: 400px;  
 	height: 500px; 
 	font-size : 26px;  
-	line-height: 2;}
+	line-height: 2;
+	text-align: center; }
 	
  #backToTop {
 	  position: fixed;
@@ -317,40 +319,33 @@ letter-spacing: 2px;
 				<td>引入 String Fuzzy Matching (模糊比對)，計算預期歌名與目標歌名的相似度。</td>
 				<td>克服特殊符號、括號備註（如：Live版、Remix）造成的判斷干擾。</td>
 				<td>極大化準確率，確保數據純淨。</td>
-				
 			</tr>
 		</table>
 
 </div>
 
-
 <div id="upload" class="section">
 
 <h2>歌詞清洗</h2>
 
-        <p>為了讓模型學得更準確，我們會先把所有收集來的歌詞，讓它們格式統一、乾乾淨淨。當資料變整齊了，模型判斷歌曲情緒時就不會因為格式不一至而出錯，準確度自然大幅提升。。</p>
+        <p>為了讓模型學得更準確，我們會先把所有收集來的歌詞，透過下列細項讓它們格式統一、乾乾淨淨。當資料變整齊了，模型判斷歌曲情緒時就不會因為格式不一至而出錯，準確度自然大幅提升。</p>
 		<ul>
 			<div>
-				<p style = 'font-size : 26px;  line-height: 2; margin:0 auto; text-align: center;'>標點符號 &emsp; →&emsp;  一致性</p>
+				<p >標點符號 → 一致性</p>
 				<img id="pic1" src="src\符號.png">
 			</div>
 			<div>
-				<p style = 'font-size : 26px;  line-height: 2; margin:0 auto; text-align: center;'>合唱歌曲中的人名</p>
+				<p><br>合唱歌曲中的人名</p>
 				<img id="pic2" src="src\name.png">
 			</div>
 			<div>
-				<p style = 'font-size : 26px;  line-height: 2; margin:0 auto; text-align: center;'>無效狀聲詞</p>
+				<p >無效狀聲詞</p>
 				<img id="pic2" src="src\狀聲詞.png">
-			</div>	
-			<div>
-				<p style = "display : inline-block; font-size : 26px;  line-height: 2; margin:0 auto; text-align: center; ">人工檢查歌詞情緒分類</p>
 			</div>	
 		</ul>
 
 
 </div>
-
-
 
 <div id="review" class="section">
 
