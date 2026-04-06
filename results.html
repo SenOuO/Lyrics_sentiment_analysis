@@ -759,7 +759,7 @@ document.getElementById('feedback-form').addEventListener('submit', async functi
     const feedbackData = {
         // 使用者原始輸入
         user_song: document.getElementById('song').value,
-        user_artist: document.getElementById('singer').value || "未填寫",
+        user_artist: document.getElementById('singer').value || "",
         
         // 爬蟲實際抓取 (從分析成功時暫存的變數抓取)
         found_song: window.lastFoundSong || "未抓到",
