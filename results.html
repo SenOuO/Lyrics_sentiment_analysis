@@ -415,25 +415,31 @@ document.getElementById('model-1-detail-btn').onclick = function() {
     let wordsHtml = '';
     for (const q in details.words) {
         if (details.words[q].length > 0) {
-            wordsHtml += `<div class="mb-2"><span class="badge bg-dark me-2">${q}</span><span>${details.words[q].join(', ')}</span></div>`;
+            wordsHtml += `<div class="mb-2"><span class="badge bg-dark me-2">${q}</span><span style="font-size: 1.1rem;">${details.words[q].join(', ')}</span></div>`;
         }
     }
 
     document.getElementById('modal-body-content').innerHTML = `
         <h6 class="fw-bold text-success mb-3">各象限命中詞數：</h6>
-        <table class="table table-bordered text-center mb-4">
-            <thead class="table-dark">
-                <tr><th>Q1 快樂</th><th>Q2 憤怒</th><th>Q3 悲傷</th><th>Q4 平靜</th></tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>${details.counts["Q1:快樂/興奮"]}</td><td>${details.counts["Q2:憤怒/焦慮"]}</td>
-                    <td>${details.counts["Q3:悲傷/沮喪"]}</td><td>${details.counts["Q4:平靜/滿足"]}</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-bordered text-center mb-4 w-100" style="table-layout: fixed; min-width: 300px;">
+                <thead class="table-dark">
+                    <tr style="font-size: 0.9rem;">
+                        <th>Q1 快樂</th><th>Q2 憤怒</th><th>Q3 悲傷</th><th>Q4 平靜</th>
+                    </tr>
+                </thead>
+                <tbody style="font-size: 1.2rem; font-weight: bold;">
+                    <tr>
+                        <td>${details.counts["Q1:快樂/興奮"]}</td>
+                        <td>${details.counts["Q2:憤怒/焦慮"]}</td>
+                        <td>${details.counts["Q3:悲傷/沮喪"]}</td>
+                        <td>${details.counts["Q4:平靜/滿足"]}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         <h6 class="fw-bold text-info mb-2">匹配關鍵詞清單：</h6>
-        <div>${wordsHtml || '無匹配詞彙'}</div>
+        <div class="p-2 border rounded bg-light">${wordsHtml || '無匹配詞彙'}</div>
     `;
     detailModal.show();
 };
