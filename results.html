@@ -410,7 +410,21 @@ document.getElementById('predict-form').addEventListener('submit', async functio
 
             if (data.status === 'success') {
                 window.currentResults = data.results; 
+				window.lastFoundSong = data.found_title;
+    			window.lastFoundArtist = data.found_artist;
                 lyricsDiv.innerHTML = `<pre style="white-space: pre-wrap; font-family: '我的字體';">${data.lyrics}</pre>`;
+                
+                // --- 顯示爬蟲真正抓到的歌曲資訊 ---
+                // 取得元件並填入資料
+                const infoDiv = document.getElementById('crawl-info');
+                const songSpan = document.getElementById('found-song');
+                const artistSpan = document.getElementById('found-artist');
+
+                if (infoDiv && songSpan && artistSpan) {
+                    songSpan.innerText = data.found_title;
+                    artistSpan.innerText = data.found_artist;
+                    infoDiv.style.display = 'block'; // 顯示這個資訊列
+                }
                 
                 const results = data.results; // 這裡改用 results 避免混淆
                 
@@ -709,7 +723,7 @@ modelCheckboxes.forEach(cb => {
 document.getElementById('feedback-form').addEventListener('submit', async function(e) {
     e.preventDefault();
     const btn = document.getElementById('feedback-btn');
-    
+    const res = window.currentResults;
     // 1. 處理情緒類別
     let finalEmotion = "";
     const selectedEmotion = document.querySelector('input[name="true_emotion"]:checked').value;
@@ -743,16 +757,32 @@ document.getElementById('feedback-form').addEventListener('submit', async functi
     btn.innerText = "傳送中...";
 
     const feedbackData = {
-        song_name: document.getElementById('song').value,
+        // 使用者原始輸入
+        user_song: document.getElementById('song').value,
+        user_artist: document.getElementById('singer').value || "未填寫",
+        
+        // 爬蟲實際抓取 (從分析成功時暫存的變數抓取)
+        found_song: window.lastFoundSong || "未抓到",
+        found_artist: window.lastFoundArtist || "未抓到",
+        
+        // 內容與模型結果
         lyrics: document.getElementById('lyrics-result').innerText,
-        user_label: finalEmotion,
-        accurate_models: accurateModels.join(', '),
+        m1_result: res.model1 || "無",
+        m2_result: res.model2 || "無",
+        m3_result: res.model3 || "無",
+        m4_result: res.model4 || "無",
+        m5_result: res.model5 || "無",
+        
+        // 使用者意見
+        user_label: finalEmotion, // 你之前處理過的變數
+        accurate_models: accurateModels.join(', '), // 你之前處理過的變數
         timestamp: new Date().toLocaleString()
     };
 
+    console.log("準備傳送的回饋資料：", feedbackData);
     // 發送到後端 (與之前邏輯一致)
     try {
-        const res = await fetch("https://your-ngrok-url/save_feedback", {
+        const res = await fetch(`${BASE_URL}/save_feedback`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(feedbackData)
@@ -770,7 +800,6 @@ document.getElementById('feedback-form').addEventListener('submit', async functi
     }
 });
 </script>
-
 <script>
     const btn = document.getElementById("backToTop");
 
