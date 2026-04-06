@@ -375,21 +375,29 @@ document.getElementById('predict-form').addEventListener('submit', async functio
     document.getElementById('feedback-section').style.display = 'none';
 
 
-    function getEmotionBadge(emotionText) {
-        if (!emotionText) return '<span class="text-muted">無資料</span>';
+function getEmotionBadge(emotionText) {
+    if (!emotionText || emotionText === "無資料" || emotionText === "無匹配") {
+        return '<span class="text-muted" style="font-weight: bold; font-size: 1.3rem;">無資料</span>';
+    }
 
-        // 定義純文字顏色
-        let color = "#6c757d"; // 預設灰色
+    // 1. 依照 " & " 拆分多個情緒
+    const emotions = emotionText.split(" & ");
+    
+    // 2. 處理每個情緒的專屬顏色
+    const styledEmotions = emotions.map(text => {
+        let color = "#6c757d"; // 預設灰
 
-        if (emotionText.includes("Q1:快樂/興奮")) {
-            color = "#d4ac0d"; // 深金黃色 (比原先的黃更清晰)
-        } else if (emotionText.includes("Q2:憤怒/焦慮")) {
-            color = "#e74c3c"; // 紅色
-        } else if (emotionText.includes("Q3:悲傷/沮喪")) {
-            color = "#3498db"; // 藍色
-        } else if (emotionText.includes("Q4:平靜/滿足")) {
-            color = "#27ae60"; // 綠色 (稍深一點的綠，對比度更好)
-        }
+        if (text.includes("Q1")) color = "#d4ac0d";      // Q1 金黃
+        else if (text.includes("Q2")) color = "#e74c3c"; // Q2 紅
+        else if (text.includes("Q3")) color = "#3498db"; // Q3 藍
+        else if (text.includes("Q4")) color = "#27ae60"; // Q4 綠
+
+        return `<span style="color: ${color}; font-weight: bold; font-size: 1.3rem;">${text}</span>`;
+    });
+
+    // 3. 用斜線符號將彩色文字連起來
+    return styledEmotions.join(' <span style="color: #ccc; margin: 0 5px;">/</span> ');
+}
 
         // 回傳純文字，不帶外框
         return `<span style="color: ${color}; font-weight: bold; font-size: 1.6rem; letter-spacing: 1px;">${emotionText}</span>`;
