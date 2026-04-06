@@ -438,36 +438,105 @@ document.getElementById('model-1-detail-btn').onclick = function() {
     detailModal.show();
 };
 
-// 模型 2：VA 算式細節 (解決 undefined)
+let vaChart = null; 
+
+function initVAChart(v, a) {
+    const ctx = document.getElementById('vaCanvas').getContext('2d');
+    
+    if (vaChart) {
+        vaChart.destroy();
+    }
+
+    vaChart = new Chart(ctx, {
+        type: 'scatter',
+        data: {
+            datasets: [{
+                label: '情緒落點',
+                data: [{ x: v, y: a }],
+                backgroundColor: '#e74c3c', // 使用更醒目的紅色點
+                pointRadius: 10,
+                pointHoverRadius: 12,
+                borderWidth: 2,
+                borderColor: '#fff'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    min: -4, max: 4,
+                    title: { display: true, text: 'Valence (愉悅度)' },
+                    // 在 0 的位置畫黑色粗線
+                    grid: { color: (context) => context.tick.value === 0 ? '#000' : '#eee' }
+                },
+                y: {
+                    min: -4, max: 4,
+                    title: { display: true, text: 'Arousal (喚起度)' },
+                    // 在 0 的位置畫黑色粗線
+                    grid: { color: (context) => context.tick.value === 0 ? '#000' : '#eee' }
+                }
+            },
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        label: (ctx) => `落點座標: (${ctx.raw.x}, ${ctx.raw.y})`
+                    }
+                }
+            }
+        }
+    });
+}
+	
+// 模型 2：VA 算式細節 
 document.getElementById('model-2-detail-btn').onclick = function() {
     if (!window.currentResults) return alert("請先進行預測！");
     const details = window.currentResults.model1_details;
-    document.getElementById('modal-title-text').innerText = "模型 2：詞典 V/A 值平均運算過程";
     
+    document.getElementById('modal-title-text').innerText = "模型 2：詞典 V/A 值平均運算過程";
     document.getElementById('modal-body-content').innerHTML = `
-        <h6 class="fw-bold text-primary">Valence (愉悅度) 平均值算式：<code>${details.v_score}</code></h6>
-        <div class="p-3 bg-light rounded mb-4"><code>${details.v_process} = ${details.v_score}</code></div>
-        <h6 class="fw-bold text-danger">Arousal (喚起度) 平均值算式：<code>${details.a_score}</code></h6>
-        <div class="p-3 bg-light rounded"><code>${details.a_process} = ${details.a_score}</code></div>
+        <div class="p-2">
+            <h6 class="fw-bold text-primary">Valence (愉悅度) 平均值: <span class="text-dark">${details.v_score}</span></h6>
+            <div class="p-2 bg-light rounded mb-3" style="font-size:0.9rem;"><code>${details.v_process}</code></div>
+            
+            <h6 class="fw-bold text-danger">Arousal (喚起度) 平均值: <span class="text-dark">${details.a_score}</span></h6>
+            <div class="p-2 bg-light rounded mb-3" style="font-size:0.9rem;"><code>${details.a_process}</code></div>
+            
+            <hr>
+            <div style="height: 350px; width: 100%;">
+                <canvas id="vaCanvas"></canvas>
+            </div>
+        </div>
     `;
+    
     detailModal.show();
+    // 延遲繪圖，確保 Canvas 已載入
+    setTimeout(() => initVAChart(details.v_score, details.a_score), 300);
 };
 
 // 模型 4：VA 數值細節
 document.getElementById('model-4-detail-btn').onclick = function() {
     if (!window.currentResults) return alert("請先進行預測！");
     const res = window.currentResults;
+    
     document.getElementById('modal-title-text').innerText = "模型 4：BERT 座標預測數值";
     document.getElementById('modal-body-content').innerHTML = `
-        <div class="text-center p-4">
+        <div class="text-center mb-3">
             <div class="row">
-                <div class="col-6"><h4 class="text-primary">Valence</h4><h2 class="display-4">${res.model4_v}</h2></div>
-                <div class="col-6"><h4 class="text-danger">Arousal</h4><h2 class="display-4">${res.model4_a}</h2></div>
+                <div class="col-6"><h5 class="text-primary">Valence</h5><h3>${res.model4_v}</h3></div>
+                <div class="col-6"><h5 class="text-danger">Arousal</h5><h3>${res.model4_a}</h3></div>
             </div>
-            <hr><p>判定情緒：<strong>${res.model4}</strong></p>
+            <div class="mt-2 text-muted">判定情緒：<span>${res.model4}</span></div>
+        </div>
+        <hr>
+        <div style="height: 350px; width: 100%;">
+            <canvas id="vaCanvas"></canvas>
         </div>
     `;
+    
     detailModal.show();
+    setTimeout(() => initVAChart(res.model4_v, res.model4_a), 300);
 };
 
 // 模型 3 & 5：機率分布
