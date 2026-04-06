@@ -149,15 +149,6 @@ letter-spacing: 2px;
 @font-face {font-family: "我的字體";
   			src: url("ToneOZ-Tsuipita-TC.woff2") format("woff2");}
 		  * {font-family: "我的字體", sans-serif;}
-#upload div {
-	display : inline-block;
-	font-size: 26px; 
-	width: 400px;  
-	height: 500px; 
-	font-size : 26px;  
-	line-height: 2;
-	text-align: center;}
-
 	
  #backToTop {
 	  position: fixed;
@@ -325,27 +316,26 @@ letter-spacing: 2px;
 </div>
 
 
+
 <div id="upload" class="section">
-
-<h2>歌詞清洗</h2>
-
-        <p>為了讓模型學得更準確，我們會先把所有收集來的歌詞，透過下列細項讓歌詞格式統一、乾乾淨淨。當資料變整齊了，模型判斷歌曲情緒時就不會因為格式不一至而出錯，準確度自然大幅提升。</p>
-		<ul>
-			<div>
-				<p >標點符號 → 一致性</p>
-				<img id="pic1" src="src\符號.png">
-			</div>
-			<div>
-				<p><br>合唱歌曲中的人名</p>
-				<img id="pic2" src="src\name.png">
-			</div>
-			<div>
-				<p >無效狀聲詞</p>
-				<img id="pic2" src="src\狀聲詞.png">
-			</div>	
-		</ul>
-
-
+    <h2>歌詞清洗</h2>
+    <p>
+    為了讓模型學得更準確，我們會先把所有收集來的歌詞，透過下列細項讓它們格式統一、乾乾淨淨。當資料變整齊了，模型判斷歌曲情緒時就不會因為格式不一致而出錯，準確度自然大幅提升。
+    </p>
+    <div class="row text-center mt-5">    
+        <div class="col-md-4">
+            <p>標點符號 → 一致性</p>
+            <img id="pic1" src="src\符號.png" class="img-fluid" style="max-height: 450px;">
+        </div>
+        <div class="col-md-4">
+            <p>合唱歌曲中的人名</p>
+            <img id="pic2" src="src\name.png" class="img-fluid" style="max-height: 450px;">
+        </div>
+        <div class="col-md-4">
+            <p>無效狀聲詞</p>
+            <img id="pic3" src="src\狀聲詞.png" class="img-fluid" style="max-height: 450px;">
+        </div>
+    </div>
 </div>
 
 
