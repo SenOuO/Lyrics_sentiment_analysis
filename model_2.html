@@ -361,6 +361,7 @@
     </div>
     
     <h2 class="mb-4">流程</h2>
+	 <div class="card p-4 border-0 shadow-sm">
     <p style="text-indent:2em;">
 首先，模型會讀取歌詞中的關鍵詞（例如「眼淚」），並將其輸入到 BERT 模型中。
 接著，BERT 會根據整句歌詞的語境進行理解，例如判斷是「久別重逢」還是「失戀分手」的情境。
@@ -398,7 +399,7 @@
             <div class="box result">動態歸類<br>[悲傷]</div>
         </div>
     </div>
-
+  </div>
     <div class="flow-mobile">
         <div class="box mb-3">眼淚 → BERT 微調</div>
         <div class="box mb-3">久別重逢 → 「終於等到你，流下了眼淚…」 → 偵測語境 [終於]、[等到] → 動態歸類 [快樂／感動]</div>
@@ -430,7 +431,7 @@
 	      </p>
 	<div class="row align-items-center mt-4">
 		<div class="col-md-4">
-            <div class="p-3 bg-light rounded">
+            <div class="p-3  rounded">
                 <ul class="mb-0">
                 <li><strong>總樣本數：</strong>108</li>
                 <li><strong>預測正確筆數：</strong>49</li>
