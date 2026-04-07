@@ -9,24 +9,33 @@
     <link rel="icon" href="favicon.ico">
     <style>
         :root { --primary-color: #2c3e50; --secondary-color: #34495e; }
-        body { font-family: 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', sans-serif; background-color: #fdfdfd; line-height: 1.8; }
+       body { font-family: 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', sans-serif;background-image: url('src/image_4.png'); 
+            background-image: url('src/image_4.png'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; 
+            background-color: #fdfdfd; 
+            line-height: 1.8; 
+            color: var(--text-dark);}
         .navbar { background-color: var(--primary-color); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         .navbar-brand, .nav-link { color: #ffffff !important; font-weight: 500; }
         .dropdown-menu { border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         .content-section { padding: 60px 0; margin:0 auto;}
         footer { background-color: var(--primary-color); color: #bdc3c7; padding: 30px 0; text-align: center; }
 		.hero-section {
-            height: 100px;
-            background: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6));
+            height: 150px;
             background-size: cover;
             background-position: center;
             display: flex;
             justify-content: center;
             align-items: center;
             letter-spacing: 15px;
-			justify-content: center;}
-		.mb-4 {margin: 20px;}
-		.card span {color : red ;}
+			justify-content: center;  }
+		.mb-4 {
+            margin: 20px;
+            color: var(--primary-color); }
+		.card {
+            background-color: rgba(255, 255, 255, 0.85);  }
 		main { font-size: 26px; 
 		    line-height: 2;
 		    letter-spacing: 2px;
