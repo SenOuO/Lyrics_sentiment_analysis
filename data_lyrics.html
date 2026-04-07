@@ -60,11 +60,11 @@ box-shadow:0 4px 12px rgba(0,0,0,0.1);
             align-items: center;
             letter-spacing: 15px;
 			justify-content: center;  }
-		.mb-4 {
-            margin: 20px;
-            color: var(--primary-color); }
-		.card {
-            background-color: rgba(255, 255, 255, 0.85);  }
+.mb-4 {
+	margin: 20px;
+	color: var(--primary-color); }
+.card {
+	background-color: rgba(255, 255, 255, 0.85);  }
 
 /* 主內容 */
 
@@ -124,7 +124,7 @@ color:white;
 padding:50px 20px;
 margin:30px auto;
 border-radius:12px;
-box-shadow:0 4px 15px rgba(0,0,0,0.8);
+box-shadow:0 4px 15px rgba(0,0,0,0.08);
 
 /* 避免定位點被navbar遮住 */
 scroll-margin-top:120px;
@@ -263,6 +263,7 @@ letter-spacing: 2px;
 <main class="container content-section">
 
 <div class="hero-section">
+<div class="card p-4 border-0 shadow-sm mb-4">
 <h1>歌詞資料</h1>
 </div>
 
@@ -273,25 +274,26 @@ letter-spacing: 2px;
 <a class="step" href="#upload">歌詞清洗</a>
 <a class="step" href="#review">情緒判別</a>
 <a class="step" href="#finish">完成歌詞資料集</a>
-
+</div>
 </div>
 
 
 <!-- Section -->
 
 <div id="start" class="section">
+<div class="card p-4 border-0 shadow-sm mb-4">
 <h2>蒐集歌曲</h2>
 
 <p>
 首先依照情緒類別，作為歌曲搜尋的收集方向。<br>整合 Spotify 與 KKBOX 的公開歌單，以「開心」、「興奮」等情緒作為搜尋關鍵字，再以網路爬蟲方式收集歌單中的歌名及歌手，並結合部分人工精選收集。
 
 </p>
-
+</div>
 </div>
 
 
 <div id="register" class="section">
-
+<div class="card p-4 border-0 shadow-sm mb-4">
 <h2>擷取歌詞</h2>
 
 <p>
@@ -326,12 +328,13 @@ letter-spacing: 2px;
 				
 			</tr>
 		</table>
-
+</div>
 </div>
 
 
 
 <div id="upload" class="section">
+<div class="card p-4 border-0 shadow-sm mb-4">
     <h2>歌詞清洗</h2>
     <p>
     為了讓模型學得更準確，我們會先把所有收集來的歌詞，透過下列細項讓它們格式統一、乾乾淨淨。當資料變整齊了，模型判斷歌曲情緒時就不會因為格式不一致而出錯，準確度自然大幅提升。
@@ -351,24 +354,24 @@ letter-spacing: 2px;
         </div>
     </div>
 </div>
-
+</div>
 
 <div id="review" class="section">
-
+<div class="card p-4 border-0 shadow-sm mb-4">
 <h2>情緒判別</h2>
 
 <p>
 將清洗後的歌詞資料集再次以人工檢查加上客觀的判斷是否有歌曲的情緒類別分類錯誤
 </p>
-
+</div>
 </div>
 
 <div id="finish" class="section">
-
+<div class="card p-4 border-0 shadow-sm mb-4">
 <h2>完成歌詞資料集</h2>
 
 <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT6ErZhW-qYXxyulpDFjuJ_yIBwY_S8Tjw24gDG6Sl9ziZMZ42O8yblm0gxxRowv-B2kr1PkWj86pV3/pubhtml?widget=true&amp;headers=false" width="100%" height="400"></iframe>
-
+</div>
 </div>
 </main>
 	
