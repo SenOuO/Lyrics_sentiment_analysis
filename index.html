@@ -9,11 +9,21 @@
     <link rel="icon" href="favicon.ico">
     <style>
         :root { --primary-color: #2c3e50; --secondary-color: #34495e; }
-     	 body { font-family: 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', sans-serif;background-image: url('src/image_4.png'); 
+     	 body { font-family: 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', sans-serif;background-image: url('src/image_5.png'); 
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            background-color: #fdfdfd;  line-height: 1.8; }
+            background-color: #fdfdfd;  line-height: 1.8; 
+			position: relative;
+			z-index: 0}
+		body::before {
+		content: "";
+		position: fixed;
+		inset: 0; /* 等於 top/left/right/bottom = 0 */
+		background: rgba(255, 255, 255, 0.6); /* ← 透明度在這改 */
+		z-index: -1;
+		pointer-events: none; /* 避免擋到點擊 */
+		}
         .navbar { background-color: var(--primary-color); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         .navbar-brand, .nav-link { color: #ffffff !important; font-weight: 500; }
         .dropdown-menu { border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
