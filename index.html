@@ -9,7 +9,11 @@
     <link rel="icon" href="favicon.ico">
     <style>
         :root { --primary-color: #2c3e50; --secondary-color: #34495e; }
-     	 body { font-family: 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', sans-serif; background-color: #fdfdfd; line-height: 1.8; }
+     	 body { font-family: 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', sans-serif;background-image: url('src/image_2.png'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-color: #fdfdfd;  line-height: 1.8; }
         .navbar { background-color: var(--primary-color); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         .navbar-brand, .nav-link { color: #ffffff !important; font-weight: 500; }
         .dropdown-menu { border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
@@ -26,7 +30,10 @@
             letter-spacing: 15px;
 			justify-content: center;}
 		.mb-4 {margin: 20px;}
-		.card span{color : red;}
+		.card {background-color: rgba(255, 255, 255, 0.6);}
+		.card span{
+            color : #e74c3c;
+            font-weight: bold; }
 		main { font-size: 26px; 
 		    line-height: 2;
 		    letter-spacing: 2px;
@@ -99,40 +106,25 @@
 <main class="container content-section">
 	<div class="hero-section">
         <h1 class="hero-title">歌詞情緒分析</h1>
-	</div>
-
-	<div class="card p-4 border-0 shadow-sm">
-    <div class="row align-items-center">
-
-        <!-- 左邊文字 -->
-        <div class="col-md-8">
-            <p>
-                指導教授：林建華老師、郭珈妤老師<br>
-                專題成員：黃丞祥、王雅慧、郭晏慈、石宇婕、傅筱婷、陳俞蓁、侯進瑋、吳宗晏、彭英姿
-            </p>
-        </div>
-        <!-- 右邊圖片 -->
-        <div class="col-md-4 d-flex justify-content-end";style="weight:500px;">
-            <img src="src/F36BFFE2-9919-48F3-BF1E-8B8D97BE73E9_1_201_a.jpeg" 
-                 class="img-fluid rounded shadow"
-                 style="max-height:350px;">
-        </div>
     </div>
-	</div>
+    <div class="card p-4 border-0 shadow-sm mb-4" > <p>指導教授：林建華老師、郭珈妤老師<br>
+			專題成員：黃丞祥、王雅慧、郭晏慈、石宇婕、傅筱婷、陳俞蓁、侯進瑋、吳宗晏、彭英姿</p>
+		<img src='' > </div>
+	
 	
 	<h2 class="mb-4">摘要</h2>
-    <div class="card p-4 border-0 shadow-sm">
-        <p>&emsp;&emsp;傳統的情緒分析技術多侷限於「正向／負向」的二元分類，然而這種劃分難以捕捉音樂情緒的細膩層次。舉例而言，「憂鬱」與「放鬆」雖同屬低能量情緒，但在心理感受上卻截然不同；「熱血」與「憤怒」雖同屬高能量情緒，但在愉悅度上卻背道而馳。人類對音樂的感知是連續且多維的，單純的標籤分類已無法滿足現代音樂推薦系統的需求。此外，現今主流串流平台（如 Spotify, KKBOX）的「情緒歌單」標籤，多源自人工標註或用戶行為數據，代表的是聽眾對於「旋律、節奏、歌詞」的綜合聽感。
+    <div class="card p-4 border-0 shadow-sm mb-4"> <p>&emsp;&emsp;傳統的情緒分析技術多侷限於「正向／負向」的二元分類，然而這種劃分難以捕捉音樂情緒的細膩層次。舉例而言，「憂鬱」與「放鬆」雖同屬低能量情緒，但在心理感受上卻截然不同；「熱血」與「憤怒」雖同屬高能量情緒，但在愉悅度上卻背道而馳。人類對音樂的感知是連續且多維的，單純的標籤分類已無法滿足現代音樂推薦系統的需求。此外，現今主流串流平台（如 Spotify, KKBOX）的「情緒歌單」標籤，多源自人工標註或用戶行為數據，代表的是聽眾對於「旋律、節奏、歌詞」的綜合聽感。
 		</p>
 		<p>&emsp;&emsp;為突破上述限制並精準量化歌詞情緒，我們採用李龍豪教授等人建置之「中文情緒維度資料集 (Chinese Valence-Arousal Words, CVAW & Phrases, CVAP)」作為訓練基底。在資料處理上，將「基礎詞彙」與「副詞+詞彙」的片語資料進行整合，增加資料，並以捕捉程度副詞對情緒強度的細微影響。鑑於原始資料僅包含 Valence (愉悅度) 與 Arousal (喚醒度) 之連續數值，因此我們依據 Russell 情緒環狀模型，將 VA 數值映射並新增 Q1~Q4 四大情緒象限標籤（Q1快樂、Q2憤怒、Q3悲傷、Q4平靜）。模型架構方面，我們選用 bert-base-chinese 預訓練模型進行微調 (Fine-tuning)。
 		</p>
     </div>
 	<h2 class="mb-4">動機</h2>
-    <div class="card p-4 border-0 shadow-sm">
+    <div class="card p-4 border-0 shadow-sm mb-4">
         <p>	&emsp;&emsp;音樂可以由旋律與歌詞構成。旋律能影響歌曲的聽覺感受，塑造節奏與氛圍；而文字則能透過語意與敘事傳達情感與故事。兩者皆為情緒表達的重要媒介，但相較於旋律的抽象感受，<span>文字所蘊含的情緒更為具體與細膩，
 		能更直接地揭示創作者的心理狀態與情感脈絡</span>。因此透過文字內容分析歌曲情緒，不僅能更精準掌握音樂的<span>情感傾向</span>，也能作為後續自動化音樂生成的依據，使系統能根據<span>語意情緒對應出適合的旋律與風格</span>。</p>
     </div>
 </main>
+
 
 <button id="backToTop">
     <i class="bi bi-arrow-up">top</i>
