@@ -393,52 +393,38 @@
     <div class="va-label-bottom">失戀<br>分手</div>
 </div>
   </div>
+	
 <h3 class="mb-4">混淆矩陣分析</h3>        
+	<div class="card p-4 border-0 shadow-sm mt-4">
 
-<div class="card p-4 border-0 shadow-sm mt-4">
+            <p>此圖為<strong>VA 值微調模型</strong>的混淆矩陣，用來觀察模型在四個情緒象限（Q1～Q4）上的分類表現。</p>
+            <p>在四個象限中，<strong>Q2（憤怒／焦慮）</strong> 表現最佳，正確預測為 <strong>16 筆</strong>，<strong>Q1（快樂／興奮）</strong>次之，正確預測為 <strong>15 筆</strong>，顯示模型對於<strong>高能量負向情緒</strong>具有較好的辨識能力。</p>      
+			<p><strong>Q3（悲傷／沮喪）</strong> 正確預測為 <strong>14 筆</strong>， 但有 <strong>7 筆</strong> 被誤判為 Q4， 代表模型容易將「低能量負向情緒」誤判為「低能量正向情緒」， 在<strong>Valence（正負）判斷</strong>上出現偏移。</p>	        
+			<p><strong>Q4（平靜／滿足）</strong> 表現相對較弱，正確預測為 <strong>6 筆</strong>， 其中有 <strong>12 筆</strong> 被誤判為 Q3， 顯示模型在「低能量情緒」之間容易混淆， 特別是在<strong>正向與負向的邊界</strong>上判斷不穩定。</p>
+	        <p> 整體而言，模型在<strong>高強度情緒（Q1、Q2）</strong>的辨識表現較佳， 但在<strong>低強度情緒（Q3、Q4）</strong>上仍存在明顯混淆， 尤其容易在 <strong>Valence（正負）</strong> 與 <strong>Arousal（強度）</strong> 之間產生判斷偏移。</p>
+		
+		<div class="row align-items-center">
+			<div class="col-md-3">
+				<p><strong>四象限預測正確數量</strong>:<br>
+					Q1：15筆<br>
+					Q2：16筆<br>
+					Q3：14筆<br>
+					Q4：6筆<br>
+				</p>
+			</div>
+			<div class="col-md-3">
+				<ul>
+					<li><strong>總樣本數：</strong>108</li>
+					<li><strong>預測正確筆數：</strong>51</li>
+					<li><strong>成功機率：</strong>47.22%</li>
+				</ul>
+			</div>
 
-            <p>
-                此圖為<strong>VA 值微調模型</strong>的混淆矩陣，用來觀察模型在四個情緒象限（Q1～Q4）上的分類表現。
-			</p>
-
-            <p>
-                在四個象限中，<strong>Q2（憤怒／焦慮）</strong> 表現最佳，正確預測為 <strong>16 筆</strong>，<strong>Q1（快樂／興奮）</strong>次之，正確預測為 <strong>15 筆</strong>，顯示模型對於<strong>高能量負向情緒</strong>具有較好的辨識能力。
-			</p>
-	
-	        <p> 
-				<strong>Q3（悲傷／沮喪）</strong> 正確預測為 <strong>14 筆</strong>， 但有 <strong>7 筆</strong> 被誤判為 Q4， 代表模型容易將「低能量負向情緒」誤判為「低能量正向情緒」， 在<strong>Valence（正負）判斷</strong>上出現偏移。
-			</p>
-	   
-	        <p> 
-				<strong>Q4（平靜／滿足）</strong> 表現相對較弱，正確預測為 <strong>6 筆</strong>， 其中有 <strong>12 筆</strong> 被誤判為 Q3， 顯示模型在「低能量情緒」之間容易混淆， 特別是在<strong>正向與負向的邊界</strong>上判斷不穩定。
-			</p>
-	   
-
-	        <p> 
-				整體而言，模型在<strong>高強度情緒（Q1、Q2）</strong>的辨識表現較佳， 但在<strong>低強度情緒（Q3、Q4）</strong>上仍存在明顯混淆， 尤其容易在 <strong>Valence（正負）</strong> 與 <strong>Arousal（強度）</strong> 之間產生判斷偏移。 
-			</p>
-            <ul class="mt-3">
-                <li>總樣本數：<strong>108</strong></li>
-                <li>預測正確筆數：<strong>51</strong></li>
-                <li>成功機率：<strong style="color:#198754;">47.22%</strong></li>
-                <li>失誤機率：<strong style="color:#dc3545;">52.78%</strong></li>
-            </ul>
-
-        </div>
-
-        <!-- 右 -->
-        <div class="row align-items-center mt-4">
-			<div class="col-md-4">
-               <div class="p-3 bg-light rounded">
-                <ul class="mb-0">
-            <img src="src\model_3.png" class="img-fluid " alt="BERT微調情緒類別混淆矩陣"style="max-height:400px;">
-        </div>
-
-    </div>
-</div>
-
-
-	
+			<div class="col-md-6 text-center">
+				<img src="" class="img-fluid" style="max-height:400px;" alt="情緒類別混淆矩陣">
+			</div>
+		</div>
+	</div>   
 </main>
 	
 <button id="backToTop">
