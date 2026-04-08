@@ -334,86 +334,53 @@ footer{
   </div>
 
   <div class="flowchart">
-    <a class="step" href="#merge">合併檔案</a>
-    <a class="step" href="#check">檢查異常值</a>
-    <a class="step" href="#convert">數值轉換</a>
-    <a class="step" href="#classify">情緒象限分類</a>
-    <a class="step" href="#review">視覺化與人工檢查</a>
-    <a class="step" href="#bert">BERT+SVM 細分</a>
+    <a class="step" href="#merge">資料整併</a>
+    <a class="step" href="#check">資料清理與轉換</a>
+    <a class="step" href="#convert">情緒建模（VA → 四象限）</a>
+    <a class="step" href="#classify">模型優化（BERT + SVM）</a>
   </div>
 
 
 
 <!-- Section 1 -->
 <div id="merge" class="section">
-  <h2>先將單詞與片語檔合併</h2>
+  <h2>資料整併（單詞＋片語）</h2>
   <p>
-    在進行詞典分析之前，先將原始資料中的單詞與片語檔案整合為同一份資料表，
-    方便後續統一清理、檢查與分類。
+    將原本分開的單詞與片語資料整合成同一份資料表，讓後續的處理流程可以在同一資料基礎上進行，
+    避免重複操作並提升效率。
   </p>
-  <div class="note-box">
-    將不同來源或不同粒度的詞彙資料整併後，可避免後續分析流程重複處理。
-  </div>
 </div>
 
 <!-- Section 2 -->
 <div id="check" class="section">
-  <h2>檢查是否有異常值或重複的字詞</h2>
+  <h2>資料清理與轉換</h2>
   <p>
-    合併完成後，先檢查資料中是否存在異常值、缺漏值或重複詞彙。
-    若發現數值明顯不合理或文字重複，則先予以移除或整理，以提升資料品質。
+    先移除重複或異常的字詞資料，確保資料品質。
+    接著將原本 1～9 的情緒量表轉換為以 0 為中心的數值，
+    使正負值更容易表示情緒方向與強度。
   </p>
-
-  <img src="images/process_lexicon_chart.png" alt="詞典處理流程圖">
-
-  <div class="note-box">
-    這裡可以放你簡報中的檢查畫面、異常值範例，或直接放整張流程圖。
-  </div>
 </div>
 
 <!-- Section 3 -->
 <div id="convert" class="section">
-  <h2>將檔案的數值由 1～9 變成 -4～4</h2>
-  <p>
-    為了讓情緒維度更容易以中心點做解讀，將原本 1～9 的量表平移轉換成 -4～4。
-    轉換後，0 可視為中性位置，正值與負值也更容易用來判斷情緒方向。
+  <h2>情緒建模（VA → 四象限）</h2>
+<p>
+    根據 Valence（愉悅度）與 Arousal（喚起度），
+    將詞彙對應到四個情緒象限（快樂、憤怒、悲傷、平靜），
+    建立可用於分析的情緒分類基礎。
   </p>
-  <ul>
-    <li>1 對應到 -4</li>
-    <li>5 對應到 0</li>
-    <li>9 對應到 4</li>
-  </ul>
 </div>
 
 <!-- Section 4 -->
 <div id="classify" class="section">
-  <h2>VA 值劃分四個情緒象限（軸上為中性）</h2>
+  <h2>模型優化（BERT + SVM）</h2>
   <p>
-    依據 Valence（愉悅度）與 Arousal（喚起度）的數值，
-    將詞彙劃分到四個不同的情緒象限中，並將落在座標軸上的資料視為中性區域，
-    作為後續進一步分析的基礎。
+   對於情緒較模糊或落在中性區域的詞彙，
+    進一步結合 BERT 與 SVM 模型進行細緻分類，
+    提升整體情緒判斷的準確度。
   </p>
 </div>
 
-<!-- Section 5 -->
-<div id="review" class="section">
-  <h2>資料視覺化及人工字詞檢查</h2>
-  <p>
-    完成象限分類後，透過資料視覺化方式觀察分布情形，
-    並搭配人工檢查字詞內容，確認分類結果是否合理。
-    這一步能協助修正少數自動分類不精確的詞彙。
-  </p>
-</div>
-
-<!-- Section 6 -->
-<div id="bert" class="section">
-  <h2>將中性情緒用 BERT + SVM 細分</h2>
-  <p>
-    對於落在中性區域的詞彙，僅依靠 VA 值可能不足以準確描述其細微情緒差異，
-    因此進一步結合 BERT 與 SVM 模型做更細緻的分類，
-    以提升整體詞典情緒標註的精確度。
-  </p>
-</div>
 
 
 	<div class="d-flex align-items-start gap-4">
