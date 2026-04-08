@@ -265,8 +265,7 @@ footer{
         EX :<br>
 				 <ul>
 				 <li>「不安」這個詞大部分人看到都會聯想到<span style='color : red;'>負面的</span>、<span style='color : red;'>讓人緊張</span>的感覺，所以它會是低 Valence、高 Arousal。</li>
-                 <li>「不可思議」這個詞比較特別，可能會因為<span style='color : red;'>情況不同</span>， 有時候是正向的驚喜，有時候也可能是負面的傻眼，所以這類詞的<span style='color : red;'>標準差就會比較高 </span>，
-		         <span style='color : red;'>代表它的情緒解讀比較多元</span>、<span style='color : red;'>比較不固定</span>。</li>
+                 <li>「不可思議」這個詞比較特別，可能會因為<span style='color : red;'>情況不同</span>， 有時候是正向的驚喜，有時候也可能是負面的傻眼，所以這類詞的<span style='color : red;'>標準差就會比較高 </span>，<span style='color : red;'>代表它的情緒解讀比較多元</span>、<span style='color : red;'>比較不固定</span>。</li>
 				 </ul>
     </div>
 	<div class="d-flex align-items-start gap-4">
@@ -323,8 +322,6 @@ footer{
 
 </main>
 
-
-
 	
 <!-- 主內容 -->
 <main class="container content-section">
@@ -341,34 +338,18 @@ footer{
   </div>
 
 
-
 <!-- Section 1 -->
 <div id="merge" class="section">
   <h2>資料整併（單詞＋片語）</h2>
-<p>
-    本研究使用中文情緒維度資料集，包含單詞（CVAW）與片語（CVAP）兩種類型。
-    單詞的情緒較穩定，適合作為基礎語意參考；而片語則能反映語氣與程度差異，
-    有助於捕捉更細膩的情緒變化。
-  </p>
-  <p>
-    為了統一後續分析流程，我們將兩種資料整合為同一資料表，
-    並統一欄位格式（如 Valence、Arousal 等），
-    使不同來源的資料可以在相同架構下進行處理與建模。
-  </p>
+	<p>本研究使用中文情緒維度資料集，包含單詞（CVAW）與片語（CVAP）兩種類型。單詞的情緒較穩定，適合作為基礎語意參考；而片語則能反映語氣與程度差異，有助於捕捉更細膩的情緒變化。  </p>
+	<p>為了統一後續分析流程，我們將兩種資料整合為同一資料表，並統一欄位格式（如 Valence、Arousal 等），使不同來源的資料可以在相同架構下進行處理與建模。</p>
 </div>
 
 <!-- Section 2 -->
 <div id="check" class="section">
   <h2>資料清理與轉換</h2>
-  <p>
-    在資料整併後，先進行基本的資料清理，包括移除重複詞彙、
-    處理缺漏值，以及檢查數值是否落在合理範圍內，以確保資料品質。
-  </p>
-  <p>
-    接著，將原本 1～9 的情緒量表轉換為以 0 為中心的數值範圍（-4～4），
-    讓情緒方向（正向／負向）與強度（強／弱）能更直觀地表示，
-    並方便後續模型進行分類與判斷。
-  </p>
+  <p>在資料整併後，先進行基本的資料清理，包括移除重複詞彙、處理缺漏值，以及檢查數值是否落在合理範圍內，以確保資料品質。</p>
+  <p>接著，將原本 1～9 的情緒量表轉換為以 0 為中心的數值範圍（-4～4），緒方向（正向／負向）與強度（強／弱）能更直觀地表示，並方便後續模型進行分類與判斷。</p>
 </div>
 
 <!-- Section 3 -->
@@ -388,21 +369,10 @@ footer{
 
 <!-- Section 4 -->
 <div id="classify" class="section">
-  <h2>模型優化（BERT + SVM）</h2>
-<h2>模型優化（BERT + SVM）</h2>
-  <p>
-    對於落在情緒邊界或中性區域的詞彙，
-    僅依靠 VA 數值可能無法準確判斷其情緒類別，
-    因此進一步引入深度學習模型進行優化。
-  </p>
-  <p>
-    本研究結合 BERT 模型進行語意理解，
-    並搭配 SVM 分類器進行細緻分類，
-    能有效捕捉語境中的隱含情緒，提升整體分析的準確度與穩定性。
-  </p>
+  <h2>分類優化（BERT + SVM）</h2>
+  <p>對於落在情緒邊界或中性區域的詞彙，僅依靠 VA 數值可能無法準確判斷其情緒類別，因此進一步引入深度學習模型進行優化。</p>
+  <p>本研究結合 BERT 模型進行語意理解，並搭配 SVM 分類器進行細緻分類，能有效捕捉語境中的隱含情緒，提升整體分析的準確度與穩定性。</p>
 </div>
-
-
 
 	<div class="d-flex align-items-start gap-4">
 		<div style="flex: 1; min-width: 300px;">
@@ -414,15 +384,12 @@ footer{
 			    <iframe 
 			      src="https://senouo.github.io/emotion/new_emotion_scatter.html" 
 			      width="75%" 
-			      height="820px" 
 			      style="border:1px solid #ccc; border-radius:8px;">
 			    </iframe>
 			</div>
 		</div>
 	</div>
 </main>
-
-
 
 <button id="backToTop">
     <i class="bi bi-arrow-up">top</i>
@@ -458,36 +425,4 @@ footer{
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
