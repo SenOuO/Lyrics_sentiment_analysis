@@ -363,11 +363,7 @@
     <h2 class="mb-4">流程</h2>
 	 <div class="card p-4 border-0 shadow-sm">
     <p style="text-indent:2em;">
-首先，模型會讀取歌詞中的關鍵詞（例如「眼淚」），並將其輸入到 BERT 模型中。
-接著，BERT 會根據整句歌詞的語境進行理解，例如判斷是「久別重逢」還是「失戀分手」的情境。
-在理解語境後，模型會偵測關鍵詞周圍的語意線索，例如「終於」、「等到」或「離開」、「只剩下」等詞，用來判斷當下的情緒方向。
-最後，系統會依據語境進行動態情緒分類，將原本可能被固定為「悲傷」的詞（如眼淚），
-重新判斷為「快樂／感動」或「悲傷」，讓情緒判斷更貼近真實語意。
+首先，模型會讀取歌詞中的關鍵詞（例如「眼淚」），並將其輸入到 BERT 模型中。接著，BERT 會根據整句歌詞的語境進行理解，例如判斷是「久別重逢」還是「失戀分手」的情境。在理解語境後，模型會偵測關鍵詞周圍的語意線索，例如「終於」、「等到」或「離開」、「只剩下」等詞，用來判斷當下的情緒方向。最後，系統會依據語境進行動態情緒分類，將原本可能被固定為「悲傷」的詞（如眼淚），重新判斷為「快樂／感動」或「悲傷」，讓情緒判斷更貼近真實語意。
 </p>
 
    <div class="bert-flow">
@@ -414,25 +410,9 @@
           <p> 
 			  此圖為<strong>情緒類別微調模型</strong>的混淆矩陣，用來呈現模型在四個情緒象限（Q1～Q4）的分類表現。 
 		  </p>
-		  <p>
-			  在四個象限中，<strong>Q2（憤怒／焦慮）</strong> 表現最佳，正確預測達 <strong>23 筆</strong>， 顯示模型對於<strong>高能量負向情緒</strong>的辨識能力最強。 
-		  </p>
-	      <p> 
-			  <strong>Q1（快樂／興奮）</strong> 次之，正確預測為 <strong>16 筆</strong>， 顯示對正向高激起情緒的良好辨識力，能有效區別出具備積極能量的歌詞文本。。
-		  </p>
-	      <p> 
-			  <strong>Q3（悲傷／沮喪）</strong> 表現較弱，正確預測為 <strong>8 筆</strong>， 其中有 <strong>13 筆</strong> 被誤判為 Q2， 顯示模型容易將「低能量負向情緒」誤判為「高能量負向情緒」， 反映在負向情緒中<strong>Arousal（強度）判斷較不穩定</strong>。 
-	      </p>
-	      <p>
-			   <strong>Q4（平靜／滿足）</strong> 表現最差，正確預測僅 <strong>2 筆</strong>， 且有 <strong>12 筆</strong> 被誤判為 Q2， 顯示模型傾向將「低能量正向情緒」誤判為「高能量負向情緒」， 在<strong>Valence（正負）與 Arousal（強度）</strong>兩個維度上皆出現偏移。 
-		  </p>
-	      <p> 
-			   整體而言，模型對於<strong>高強度情緒（特別是 Q2）</strong>的辨識效果較佳， 但在<strong>低強度情緒（Q3、Q4）</strong>的判斷上仍存在明顯困難， 尤其容易出現情緒強度與正負方向的混淆。
-	      </p>
-
-		<div class="row align-items-center">
+			<div class="row align-items-center">
 			<div class="col-md-3">
-				<p><strong>四象限預測正確數量</strong>:<br>
+				<p><strong>四象限預測正確數量</strong>：<br>
 					Q1：16筆<br>
 					Q2：23筆<br>
 					Q3：8筆<br>
@@ -451,6 +431,12 @@
 				<img src="src\model_2.png" class="img-fluid" style="max-height:400px;" alt="情緒類別混淆矩陣">
 			</div>
 		</div>
+		  <p>在四個象限中，<strong>Q2（憤怒／焦慮）</strong> 表現最佳，正確預測達 <strong>23 筆</strong>， 顯示模型對於<strong>高能量負向情緒</strong>的辨識能力最強。</p>
+	      <p><strong>Q1（快樂／興奮）</strong> 次之，正確預測為 <strong>16 筆</strong>， 顯示對正向高激起情緒的良好辨識力，能有效區別出具備積極能量的歌詞文本。</p>
+	      <p><strong>Q3（悲傷／沮喪）</strong> 表現較弱，正確預測為 <strong>8 筆</strong>， 其中有 <strong>13 筆</strong> 被誤判為 Q2， 顯示模型容易將「低能量負向情緒」誤判為「高能量負向情緒」， 反映在負向情緒中<strong>Arousal（強度）判斷較不穩定</strong>。</p>
+	      <p><strong>Q4（平靜／滿足）</strong> 表現最差，正確預測僅 <strong>2 筆</strong>， 且有 <strong>12 筆</strong> 被誤判為 Q2， 顯示模型傾向將「低能量正向情緒」誤判為「高能量負向情緒」， 在<strong>Valence（正負）與 Arousal（強度）</strong>兩個維度上皆出現偏移。</p>
+	      <p>整體而言，模型對於<strong>高強度情緒（特別是 Q2）</strong>的辨識效果較佳， 但在<strong>低強度情緒（Q3、Q4）</strong>的判斷上仍存在明顯困難， 尤其容易出現情緒強度與正負方向的混淆。</p>
+
 </div>
   
 </main>
