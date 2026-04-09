@@ -169,28 +169,33 @@ main { font-size: 26px;
 <h3 class="mb-4">混淆矩陣分析</h3>        
 
 <div class="card p-4 border-0 shadow-sm">
-            <p>
-              此圖為<strong>歌詞微調模型</strong>的混淆矩陣，用來呈現模型在四個情緒象限（Q1～Q4）上的分類表現。
-            </p>
-	
-			<p>
-				在四個象限中，<strong>Q1（快樂／興奮）</strong> 表現非常出色，正確預測達 <strong>24 筆</strong>， 幾乎沒有誤判，顯示模型對於<strong>高能量正向情緒</strong>具有高度辨識能力。
-			</p>
-			<p> 
-				<strong>Q2（憤怒／焦慮）</strong> 正確預測為 <strong>20 筆</strong>， 僅有少量誤判（5 筆為 Q3、1 筆為 Q4）， 整體表現穩定，顯示模型對於<strong>負向高強度情緒</strong>也具備良好判斷能力。 
-			</p>
-	
-			<p> 
-				<strong>Q3（悲傷／沮喪）</strong> 表現同樣優異，正確預測為 <strong>24 筆</strong>， 誤判數量極少，代表模型在<strong>低能量負向情緒</strong>的辨識上已有明顯提升。
-			</p>
+            <p>此圖為<strong>歌詞微調模型</strong>的混淆矩陣，用來呈現模型在四個情緒象限（Q1～Q4）上的分類表現。 </p>
+			<div class="row align-items-center">
+			<div class="col-md-3">
+				<p><strong>四象限預測正確數量</strong>:<br>
+					Q1：15筆<br>
+					Q2：16筆<br>
+					Q3：14筆<br>
+					Q4：6筆<br>
+				</p>
+			</div>
+			<div class="col-md-3">
+				<ul>
+					<li>總樣本數：<strong>108</strong></li>
+	                <li>預測正確筆數：<strong>80</strong></li>
+	                <li>成功機率：<strong style="color:#198754;">74.07%</strong></li>
+				</ul>
+			</div>
 
-			<p>
-				<strong>Q4（平靜／滿足）</strong> 正確預測為 <strong>12 筆</strong>， 雖然仍有部分誤判（如 Q1、Q2、Q3）， 但整體相比前幾個模型已有明顯改善。 
-			</p>
-
-			<p>
-				整體而言，經過歌詞語料微調後，模型在四個情緒象限的表現皆大幅提升， 特別是在<strong>Q1 與 Q3</strong>的辨識上達到相當高的準確度， 顯示模型已能有效理解<strong>歌詞中的語境與情緒表達</strong>。
-			</p>
+			<div class="col-md-6 text-center">
+				<img src="src\model_4.png" class="img-fluid" style="max-height:400px;" alt="BERT微調情緒類別混淆矩陣">
+			</div>
+		</div>
+			<p>在四個象限中，<strong>Q1（快樂／興奮）</strong> 表現非常出色，正確預測達 <strong>24 筆</strong>， 幾乎沒有誤判，顯示模型對於<strong>高能量正向情緒</strong>具有高度辨識能力。</p>
+			<p> <strong>Q2（憤怒／焦慮）</strong> 正確預測為 <strong>20 筆</strong>， 僅有少量誤判（5 筆為 Q3、1 筆為 Q4）， 整體表現穩定，顯示模型對於<strong>負向高強度情緒</strong>也具備良好判斷能力。 </p>
+			<p> <strong>Q3（悲傷／沮喪）</strong> 表現同樣優異，正確預測為 <strong>24 筆</strong>， 誤判數量極少，代表模型在<strong>低能量負向情緒</strong>的辨識上已有明顯提升。</p>
+			<p><strong>Q4（平靜／滿足）</strong> 正確預測為 <strong>12 筆</strong>， 雖然仍有部分誤判（如 Q1、Q2、Q3）， 但整體相比前幾個模型已有明顯改善。 </p>
+			<p>整體而言，經過歌詞語料微調後，模型在四個情緒象限的表現皆大幅提升， 特別是在<strong>Q1 與 Q3</strong>的辨識上達到相當高的準確度， 顯示模型已能有效理解<strong>歌詞中的語境與情緒表達</strong>。</p>
 
 		<div class="row align-items-center">
 			<div class="col-md-3">
