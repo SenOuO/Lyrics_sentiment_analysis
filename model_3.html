@@ -326,9 +326,7 @@
 </p>
 
 <p style="text-indent:2em;">
-透過此方法，可以實現情緒的去標籤化。詞彙的情緒不再是固定不
-變的，而是由語境所決定。讓同一個詞在不同歌詞情境中呈現不同
-的情緒，進而更準確地還原歌詞所表達的情感。
+透過此方法，可以實現情緒的去標籤化。詞彙的情緒不再是固定不變的，而是由語境所決定。讓同一個詞在不同歌詞情境中呈現不同的情緒，進而更準確地還原歌詞所表達的情感。
 </p>
     </div>
 <h2 class="mb-4">流程</h2>
@@ -398,12 +396,7 @@
 	<div class="card p-4 border-0 shadow-sm mt-4">
 
             <p>此圖為<strong>VA 值微調模型</strong>的混淆矩陣，用來觀察模型在四個情緒象限（Q1～Q4）上的分類表現。</p>
-            <p>在四個象限中，<strong>Q2（憤怒／焦慮）</strong> 表現最佳，正確預測為 <strong>16 筆</strong>，<strong>Q1（快樂／興奮）</strong>次之，正確預測為 <strong>15 筆</strong>，顯示模型對於<strong>高能量負向情緒</strong>具有較好的辨識能力。</p>      
-			<p><strong>Q3（悲傷／沮喪）</strong> 正確預測為 <strong>14 筆</strong>， 但有 <strong>7 筆</strong> 被誤判為 Q4， 代表模型容易將「低能量負向情緒」誤判為「低能量正向情緒」， 在<strong>Valence（正負）判斷</strong>上出現偏移。</p>	        
-			<p><strong>Q4（平靜／滿足）</strong> 表現相對較弱，正確預測為 <strong>6 筆</strong>， 其中有 <strong>12 筆</strong> 被誤判為 Q3， 顯示模型在「低能量情緒」之間容易混淆， 特別是在<strong>正向與負向的邊界</strong>上判斷不穩定。</p>
-	        <p> 整體而言，模型在<strong>高強度情緒（Q1、Q2）</strong>的辨識表現較佳， 但在<strong>低強度情緒（Q3、Q4）</strong>上仍存在明顯混淆， 尤其容易在 <strong>Valence（正負）</strong> 與 <strong>Arousal（強度）</strong> 之間產生判斷偏移。</p>
-		
-		<div class="row align-items-center">
+			<div class="row align-items-center">
 			<div class="col-md-3">
 				<p><strong>四象限預測正確數量</strong>:<br>
 					Q1：15筆<br>
@@ -423,7 +416,13 @@
 			<div class="col-md-6 text-center">
 				<img src="src/model_3.png" class="img-fluid" style="max-height:400px;" alt="情緒類別混淆矩陣">
 			</div>
-		</div>
+		</div>			
+            <p>在四個象限中，<strong>Q2（憤怒／焦慮）</strong> 表現最佳，正確預測為 <strong>16 筆</strong>，<strong>Q1（快樂／興奮）</strong>次之，正確預測為 <strong>15 筆</strong>，顯示模型對於<strong>高能量負向情緒</strong>具有較好的辨識能力。</p>      
+			<p><strong>Q3（悲傷／沮喪）</strong> 正確預測為 <strong>14 筆</strong>， 但有 <strong>7 筆</strong> 被誤判為 Q4， 代表模型容易將「低能量負向情緒」誤判為「低能量正向情緒」， 在<strong>Valence（正負）判斷</strong>上出現偏移。</p>	        
+			<p><strong>Q4（平靜／滿足）</strong> 表現相對較弱，正確預測為 <strong>6 筆</strong>， 其中有 <strong>12 筆</strong> 被誤判為 Q3， 顯示模型在「低能量情緒」之間容易混淆， 特別是在<strong>正向與負向的邊界</strong>上判斷不穩定。</p>
+	        <p> 整體而言，模型在<strong>高強度情緒（Q1、Q2）</strong>的辨識表現較佳， 但在<strong>低強度情緒（Q3、Q4）</strong>上仍存在明顯混淆， 尤其容易在 <strong>Valence（正負）</strong> 與 <strong>Arousal（強度）</strong> 之間產生判斷偏移。</p>
+		
+		
 	</div>   
 </main>
 	
