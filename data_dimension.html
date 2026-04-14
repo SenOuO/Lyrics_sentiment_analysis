@@ -6,109 +6,145 @@
     <title>歌詞情緒分析專題</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-         :root { 
-            --primary-color: #2c3e50; 
-            --secondary-color: #34495e; 
-        }
-        
-        body {
-            font-family: 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', sans-serif;
-            background-color: rgba(0, 0, 0, 0.03);
+         :root { --primary-color: #2c3e50; --secondary-color: #34495e; }
+        body {font-family: "我的字體", 'Microsoft JhengHei', sans-serif; 
+			background-image: url('src/image_4.png');
+			background-color: rgba(0, 0, 0, 0.03);
 			background-blend-mode: overlay; 
 			background-size: cover;
 			background-position: center;
 			background-attachment: fixed;}
-        }
-        
-        .navbar { 
-            background-color: var(--primary-color); 
-            box-shadow: 0 2px 4px rgba(0,0,0); 
-        }
-        
-        .navbar-brand, .nav-link { 
-            color: #ffffff !important; 
-            font-weight: 500; 
-        }
-        
-        .dropdown-menu { 
-            border: none; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
-        }
-        
-        .content-section { 
-            padding: 60px 0; 
-            margin:0 auto;
-        }
-        
-        footer { 
-            background-color: rgba(44, 62, 80); /* 讓頁尾帶一點透明，更融入背景 */
-            color: #bdc3c7; 
-            padding: 30px 0; 
-            text-align: center; 
-        }
-        
+        .navbar { background-color: var(--primary-color); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .navbar-brand, .nav-link { color: #ffffff !important; font-weight: 500; }
+        .dropdown-menu { border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .content-section { padding: 60px 0; margin:0 auto;}
+        footer { background-color: var(--primary-color); color: #bdc3c7; padding: 30px 0; text-align: center; }
 		.hero-section {
-            height: 150px;
-            /* 調整 Hero 區域的遮罩，適應新的背景 */
+            height: 100px;
             background-size: cover;
             background-position: center;
             display: flex;
             justify-content: center;
             align-items: center;
             letter-spacing: 15px;
-			justify-content: center;
-        }
-        
-		.mb-4 {
-            margin: 20px; /* 稍微增加下方邊距 */
-            color: var(--primary-color); /* 標題使用主色調 */
-        }
-        
-        /* 調整卡片樣式，使其變為半透明，並增加磨砂玻璃效果 */
-		.card {
-            background-color: rgba(255, 255, 255, 0.85); /* 半透明白色 */
-        }
-        
-		.card span{
-            color : #e74c3c; /* 調整紅色強調色，使其在淺色卡片上更醒目 */
-            font-weight: bold;
-        }
-        
-		main { 
-            font-size: 26px; 
+			justify-content: center;}
+		.mb-4 {margin: 20px;}
+		.card span{color : red;}
+		p { font-size: 28px; 
 		    line-height: 2;
 		    letter-spacing: 2px;
-		}
-        
-		@font-face {font-family: "我的字體";
+		  }
+		 @font-face {font-family: "我的字體";
   					src: url("ToneOZ-Tsuipita-TC.woff2") format("woff2");
 					}
 		  * {
     		font-family: "我的字體", sans-serif;
-			}
-        
-		#backToTop {
-    		position: fixed;
-    		bottom: 30px;
-    		right: 30px;
-    		z-index: 999;
-    		font-size: 20px;
-    		border: none;
-    		outline: none;
-    		background-color: rgba(44, 62, 80, 0.8); /* 讓按鈕帶一點透明 */
-    		color: white;
-    		cursor: pointer;
-    		padding: 12px 16px;
-    		border-radius: 50%;
-    		display: none;
-    		transition: all 0.3s ease;
+    }
 		}
-
-		#backToTop:hover {
-			background-color: #34495e;
+		.hero-section h1{
+		  font-size:2.4rem;
+		  color:#2c3e50;
+		  margin:0;
 		}
 		
-		h2 {font-weight: bold;}
+		/* 主內容 */
+		.content-section{
+		  padding:60px 0 30px 0;
+		  margin:0 auto;
+		}
+		
+		/* 流程圖 */
+		.flowchart{
+		  display:flex;
+		  justify-content:center;
+		  align-items:center;
+		  flex-wrap:wrap;
+		  gap:25px;
+		  padding:30px 20px 10px 20px;
+		}
+
+		.step{
+		  position:relative;
+		  padding:18px 30px;
+		  background:white;
+		  border-radius:40px;
+		  font-weight:bold;
+		  text-decoration:none;
+		  color:#333;
+		  box-shadow:0 4px 15px rgba(0,0,0,0.1);
+		  transition:0.3s;
+		}
+
+		.step::after{
+		  content:"→";
+		  position:absolute;
+		  right:-22px;
+		  color:#999;
+		  font-size:20px;
+		}
+
+		.step:last-child::after{
+		  display:none;
+		}
+
+		.step:hover{
+		  transform:translateY(-4px);
+		  box-shadow:0 8px 25px rgba(0,0,0,0.15);
+		}
+
+		.step.active{
+		  background:var(--highlight-color);
+		  color:white;
+		}
+
+		/* 內容區 */
+		.section{
+		  padding:50px 30px;
+		  margin:30px auto;
+		  border-radius:16px;
+		  width:85%;
+		  background:#ffffff;
+		  box-shadow:0 4px 15px rgba(0,0,0,0.08);
+		  scroll-margin-top:120px;
+		}
+
+		.section:nth-of-type(even){
+		  background:#f9fbff;
+		}
+
+		.section h2{
+		  color:#2c3e50;
+		  margin-bottom:20px;
+		  font-weight:700;
+		}
+
+		.section img{
+		  max-width:100%;
+		  border-radius:12px;
+		  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+		  margin-top:20px;
+		}
+
+		.note-box{
+		  background:#eef6ff;
+		  border-left:6px solid #4facfe;
+		  padding:18px 20px;
+		  border-radius:10px;
+		  margin-top:20px;
+		}
+
+		/* Footer */
+		footer{
+		  background-color:var(--primary-color);
+		  color:#bdc3c7;
+		  padding:30px 0;
+		  text-align:center;
+		  margin-top:50px;
+		}
+		 main { font-size: 26px; 
+					line-height: 2;
+					letter-spacing: 2px;
+				  }
     </style>
 </head>
 <body>
@@ -150,122 +186,183 @@
 
 <main class="container content-section">
 	<div class="hero-section">
-        <h1 class="hero-title">結論與討論</h1>
+        <h1 class="hero-title">中文情緒維度資料集</h1>
     </div>
+	<h2 class="mb-4">中文單詞CVAW</h2>
+	<div class="card p-4 border-0 shadow-sm">
+        <p>單詞的意思通常比較固定，所以它的情緒標註也會比較穩定， 適合拿來當模型學習情緒的「基礎辭典」。 </p>
+        EX :<br>
+				 <ul>
+				 <li>「不安」這個詞大部分人看到都會聯想到<span style='color : red;'>負面的</span>、<span style='color : red;'>讓人緊張</span>的感覺，所以它會是低 Valence、高 Arousal。</li>
+                 <li>「不可思議」這個詞比較特別，可能會因為<span style='color : red;'>情況不同</span>， 有時候是正向的驚喜，有時候也可能是負面的傻眼，所以這類詞的<span style='color : red;'>標準差就會比較高 </span>，
+		         <span style='color : red;'>代表它的情緒解讀比較多元</span>、<span style='color : red;'>比較不固定</span>。</li>
+				 </ul>
+    </div>
+	<div class="d-flex align-items-start gap-4">
+		<div style="flex: 1; min-width: 300px;">
+			<h2 class="mb-4">中文單詞CVAW資料</h2>
+			  <div style="flex: 1; min-width: 400px; display: flex; justify-content: center;">
+			    <iframe 
+			      src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSIFMEEyiW3Bqvb-LEDryNQdOzIrgvbw8-hOng3khZsBC5ddW0D0yaZ1lRwUtiYtB5GxkySiIYTWAKq/pubhtml?widget=true&amp;headers=false" 
+			      width="72%" 
+			      height="400px"
+			      style="border:1px solid #ccc; border-radius:8px;zoom:1.5;">
+			    </iframe>
+			</div>
+		</div>
+	</div>
+	<div class="card p-4 border-0 shadow-sm">
+			<ul>
+		    <li>Valence_Mean：愉悅程度平均值(連續數值1~9)。</li>	
+		    <li>Arousal_Mean：情緒強度平均值（連續數值1~9）。</li>
+		    <li>Valence_SD / Arousal_SD：反映語意的模糊程度。</li>
+		    </ul>
+		</div>
+	</div>
+	<h2 class="mb-4">中文片語CVAP</h2>
+	<div class="card p-4 border-0 shadow-sm">
+	    <p>片語會因不同副詞、語氣或語義組合而呈現不同的情緒強度。  </p>
+        EX :<br>
+        <ul>     
+		<li>「更加小心」聽起來比較像是<span style='color : red;'>提醒</span>，情緒比較<span style='color : red;'>溫和</span>，<span style='color : red;'>注意一下的感覺</span>。</li>
+        <li>「特別小心」<span style='color : red;'>語氣</span>就比<span style='color : red;'>較強</span>，會讓人覺得<span style='color : red;'>緊張有壓力</span>。片語比單字更能捕捉語言中那些<span style='color : red;'>很細微</span>、<span style='color : red;'>但會影響我們感受的情緒變化</span>。</li>
+		</ul>
+      
+	</div>
+	<div class="d-flex align-items-start gap-4">
+		<div style="flex: 1; min-width: 300px;">
+			<h2 class="mb-4">中文片語CVAP資料</h2>
+			  <div style="flex: 1; min-width: 400px; display: flex; justify-content: center;">
+			    <iframe 
+			      src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRcGccglh-OyCHVkrceVhMcN-zspA3pSUeOGqdXnB_2iqpeC97VI2-HSbDSd5jy7onLAKUCkMjYBgFh/pubhtml?widget=true&amp;headers=false" 
+			      width="72%" 
+			      height="400px"
+			      style="border:1px solid #ccc; border-radius:8px;zoom:1.5;">
+			    </iframe>
+			</div>
+		</div>
+	</div>
+	<div class="card p-4 border-0 shadow-sm">
+		<ul>
+		<li>Valence_Mean：愉悅程度平均值(連續數值1~9)。</li>	
+		<li>Arousal_Mean：情緒強度平均值（連續數值1~9）。</li>
+		<li>Valence_SD / Arousal_SD：反映語意的模糊程度。</li>
+		</ul>
+	</div>
+	<div class="hero-section">
+    <h1>詞典處理</h1>
+  </div>
 
-<h1 class="mb-4 mt-5">討論</h1>
+  <div class="flowchart">
+    <a class="step" href="#merge">合併檔案</a>
+    <a class="step" href="#check">檢查異常值</a>
+    <a class="step" href="#convert">數值轉換</a>
+    <a class="step" href="#classify">情緒象限分類</a>
+    <a class="step" href="#review">視覺化與人工檢查</a>
+    <a class="step" href="#bert">BERT+SVM 細分</a>
+  </div>
 
-<div class="card p-4 border-0 shadow-sm">
 
-<p style="text-indent:2em;">
-首先，詞典資料不平衡是影響模型預測結果的重要因素之一。
-不同情緒象限中的字詞數量並不平均，容易使模型在訓練過程中偏向學習樣本數較多的情緒類型，
-進而影響整體預測表現。
-</p>
-<p style="text-indent:2em;">
-其次，中文情緒詞彙具有高度的語境依賴性。
-同一個詞彙在不同的歌詞或句子情境中，可能呈現出不同甚至相反的情緒含義，
-這使得無論是詞典式情緒分析方法或機器學習模型，在判斷情緒時都面臨一定程度的挑戰。
-</p>
-<p style="text-indent:2em;">
-第三，情緒本身具有主觀性。
-即使在人工標註的過程中，不同標註者也可能因為個人理解與情緒感受差異，
-而對同一段歌詞給出不同的情緒判定。
-因此，在情緒分析中，模型的預測結果並不一定存在唯一的「正確答案」。
-</p>
 
-<p style="text-indent:2em;">
-綜合而言，本研究結果顯示，
-在歌詞情緒分析任務中，
-結合深度學習方法並保留完整文本語境的模型，
-能夠獲得較佳的預測效果。
-然而，資料品質、標註方式以及情緒分類標準等因素，
-仍然是未來研究中值得進一步優化與改進的重要方向。
-</p>
-
+<!-- Section 1 -->
+<div id="merge" class="section">
+  <h2>先將單詞與片語檔合併</h2>
+  <p>
+    在進行詞典分析之前，先將原始資料中的單詞與片語檔案整合為同一份資料表，
+    方便後續統一清理、檢查與分類。
+  </p>
+  <div class="note-box">
+    將不同來源或不同粒度的詞彙資料整併後，可避免後續分析流程重複處理。
+  </div>
 </div>
 
+<!-- Section 2 -->
+<div id="check" class="section">
+  <h2>檢查是否有異常值或重複的字詞</h2>
+  <p>
+    合併完成後，先檢查資料中是否存在異常值、缺漏值或重複詞彙。
+    若發現數值明顯不合理或文字重複，則先予以移除或整理，以提升資料品質。
+  </p>
+
+  <img src="images/process_lexicon_chart.png" alt="詞典處理流程圖">
+
+  <div class="note-box">
+    這裡可以放你簡報中的檢查畫面、異常值範例，或直接放整張流程圖。
+  </div>
 </div>
 
+<!-- Section 3 -->
+<div id="convert" class="section">
+  <h2>將檔案的數值由 1～9 變成 -4～4</h2>
+  <p>
+    為了讓情緒維度更容易以中心點做解讀，將原本 1～9 的量表平移轉換成 -4～4。
+    轉換後，0 可視為中性位置，正值與負值也更容易用來判斷情緒方向。
+  </p>
+  <ul>
+    <li>1 對應到 -4</li>
+    <li>5 對應到 0</li>
+    <li>9 對應到 4</li>
+  </ul>
 </div>
 
-<style>
-table a {
-  color: #343a40;       
-  text-decoration: none; 
-}
-
-table a:hover {
-  color: #0d6efd;      
-</style>
-
-<h2 class="mb-4">結論</h2>
-
-<div class="card p-4 border-0 shadow-sm">
-<p style="text-indent:2em;">
-以下表格整理各模型之預測表現與成功率。可將滑鼠移至模型名稱上的連結，
-點擊後即可跳轉至對應的模型預測詳情頁面，以查看更完整的分析結果。
-</p>
-<div class="table-responsive">
-
-<table class="table table-bordered text-center align-middle">
-
-<thead class="table-light">
-<tr>
-<th style="width:70%">模型</th>
-<th style="width:30%">成功率</th>
-</tr>
-</thead>
-
-<tbody>
-
-<tr>
-<td>
-<a href="model_1.html#emotion">詞典法【情緒類別】</a>
-</td>
-<td>39%</td>
-</tr>
-
-<tr>
-<td>
-<a href="model_1.html#VA">詞典法【VA值】</a>
-</td>
-<td>46%</td>
-</tr>
-
-<tr>
-<td>
-<a href="model_2.html">BERT微調【情緒類別】</a>
-</td>
-<td>38%</td>
-</tr>
-
-<tr>
-<td>
-<a href="model_3.html">BERT微調【VA值】</a>
-</td>
-<td>44%</td>
-</tr>
-
-<tr class="table-danger fw-bold">
-<td>
-<a href="model_4.html">BERT微調【歌詞】</a>
-</td>
-<td>70%</td>
-</tr>
-
-</tbody>
-
-</table>
-<p class="mt-3">
-結果顯示，使用 <strong>BERT微調【歌詞】</strong> 的模型表現最佳，
-成功率達到 <strong>70%</strong>，顯著優於詞典法與其他模型。
-</p>
-</div>
+<!-- Section 4 -->
+<div id="classify" class="section">
+  <h2>VA 值劃分四個情緒象限（軸上為中性）</h2>
+  <p>
+    依據 Valence（愉悅度）與 Arousal（喚起度）的數值，
+    將詞彙劃分到四個不同的情緒象限中，並將落在座標軸上的資料視為中性區域，
+    作為後續進一步分析的基礎。
+  </p>
 </div>
 
+<!-- Section 5 -->
+<div id="review" class="section">
+  <h2>資料視覺化及人工字詞檢查</h2>
+  <p>
+    完成象限分類後，透過資料視覺化方式觀察分布情形，
+    並搭配人工檢查字詞內容，確認分類結果是否合理。
+    這一步能協助修正少數自動分類不精確的詞彙。
+  </p>
+</div>
 
+<!-- Section 6 -->
+<div id="bert" class="section">
+  <h2>分類優化</h2>
+  <p>
+    對於落在中性區域的詞彙，僅依靠 VA 值可能不足以準確描述其細微情緒差異，
+    因此進一步結合 BERT 與 SVM 模型做更細緻的分類，
+    以提升整體詞典情緒標註的精確度。
+  </p>
+</div>
+	
+	
+	
+	<div class="d-flex align-items-start gap-4">
+		<div style="flex: 1; min-width: 300px;">
+			<h2 class="mb-4">互動式字詞情緒分布圖</h2>
+			<div class="card p-4 border-0 shadow-sm">
+			<p>這張圖是用 Valence 跟 Arousal 兩個維度，把字詞的情緒分布畫出來。當滑鼠移到某個點時，可以看到這個詞的情緒數值與分類，讓我們更直觀了解每個詞的情緒位置。</p>
+			</div>
+			  <div style="flex: 1; min-width: 400px; display: flex; justify-content: center;">
+			    <iframe 
+			      src="https://senouo.github.io/emotion/new_emotion_scatter.html" 
+			      width="75%" 
+			      height="820px" 
+			      style="border:1px solid #ccc; border-radius:8px;">
+			    </iframe>
+			</div>
+		</div>
+	</div>
 </main>
+
+
+
+
+
+
+
+
+
 
 <footer>
     <div class="container">
