@@ -1,34 +1,7 @@
 # Lyrics_sentiment_analysis
 <!DOCTYPE html>
 <html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>歌詞情緒分析專題</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        :root { --primary-color: #2c3e50; --secondary-color: #34495e; }
-        body { font-family: 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', sans-serif; background-color: #fdfdfd; line-height: 1.8; }
-        .navbar { background-color: var(--primary-color); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .navbar-brand, .nav-link { color: #ffffff !important; font-weight: 500; }
-        .dropdown-menu { border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        .content-section { padding: 60px 0; margin:0 auto;}
-        footer { background-color: var(--primary-color); color: #bdc3c7; padding: 30px 0; text-align: center; }
-		.hero-section {
-            height: 100px;
-            background: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6));
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            letter-spacing: 15px;
-			justify-content: center;}
-		.mb-4 {margin: 20px;}
-		.card p-4 span {color : red;}
-    </style>
-</head>
-<body>
+
 
 <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
