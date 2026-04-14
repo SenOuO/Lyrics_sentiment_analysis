@@ -5,46 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>歌詞情緒分析專題</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon.ico">
     <style>
         :root { --primary-color: #2c3e50; --secondary-color: #34495e; }
-        body { font-family: 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', sans-serif;
+        body {font-family: "我的字體", 'Microsoft JhengHei', sans-serif;
 			background-image: url('src/image_4.png');
 			background-color: rgba(0, 0, 0, 0.03);
 			background-blend-mode: overlay; 
 			background-size: cover;
 			background-position: center;
 			background-attachment: fixed;}
+		main{font-size: 26px; 
+		    line-height: 1.8;
+		    letter-spacing: 2px;}
         .navbar { background-color: var(--primary-color); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         .navbar-brand, .nav-link { color: #ffffff !important; font-weight: 500; }
         .dropdown-menu { border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         .content-section { padding: 60px 0; margin:0 auto;}
         footer { background-color: var(--primary-color); color: #bdc3c7; padding: 30px 0; text-align: center; }
 		.hero-section {
-            height: 150px;
+            height: 100px;
+            background: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6));
             background-size: cover;
             background-position: center;
             display: flex;
             justify-content: center;
             align-items: center;
             letter-spacing: 15px;
-			justify-content: center;  }
-		.mb-4 {
-            margin: 20px;
-            color: var(--primary-color); }
-		.card {
-            background-color: rgba(255, 255, 255, 0.85);  }
-		 main p {text-indent:2em;
-		  font-size: 26px; 
-		  line-height: 2;
-		  letter-spacing: 2px;}
-		@font-face {font-family: "我的字體";
-  					src: url("ToneOZ-Tsuipita-TC.woff2") format("woff2");
-					}
-		  * {
-    		font-family: "我的字體", sans-serif;
-			}
+			justify-content: center;}
+		.mb-4 {margin: 20px;}
+		p{text-indent:2em;}
+		@font-face {
+			font-family: "我的字體";
+			src: url("fonts/ToneOZ-Tsuipita-TC.ttf") format("truetype");
 		#backToTop {
 		  position: fixed;
 		  bottom: 30px;
@@ -107,6 +99,7 @@
     </div>
 </nav>
 
+
 <main class="container content-section">
 	<div class="hero-section">
 		<h1 class="hero-title">情緒分類</h1>
@@ -116,8 +109,7 @@
 
 	<div class="card p-4 border-0 shadow-sm">
 		<div class="row align-items-center">
-			
-				<p>
+			<p>
 				情緒被視為一個<strong>連續而非離散</strong>的形容詞，
 				維度模型比分類模型有著較低的歧義。因此在情緒分析中，
 				常利用<strong>Valence</strong>與<strong>Arousal</strong>兩個維度來表示情緒。
@@ -144,7 +136,6 @@
 				被廣泛應用於情緒分析與音樂情緒辨識研究。
 				</p>
 			</div>
-			
 			<div class="col-md-6 text-center">
 				<img src="src\emotion.png" class="img-fluid" style="max-height:400px;">
 			</div>
