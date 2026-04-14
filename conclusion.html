@@ -114,88 +114,91 @@
         <h1 class="hero-title">結論與討論</h1>
     </div>
 
-<div class="card p-4 border-0 shadow-sm">
+<div class="card p-4 border-0 shadow-sm mb-4">
 
-<p style="text-indent:2em;">首先，情緒詞典資料不平衡是影響模型預測結果的重要因素之一。不同情緒象限中的字詞數量並不平均，容易使模型在訓練過程中偏向學習樣本數較多的情緒類型，進而影響整體預測表現。</p>
-<p style="text-indent:2em;">其次，中文情緒詞彙具有高度的語境依賴性。同一個詞彙在不同的歌詞或句子情境中，可能呈現出不同甚至相反的情緒含義，這使得無論是詞典式情緒分析方法或機器學習模型，在判斷情緒時都面臨一定程度的挑戰。</p>
-<p style="text-indent:2em;">第三，情緒本身具有主觀性。即使在人工標註的過程中，不同標註者也可能因為個人理解與情緒感受差異，而對同一段歌詞給出不同的情緒判定。因此，在情緒分析中，模型的預測結果並不一定存在唯一的「正確答案」。</p>
-<p style="text-indent:2em;">綜合而言，本研究結果顯示，在歌詞情緒預測中，結合深度學習方法並保留完整文本語境的模型，能夠獲得較佳的預測效果。然而，資料品質、標註方式以及情緒分類標準等因素，仍然是未來研究中值得進一步優化與改進的重要方向。</p>
+    <p style="text-indent:2em;">
+        首先，情緒詞典資料不平衡是影響模型預測結果的重要因素之一。
+    </p>
+
+    <p style="text-indent:2em;">
+        其次，中文情緒詞彙具有高度語境依賴性。
+    </p>
+
+    <p style="text-indent:2em;">
+        第三，情緒本身具有主觀性。
+    </p>
+
+    <p style="text-indent:2em;">
+        綜合而言，本研究結果顯示...
+    </p>
 
 </div>
-<style>
-table a {
-  color: #343a40;       
-  text-decoration: none; 
-}
 
-table a:hover {
-  color: #0d6efd;      
-</style>
-	
 <div class="card p-4 border-0 shadow-sm">
-<h2 class="mb-4">模型預測成功率比較</h2>
 
+    <h2 class="mb-4">模型預測成功率比較</h2>
 
-<p>
-以下表格整理各模型之預測表現與成功率。可將滑鼠移至模型名稱上的連結，
-點擊後即可跳轉至對應的模型預測詳情頁面，以查看更完整的預測結果。
-</p>
-<div class="table-responsive">
+    <p>
+        以下表格整理各模型之預測表現與成功率。
+    </p>
 
-<table class="table table-bordered text-center align-middle">
+    <style>
+        table a {
+            color: #343a40;
+            text-decoration: none;
+        }
 
-<thead class="table-light">
-<tr>
-<th style="width:70%">模型</th>
-<th style="width:30%">成功率</th>
-</tr>
-</thead>
+        table a:hover {
+            color: #0d6efd;
+        }
+    </style>
 
-<tbody>
+    <div class="table-responsive">
 
-<tr>
-<td>
-<a href="model_1.html#emotion">詞典法【情緒類別】</a>
-</td>
-<td>39%</td>
-</tr>
+        <table class="table table-bordered text-center align-middle">
 
-<tr>
-<td>
-<a href="model_1.html#VA">詞典法【VA值】</a>
-</td>
-<td>49%</td>
-</tr>
+            <thead class="table-light">
+                <tr>
+                    <th>模型</th>
+                    <th>成功率</th>
+                </tr>
+            </thead>
 
-<tr>
-<td>
-<a href="model_2.html">BERT微調【情緒類別】</a>
-</td>
-<td>45%</td>
-</tr>
+            <tbody>
+                <tr>
+                    <td><a href="model_1.html#emotion">詞典法【情緒類別】</a></td>
+                    <td>39%</td>
+                </tr>
 
-<tr>
-<td>
-<a href="model_3.html">BERT微調【VA值】</a>
-</td>
-<td>47%</td>
-</tr>
+                <tr>
+                    <td><a href="model_1.html#VA">詞典法【VA值】</a></td>
+                    <td>49%</td>
+                </tr>
 
-<tr class="table-danger fw-bold">
-<td>
-<a href="model_4.html">BERT微調【歌詞】</a>
-</td>
-<td>74%</td>
-</tr>
+                <tr>
+                    <td><a href="model_2.html">BERT微調【情緒類別】</a></td>
+                    <td>45%</td>
+                </tr>
 
-</tbody>
+                <tr>
+                    <td><a href="model_3.html">BERT微調【VA值】</a></td>
+                    <td>47%</td>
+                </tr>
 
-</table>
-<p class="mt-3">
-結果顯示，使用 <strong>BERT微調【歌詞】</strong> 的模型表現最佳，
-成功率達到 <strong>74%</strong>，顯著優於詞典法與其他模型。
-</p>
-</div>
+                <tr class="table-danger fw-bold">
+                    <td><a href="model_4.html">BERT微調【歌詞】</a></td>
+                    <td>74%</td>
+                </tr>
+            </tbody>
+
+        </table>
+
+        <p class="mt-3">
+            結果顯示 BERT微調【歌詞】最佳，達 74%。
+        </p>
+
+    </div>
+
 </div>
 
 
