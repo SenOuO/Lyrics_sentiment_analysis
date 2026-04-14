@@ -5,18 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>歌詞情緒分析專題</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon.ico">
     <style>
-        :root { 
+         :root { 
             --primary-color: #2c3e50; 
             --secondary-color: #34495e; 
         }
         
         body {
-           font-family: 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', sans-serif;
-        	background-image: url('src/image_4.png');
-			background-color: rgba(0, 0, 0, 0.03);
+            font-family: 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', sans-serif;
+            background-color: rgba(0, 0, 0, 0.03);
 			background-blend-mode: overlay; 
 			background-size: cover;
 			background-position: center;
@@ -52,6 +49,7 @@
         
 		.hero-section {
             height: 150px;
+            /* 調整 Hero 區域的遮罩，適應新的背景 */
             background-size: cover;
             background-position: center;
             display: flex;
@@ -62,23 +60,33 @@
         }
         
 		.mb-4 {
-            margin: 20px; 
-            color: var(--primary-color); 
+            margin: 20px; /* 稍微增加下方邊距 */
+            color: var(--primary-color); /* 標題使用主色調 */
         }
+        
+        /* 調整卡片樣式，使其變為半透明，並增加磨砂玻璃效果 */
 		.card {
-            background-color: rgba(255, 255, 255, 0.85); 
+            background-color: rgba(255, 255, 255, 0.85); /* 半透明白色 */
         }
+        
 		.card span{
-            color : #e74c3c; 
+            color : #e74c3c; /* 調整紅色強調色，使其在淺色卡片上更醒目 */
             font-weight: bold;
         }
+        
 		main { 
-            font-size: 28px; 
+            font-size: 26px; 
 		    line-height: 2;
 		    letter-spacing: 2px;
 		}
-		@font-face {font-family: "我的字體";src: url("ToneOZ-Tsuipita-TC.woff2") format("woff2");}
-		  * {font-family: "我的字體", sans-serif;}
+        
+		@font-face {font-family: "我的字體";
+  					src: url("ToneOZ-Tsuipita-TC.woff2") format("woff2");
+					}
+		  * {
+    		font-family: "我的字體", sans-serif;
+			}
+        
 		#backToTop {
     		position: fixed;
     		bottom: 30px;
@@ -99,17 +107,15 @@
 		#backToTop:hover {
 			background-color: #34495e;
 		}
+		
 		h2 {font-weight: bold;}
-</style>
+    </style>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
-        <a class="navbar-brand" href="index.html">
-            <img src="logo.png" alt="Logo" width="60" height="60" class="d-inline-block me-3" onerror="this.style.display='none'">
-            <span style="line-height: 1; font-weight: 400; font-size: 1.5rem;">歌詞情緒分析</span>
-        </a>
+        <a class="navbar-brand" href="index.html">歌詞情緒分析</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -144,136 +150,123 @@
 
 <main class="container content-section">
 	<div class="hero-section">
-        <h1 class="hero-title">中文情緒維度資料集</h1>
+        <h1 class="hero-title">結論與討論</h1>
     </div>
-	<h2 class="mb-4">中文單詞CVAW</h2>
-	<div class="card p-4 border-0 shadow-sm">
-        <p>單詞的意思通常比較固定，所以它的情緒標註也會比較穩定， 適合拿來當模型學習情緒的「基礎辭典」。 </p>
-        EX :<br>
-				 <ul>
-				 <li>「不安」這個詞大部分人看到都會聯想到<span style='color : red;'>負面的</span>、<span style='color : red;'>讓人緊張</span>的感覺，所以它會是低 Valence、高 Arousal。</li>
-                 <li>「不可思議」這個詞比較特別，可能會因為<span style='color : red;'>情況不同</span>， 有時候是正向的驚喜，有時候也可能是負面的傻眼，所以這類詞的<span style='color : red;'>標準差就會比較高 </span>，<span style='color : red;'>代表它的情緒解讀比較多元</span>、<span style='color : red;'>比較不固定</span>。</li>
-				 </ul>
-    </div>
-	<div class="d-flex align-items-start gap-4">
-		<div style="flex: 1; min-width: 300px;">
-			<h2 class="mb-4">中文單詞CVAW資料</h2>
-			  <div style="flex: 1; min-width: 400px; display: flex; justify-content: center;">
-			    <iframe 
-			      src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSIFMEEyiW3Bqvb-LEDryNQdOzIrgvbw8-hOng3khZsBC5ddW0D0yaZ1lRwUtiYtB5GxkySiIYTWAKq/pubhtml?widget=true&amp;headers=false" 
-			      width="72%" 
-			      height="400px"
-			      style="border:1px solid #ccc; border-radius:8px;zoom:1.5;">
-			    </iframe>
-			</div>
-		</div>
-	</div>
-	<div class="card p-4 border-0 shadow-sm">
-			<ul>
-		    <li>Valence_Mean：愉悅程度平均值(連續數值1~9)。</li>	
-		    <li>Arousal_Mean：情緒強度平均值（連續數值1~9）。</li>
-		    <li>Valence_SD / Arousal_SD：反映語意的模糊程度。</li>
-		    </ul>
-		</div>
-	</div>
-	<h2 class="mb-4">中文片語CVAP</h2>
-	<div class="card p-4 border-0 shadow-sm">
-	    <p>片語會因不同副詞、語氣或語義組合而呈現不同的情緒強度。  </p>
-        EX :<br>
-        <ul>     
-		<li>「更加小心」聽起來比較像是<span style='color : red;'>提醒</span>，情緒比較<span style='color : red;'>溫和</span>，<span style='color : red;'>注意一下的感覺</span>。</li>
-        <li>「特別小心」<span style='color : red;'>語氣</span>就比<span style='color : red;'>較強</span>，會讓人覺得<span style='color : red;'>緊張有壓力</span>。片語比單字更能捕捉語言中那些<span style='color : red;'>很細微</span>、<span style='color : red;'>但會影響我們感受的情緒變化</span>。</li>
-		</ul>
-      
-	</div>
-	<div class="d-flex align-items-start gap-4">
-		<div style="flex: 1; min-width: 300px;">
-			<h2 class="mb-4">中文片語CVAP資料</h2>
-			  <div style="flex: 1; min-width: 400px; display: flex; justify-content: center;">
-			    <iframe 
-			      src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRcGccglh-OyCHVkrceVhMcN-zspA3pSUeOGqdXnB_2iqpeC97VI2-HSbDSd5jy7onLAKUCkMjYBgFh/pubhtml?widget=true&amp;headers=false" 
-			      width="72%" 
-			      height="400px"
-			      style="border:1px solid #ccc; border-radius:8px;zoom:1.5;">
-			    </iframe>
-			</div>
-		</div>
-	</div>
-	<div class="card p-4 border-0 shadow-sm">
-		<ul>
-		<li>Valence_Mean：愉悅程度平均值(連續數值1~9)。</li>	
-		<li>Arousal_Mean：情緒強度平均值（連續數值1~9）。</li>
-		<li>Valence_SD / Arousal_SD：反映語意的模糊程度。</li>
-		</ul>
-	</div>
+
+<h1 class="mb-4 mt-5">討論</h1>
+
+<div class="card p-4 border-0 shadow-sm">
+
+<p style="text-indent:2em;">
+首先，詞典資料不平衡是影響模型預測結果的重要因素之一。
+不同情緒象限中的字詞數量並不平均，容易使模型在訓練過程中偏向學習樣本數較多的情緒類型，
+進而影響整體預測表現。
+</p>
+<p style="text-indent:2em;">
+其次，中文情緒詞彙具有高度的語境依賴性。
+同一個詞彙在不同的歌詞或句子情境中，可能呈現出不同甚至相反的情緒含義，
+這使得無論是詞典式情緒分析方法或機器學習模型，在判斷情緒時都面臨一定程度的挑戰。
+</p>
+<p style="text-indent:2em;">
+第三，情緒本身具有主觀性。
+即使在人工標註的過程中，不同標註者也可能因為個人理解與情緒感受差異，
+而對同一段歌詞給出不同的情緒判定。
+因此，在情緒分析中，模型的預測結果並不一定存在唯一的「正確答案」。
+</p>
+
+<p style="text-indent:2em;">
+綜合而言，本研究結果顯示，
+在歌詞情緒分析任務中，
+結合深度學習方法並保留完整文本語境的模型，
+能夠獲得較佳的預測效果。
+然而，資料品質、標註方式以及情緒分類標準等因素，
+仍然是未來研究中值得進一步優化與改進的重要方向。
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<style>
+table a {
+  color: #343a40;       
+  text-decoration: none; 
+}
+
+table a:hover {
+  color: #0d6efd;      
+</style>
+
+<h2 class="mb-4">結論</h2>
+
+<div class="card p-4 border-0 shadow-sm">
+<p style="text-indent:2em;">
+以下表格整理各模型之預測表現與成功率。可將滑鼠移至模型名稱上的連結，
+點擊後即可跳轉至對應的模型預測詳情頁面，以查看更完整的分析結果。
+</p>
+<div class="table-responsive">
+
+<table class="table table-bordered text-center align-middle">
+
+<thead class="table-light">
+<tr>
+<th style="width:70%">模型</th>
+<th style="width:30%">成功率</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>
+<a href="model_1.html#emotion">詞典法【情緒類別】</a>
+</td>
+<td>39%</td>
+</tr>
+
+<tr>
+<td>
+<a href="model_1.html#VA">詞典法【VA值】</a>
+</td>
+<td>46%</td>
+</tr>
+
+<tr>
+<td>
+<a href="model_2.html">BERT微調【情緒類別】</a>
+</td>
+<td>38%</td>
+</tr>
+
+<tr>
+<td>
+<a href="model_3.html">BERT微調【VA值】</a>
+</td>
+<td>44%</td>
+</tr>
+
+<tr class="table-danger fw-bold">
+<td>
+<a href="model_4.html">BERT微調【歌詞】</a>
+</td>
+<td>70%</td>
+</tr>
+
+</tbody>
+
+</table>
+<p class="mt-3">
+結果顯示，使用 <strong>BERT微調【歌詞】</strong> 的模型表現最佳，
+成功率達到 <strong>70%</strong>，顯著優於詞典法與其他模型。
+</p>
+</div>
+</div>
+
 
 </main>
 
-	
-<!-- 主內容 -->
-<main class="container content-section">
-
-  <div class="hero-section">
-    <h1>詞典處理</h1>
-  </div>
-
-  <div class="flowchart">
-    <a class="step" href="#merge">資料整併</a>
-    <a class="step" href="#check">資料清理與轉換</a>
-    <a class="step" href="#convert">情緒建模</a>
-    <a class="step" href="#classify">分類優化</a>
-  </div>
-
-
-<!-- Section 1 -->
-<div id="merge" class="section card p-4 border-0 shadow-sm">
-  <h2>資料整併（單詞＋片語）</h2>
-	<p>本研究使用中文情緒維度資料集，包含單詞（CVAW）與片語（CVAP）兩種類型。單詞的情緒較穩定，適合作為基礎語意參考；而片語則能反映語氣與程度差異，有助於捕捉更細膩的情緒變化。  </p>
-	<p>為了統一後續分析流程，我們將兩種資料整合為同一資料表，並統一欄位格式（如 Valence、Arousal 等），使不同來源的資料可以在相同架構下進行處理與建模。</p>
-</div>
-
-<!-- Section 2 -->
-<div id="check" class="section card p-4 border-0 shadow-sm">
-  <h2>資料清理與轉換</h2>
-  <p>在資料整併後，先進行基本的資料清理，包括移除重複詞彙、處理缺漏值，以及檢查數值是否落在合理範圍內，以確保資料品質。</p>
-  <p>接著，將原本 1～9 的情緒量表轉換為以 0 為中心的數值範圍（-4～4），情緒方向（正向／負向）與強度（強／弱）能更直觀地表示，並方便後續模型進行分類與判斷。</p>
-</div>
-
-<!-- Section 3 -->
-<div id="convert" class="section card p-4 border-0 shadow-sm">
-  <h2>情緒建模（VA → 四象限）</h2>
-  <p>本研究採用 Valence（愉悅度）與 Arousal（喚起度）作為情緒表示方式，並依據 Russell 情緒環狀模型，將連續數值轉換為四個情緒象限：快樂（高愉悅、高喚起）、憤怒（低愉悅、高喚起）、悲傷（低愉悅、低喚起）與平靜（高愉悅、低喚起）。
-  </p>
-  <p> 此轉換能將抽象的情緒數值轉為具體分類，不僅提升可解釋性，也方便後續應用於情緒分析與音樂推薦等任務。</p>
-</div>
-
-<!-- Section 4 -->
-<div id="classify" class="section card p-4 border-0 shadow-sm">
-  <h2>分類優化（BERT + SVM）</h2>
-  <p>對於落在情緒座標軸上、難以明確歸類的詞彙，僅依靠 VA 數值無法進行有效分類，因此進一步進行細緻的情緒分類優化。</p>
-  <p>透過 BERT 模型進行語意理解，判斷詞彙之間在語意空間中的相似性與關聯性，將語意接近的詞彙聚集在同一維度中；接著再利用 SVM 分類器進行邊界劃分，將原本模糊的情緒詞彙進一步拆分與細分類，以提升整體情緒分類的準確度與一致性。</p>
-</div>
-
-	<div class="d-flex align-items-start gap-4">
-		<div style="flex: 1; min-width: 300px;">
-			<h2 class="mb-4">互動式字詞情緒分布圖</h2>
-			<div class="card p-4 border-0 shadow-sm">
-			<p>這張圖是用 Valence 跟 Arousal 兩個維度，把字詞的情緒分布畫出來。當滑鼠移到某個點時，可以看到這個詞的情緒數值與分類，讓我們更直觀了解每個詞的情緒位置。</p>
-			</div>
-			  <div style="flex: 1; min-width: 400px; display: flex; justify-content: center;">
-			    <iframe 
-			      src="https://senouo.github.io/emotion/new_emotion_scatter.html" 
-			      width="75%" height="820px" 
-			      style="border:1px solid #ccc; border-radius:8px;">
-			    </iframe>
-			</div>
-		</div>
-	</div>
-</main>
-
-<button id="backToTop">
-    <i class="bi bi-arrow-up">top</i>
-</button>
 <footer>
     <div class="container">
         <p>© 2026 靜宜大學資料科學暨大數據分析與應用學系<br>歌詞情緒分析專題組 | 版權所有</p>
@@ -281,28 +274,6 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    const btn = document.getElementById("backToTop");
-
-    // 滾動時顯示按鈕
-    window.onscroll = function () {
-        if (document.documentElement.scrollTop > 200) {
-            btn.style.display = "block";
-        } else {
-            btn.style.display = "none";
-        }
-    };
-
-    // 點擊回到最上方
-    btn.onclick = function () {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-    };
-</script>
-	
 </body>
 
 </html>
-
