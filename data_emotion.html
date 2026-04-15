@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>歌詞情緒分析專題</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico">
     <style>
         :root { --primary-color: #2c3e50; --secondary-color: #34495e; }
         body {font-family: 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', sans-serif;
@@ -105,25 +107,25 @@
 		<h1 class="hero-title">情緒分類</h1>
 	</div>
 
-	<h2 class="mb-4">情緒維度</h2>
+
 
 	<div class="card p-4 border-0 shadow-sm">
+		<h2 class="mb-4">情緒維度</h2>
 		<div class="row align-items-center">
-			<p>
+			<p class="mb-0">
 				情緒被視為一個<strong>連續而非離散</strong>的形容詞，
 				維度模型比分類模型有著較低的歧義。因此在情緒分析中，
-				常利用<strong>Valence</strong>與<strong>Arousal</strong>兩個維度來表示情緒。
-				</p>
-				<p>
-				<strong>Valence</strong>代表情緒的正負向程度，
-				越往右表示情緒越正向，越往左則表示情緒越負向。
-				<strong>Arousal</strong>則代表情緒的強度，
-				越往上表示情緒越強烈，越往下則表示情緒較平靜。
-				</p>
+				常利用<strong> Valence </strong>與<strong> Arousal </strong>兩個維度來表示情緒。
+			</p>
+			<p class="mb-0">
+			 	<strong>Valence （情緒效價）</strong>代表情緒的正負向程度，越往右表示情緒越正向(如:快樂、滿足)，越往左則表示情緒越負向(如:悲傷、憤怒)。
+			</p>
+			<p class="mb-0">
+				<strong>Arousal （情緒強度）</strong>則代表情緒的強度，越往上表示情緒越強烈(如:興奮、激動)，越往下則表示情緒較平靜(如:放鬆、平靜)。
+			</p>
 			<div class="col-md-6">
-				<p>
-				根據這兩個維度，可以將情緒平面劃分為四個象限，
-				形成四種不同的情緒類型：
+				<p class="mb-0">
+				根據這兩個維度，可以將情緒平面劃分為四個象限，使抽象的情緒概念能夠以數值與位置的方式具體化，形成四種不同的情緒類型：
 				</p>
 				<ul>
 				<li><strong>Q1 快樂（High Valence / High Arousal）</strong></li>
@@ -131,9 +133,8 @@
 				<li><strong>Q3 悲傷（Low Valence / Low Arousal）</strong></li>
 				<li><strong>Q4 平靜（High Valence / Low Arousal）</strong></li>
 				</ul>
-				<p>
-				此模型由心理學家 <strong>Russell</strong> 提出，
-				被廣泛應用於情緒分析與音樂情緒辨識研究。
+				<p class="mb-0">
+				此模型由心理學家 <strong>Russell</strong> 提出，被廣泛應用於情緒分析與音樂情緒辨識研究。
 				</p>
 			</div>
 			<div class="col-md-6 text-center">
@@ -142,27 +143,6 @@
 		</div>
 	</div>
 	
-	<div class="d-flex align-items-start gap-4">
-		<div style="flex: 1; min-width: 300px;">
-			<h2 class="mb-4">Valence 與 Arousal</h2>
-			<div class="card p-4 border-0 shadow-sm">
-				<p>
-					<strong>Valence（情緒效價）</strong>表示情緒的正負向，
-					正向情緒如快樂、滿足，
-					負向情緒如悲傷、憤怒。
-				</p>
-				<p>
-					<strong>Arousal（情緒強度）</strong>表示情緒的激發程度，
-					例如興奮、激動屬於高 Arousal，
-					而放鬆、平靜則屬於低 Arousal。
-				</p>
-				<p>
-					透過這兩個維度，可以將不同情緒在平面座標中呈現，
-					使抽象的情緒概念能夠以<strong>數值與位置</strong>的方式具體化。
-				</p>
-			</div>
-		</div>
-	</div>
 </main>
 
 <button id="backToTop">
