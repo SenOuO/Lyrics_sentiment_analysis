@@ -192,6 +192,21 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="card p-4 border-0 shadow-sm mb-4">
+		<h2 class="mb-4">BERT</h2>
+		<div class="row align-items-center">
+
+			<div class="col-md-6">
+				<p>
+					&emsp;&emsp;我們選用chinese-bert-base的預訓作為基礎模型，並採取遷移學習的方式，維持預訓練模型的主體架構，
+					且只需在最後加上一層簡單的Output Layer (分類器)，藉由監督式學習與標註資料的投入，能讓模型在短時間內學會情緒特徵，達到分類情緒效果。</p>
+			</div>
+			<div class="col-md-6 text-center">
+				<img src="src\NLP.png" class="img-fluid" style="max-height:500px;">
+			</div>
+		</div>
+	</div>
 </main>
 
 <button id="backToTop">
