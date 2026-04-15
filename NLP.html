@@ -184,8 +184,8 @@
 
 			<div class="col-md-6">
 				<p>
-					&emsp;&emsp;以非監督的方式利用大量無標註文本「煉成」的語言代表模型，其架構為 Transformer中的Encoder，並使用大量文本及兩個預訓練目標，事先訓練好一個可以套用到多個NLP任務的BERT模型，再以此為基礎fine_tune多個下游任務。<br>&emsp;&emsp;架構變化：保持BERT主體不變，只在最後加上一層簡單的Output Layer (分類器)，將「有標註」的資料進行訓練，達到分類情緒效果。
-				</p>
+					&emsp;&emsp;BERT(Bidirectional Encoder Representations from Transformers)是Google以非監督的方式利用大量無標註文本「煉成」的語言代表模型，其架構為Transformer中的Encoder，
+					且是堆疊多個Encoder層，並利用「自注意力機制」，讓模型在處理每一個字詞時，能同時捕捉上下文資訊，產出具備深層語境意義的向量代表。</p>
 			</div>
 			<div class="col-md-6 text-center">
 				<img src="src\NLP.png" class="img-fluid" style="max-height:500px;">
