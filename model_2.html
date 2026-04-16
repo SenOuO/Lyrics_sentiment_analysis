@@ -311,7 +311,6 @@
 		   background-color: #34495e;
 		  }
           h2 {font-weight: bold;
-			   text-align: center;
 			   margin:20px;}
     </style>
 </head>
@@ -358,7 +357,7 @@
 <main class="container content-section">
 
     <div class="hero-section">
-        <h1 class="hero-title">BERT微調【情緒類別】</h1>
+        <h1 class="hero-title">♬BERT微調【情緒類別】</h1>
     </div>
     <div class="card p-4 border-0 shadow-sm">
     <p style="text-indent:2em;">  傳統情緒詞典的限制在於，詞彙通常被固定標記在單一情緒類別中，無法隨語境變化而調整。為了解決這個問題，本研究導入 BERT 作為詞典的「語境雷達」，讓模型能根據上下文理解詞彙在歌詞中的實際情緒。</p>
@@ -370,7 +369,7 @@
     </div>
     
 	 <div class="card p-4 border-0 shadow-sm mt-4">
-		 <h2 class="mb-4">流程</h2>
+		 <h2 class="mb-4">♬流程</h2>
     <p style="text-indent:2em;">
 首先，模型會讀取歌詞中的關鍵詞（例如「眼淚」），並將其輸入到 BERT 模型中。接著，BERT 會根據整句歌詞的語境進行理解，例如判斷是「久別重逢」還是「失戀分手」的情境。在理解語境後，模型會偵測關鍵詞周圍的語意線索，例如「終於」、「等到」或「離開」、「只剩下」等詞，用來判斷當下的情緒方向。最後，系統會依據語境進行動態情緒分類，將原本可能被固定為「悲傷」的詞（如眼淚），重新判斷為「快樂／感動」或「悲傷」，讓情緒判斷更貼近真實語意。
 </p>
@@ -414,7 +413,7 @@
   
 
 <div class="card p-4 border-0 shadow-sm mt-4">
-    <h2 class="mb-4">混淆矩陣分析</h2>      
+    <h2 class="mb-4">♬混淆矩陣分析</h2>      
 
           <p> 
 			  此圖為<strong>情緒類別微調模型</strong>的混淆矩陣，用來呈現模型在四個情緒象限（Q1～Q4）的分類表現。 
@@ -438,7 +437,7 @@
 
 			<div class="col-md-6 text-center">
 				<img src="src\model_2.png" class="img-fluid" style="max-height:400px;" alt="情緒類別混淆矩陣">
-				<p class="mt-2 asmall" style="font-size: 20px;">圖1、情緒類別微調的混淆矩陣</p>
+				<p class="mt-2 asmall" style="font-size: 20px;">圖6、情緒類別微調的混淆矩陣</p>
 			</div>
 		</div>
 		  <p>在四個象限中，<strong>Q2（憤怒／焦慮）</strong> 表現最佳，正確預測達 <strong>23 筆</strong>， 顯示模型對於<strong>高能量負向情緒</strong>的辨識能力最強。</p>
