@@ -136,36 +136,12 @@ main { font-size: 26px;
         <h1 class="hero-title">BERT微調【歌詞】</h1>
     </div>
     <div class="card p-4 border-0 shadow-sm">
-          <p style="text-indent:2em;">歌詞微調不再糾結於單個字詞的意思，而是將「整首歌的歌詞文本」視為一個完整的語意單位。
+          <p>歌詞微調不再糾結於單個字詞的意思，而是將「整首歌的歌詞文本」視為一個完整的語意單位。
 			  歌詞具有敘事性，情緒會隨時間演進有變化，因此透過BERT的全域自注意力機制，能識別出不同段落（主歌、副歌、橋段）之間的邏輯與情緒流動。</p>
 		<p style="text-indent:2em;">舉例：<br>(第一段)「天空下著雨，我獨自在街頭徘徊。」（局部：憂鬱）<br>(第二段)「直到遇見你，陽光終於穿透雲層。」（轉折）
 		<br>(第三段)「現在我懂了，所有的等待都是值得的。」（最終：滿足<br>BERT模型讀完全文後，會發現情緒從【負面】轉向【正面】，最終判定這首歌為【平靜/滿足】，而非被第一句的「雨」或「獨自」給誤導。</p>
 		
 		
-		<div class="training-flow">
-
-    <div class="train-box">丟入歌詞</div>
-
-    <div class="arrow">→</div>
-
-    <div class="train-box">模型預測情緒</div>
-
-    <div class="arrow">→</div>
-
-    <div class="train-box">真實標籤比對</div>
-
-    <div class="arrow">→</div>
-
-    <div class="train-box">計算誤差</div>
-
-    <div class="arrow">→</div>
-
-    <div class="train-box">微調整個模型<br>的參數</div>
-	</div>
-		</div>
-	
-
-        
 
 <div class="card p-4 border-0 shadow-sm mb-4">
 	<h2 class="mb-4">混淆矩陣分析</h2>
