@@ -332,7 +332,7 @@ letter-spacing: 2px;
 <div id="upload" class="section card p-4 border-0 shadow-sm mb-4">
     <h2>歌詞清洗</h2>
     <p>
-    為了讓模型學得更準確，我們會先把所有收集來的歌詞，透過下列細項讓它們格式統一、乾乾淨淨。當資料變整齊了，模型判斷歌曲情緒時就不會因為格式不一致而出錯，準確度自然大幅提升。
+    為確保模型訓練的穩定性與精確度，我們對原始歌詞數據進行了前處理與標準化。透過下列細項統一數據格式，能確保模型在判斷情緒時不受格式差異影響，達到更佳的辨識表現：
     </p>
     <div class="row text-center mt-5">    
         <div class="col-md-4">
@@ -355,14 +355,16 @@ letter-spacing: 2px;
 <h2>情緒判別</h2>
 
 <p>
-將清洗後的歌詞資料集再次以人工檢查加上客觀的判斷是否有歌曲的情緒類別分類錯誤
+為了確保標籤的客觀性，我們採取四人交叉複核的方式，針對清洗後的資料集進行人工審閱，透過多人評議與客觀判斷，修正情緒類別誤植的情形，以確保數據集具備高度的可信度與一致性。
 </p>
 </div>
 </div>
 
 <div id="finish" class="section card p-4 border-0 shadow-sm mb-4">
 <h2>完成歌詞資料集</h2>
-
+<p>
+以下為我們清洗完且經由二次人工校驗的標準化歌詞資料集:
+</p>
 <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT6ErZhW-qYXxyulpDFjuJ_yIBwY_S8Tjw24gDG6Sl9ziZMZ42O8yblm0gxxRowv-B2kr1PkWj86pV3/pubhtml?widget=true&amp;headers=false" width="100%" height="400"></iframe>
 </div>
 </div>
