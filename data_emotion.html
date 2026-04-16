@@ -60,18 +60,35 @@
 		  #backToTop:hover {
 		   background-color: #34495e;
 		  }
-		h2 {font-weight: bold;
-		   text-align: center;
-		   margin:20px;}
-		.subtitle-box {
-		    display: inline-block;
-		    padding: 2px 10px;
-		    background-color: #2c3e50; /* 深色底 */
-		    color: #ffffff;            /* 白字 */
-		    font-size: 1rem;
-		    font-weight: 500;
-		    border-radius: 2px;        /* 極微小的圓角，看起來不刺眼 */
-		}
+h2 {
+    display: table;          /* 讓框剛好包住文字 */
+    margin: 20px auto;       /* 置中 */
+    padding: 8px 25px;       /* 增加左右呼吸空間 */
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #2c3e50;
+    position: relative;
+    letter-spacing: 4px;     /* 文青感字距 */
+}
+
+/* 加上四個角的裝飾圖案 */
+h2::before, h2::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border: 1.5px solid #2c3e50;
+}
+
+h2::before {
+    top: 0; left: 0;
+    border-right: none; border-bottom: none; /* 左上角 */
+}
+
+h2::after {
+    bottom: 0; right: 0;
+    border-left: none; border-top: none;    /* 右下角 */
+}
     </style>
 </head>
 <body>
@@ -121,7 +138,7 @@
 	</div>
 
 	<div class="card p-4 border-0 shadow-sm mb-3">
-	    <h2 style="display: inline-block; padding: 2px 8px; border: 1px solid #333; font-size: 1.1rem; color: #333;">情緒維度</h2>
+	    <h2>情緒維度</h2>
 	    <p class="mb-3">
 	        情緒被視為一個<strong>連續而非離散</strong>的形容詞，維度模型比分類模型有著較低的歧義。因此在情緒分析中，常利用<strong> Valence </strong>與<strong> Arousal </strong>兩個維度來表示情緒:
 	    </p>
