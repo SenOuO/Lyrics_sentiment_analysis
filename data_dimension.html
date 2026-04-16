@@ -144,7 +144,6 @@
 					letter-spacing: 2px;
 				  }
 		h2 {font-weight: bold;
-		   text-align: center;
 		   margin:20px;}
     </style>
 </head>
@@ -194,7 +193,7 @@
     </div>
 	
 	<div class="card p-4 border-0 shadow-sm mb-4">
-		<h2 class="mb-4">中文單詞CVAW</h2>
+		<h2 class="mb-4">♬中文單詞CVAW</h2>
         <p>單詞的意思通常比較固定，所以它的情緒標註也會比較穩定， 適合拿來當模型學習情緒的「基礎辭典」。 </p>
         EX :<br>
 				 <ul>
@@ -205,7 +204,7 @@
     </div>
 
 	<div class="card p-4 border-0 shadow-sm mb-4">
-		<h2 class="mb-4">中文片語CVAP</h2>
+		<h2 class="mb-4">♬中文片語CVAP</h2>
 	    <p>片語會因不同副詞、語氣或語義組合而呈現不同的情緒強度。  </p>
         EX :<br>
         <ul>     
@@ -215,7 +214,7 @@
       
 	</div>
 	<div class="card p-4 border-0 shadow-sm mb-4">
-		<h2 class="mb-4">中文情緒資料集</h2>
+		<h2 class="mb-4">♬中文情緒資料集</h2>
 		<div class="d-flex align-items-center text-muted small mb-3" style="font-size: 1 rem;">
     <i class="bi bi-info-circle me-2"></i> <span>💡 您可以上下滑動表格查看詳細資訊。</span>
 </div>
@@ -260,7 +259,7 @@
 
 <!-- Section 1 -->
 <div id="merge" class="section card p-4 border-0 shadow-sm mb-4">
-  <h2>資料整併（單詞＋片語）</h2>
+  <h2>♬資料整併（單詞＋片語）</h2>
   <p>
     本研究使用中文情緒維度資料集，包含單詞（CVAW）與片語（CVAP）兩種類型。
     單詞的情緒較穩定，適合作為基礎語意參考；而片語則能反映語氣與程度差異，
@@ -274,7 +273,7 @@
 </div>
 <!-- Section 2 -->
 <div id="check" class="section card p-4 border-0 shadow-sm mb-4">
-  <h2>資料清理與轉換</h2>
+  <h2>♬資料清理與轉換</h2>
   <p>
     在資料整併後，先進行基本的資料清理，包括移除重複詞彙、
     處理缺漏值，以及檢查數值是否落在合理範圍內，以確保資料品質。
@@ -287,7 +286,7 @@
 </div>
 <!-- Section 3 -->
 <div id="convert" class="section card p-4 border-0 shadow-sm mb-4">
-  <h2>情緒建模（VA → 四象限）</h2>
+  <h2>♬情緒建模（VA → 四象限）</h2>
   <p>
     本研究採用 Valence（愉悅度）與 Arousal（喚起度）作為情緒表示方式，
     並依據 Russell 情緒環狀模型，將連續數值轉換為四個情緒象限：
@@ -302,7 +301,7 @@
 
 <!-- Section 4 -->
 <div id="classify" class="section card p-4 border-0 shadow-sm mb-4">
-  <h2>分類優化（BERT + SVM）</h2>
+  <h2>♬分類優化（BERT + SVM）</h2>
 <p>
   對於落在情緒座標軸上、難以明確歸類的詞彙，
   僅依靠 VA 數值無法進行有效分類，
@@ -320,7 +319,7 @@
 <div class="card p-4 border-0 shadow-sm">	
 	<div class="align-items-start gap-4">
 		<div style="flex: 1; min-width: 300px;">
-			<h2 class="mb-4">互動式字詞情緒分布圖</h2>
+			<h2 class="mb-4">♬互動式字詞情緒分布圖</h2>
 			<p>這張圖是用 Valence 跟 Arousal 兩個維度，把字詞的情緒分布畫出來。當滑鼠移到某個點時，可以看到這個詞的情緒數值與分類，讓我們更直觀了解每個詞的情緒位置。</p>
 			</div>
 			  <div style="flex: 1; min-width: 400px; display: flex; justify-content: center;">
