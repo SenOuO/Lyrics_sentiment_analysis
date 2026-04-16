@@ -89,6 +89,47 @@ main { font-size: 26px;
 		h2 {font-weight: bold;
 		   text-align: center;
 		   margin:20px;}
+
+.flow-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* 卡片 */
+.flow-box {
+  flex: 1;
+  min-width: 220px;
+  border: 2px solid #2f7d5b;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  background: #fff;
+}
+
+.flow-box h4 {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.flow-box p {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.flow-box span {
+  font-size: 14px;
+  color: #555;
+}
+
+/* 箭頭 */
+.arrow {
+  font-size: 30px;
+  font-weight: bold;
+  color: #333;
+}
     </style>
 </head>
 <body>
@@ -140,7 +181,55 @@ main { font-size: 26px;
 			  歌詞具有敘事性，情緒會隨時間演進有變化，因此透過BERT的全域自注意力機制，能識別出不同段落（主歌、副歌、橋段）之間的邏輯與情緒流動。</p>
 		<p>舉例：<br>(第一段)「天空下著雨，我獨自在街頭徘徊。」（局部：憂鬱）<br>(第二段)「直到遇見你，陽光終於穿透雲層。」（轉折）
 		<br>(第三段)「現在我懂了，所有的等待都是值得的。」（最終：滿足<br>BERT模型讀完全文後，會發現情緒從【負面】轉向【正面】，最終判定這首歌為【平靜/滿足】，而非被第一句的「雨」或「獨自」給誤導。</p>
-		
+
+
+
+
+
+
+<div class="card p-4 border-0 shadow-sm mb-4">
+  <h2 class="mb-4">流程</h2>
+
+  <div class="flow-container">
+
+    <!-- 第一段 -->
+    <div class="flow-box">
+      <h4>第一段</h4>
+      <p>
+        天空下著雨，<br>
+        我獨自在街頭徘徊
+      </p>
+      <span>（局部：難過／憂鬱）</span>
+    </div>
+
+    <!-- 箭頭 -->
+    <div class="arrow">→</div>
+
+    <!-- 第二段 -->
+    <div class="flow-box">
+      <h4>第二段</h4>
+      <p>
+        直到遇見你，<br>
+        陽光終於穿透雲層。
+      </p>
+      <span>（轉折）</span>
+    </div>
+
+    <!-- 箭頭 -->
+    <div class="arrow">→</div>
+
+    <!-- 第三段 -->
+    <div class="flow-box">
+      <h4>第三段</h4>
+      <p>
+        現在我懂了，<br>
+        所有的等待都是值得的。
+      </p>
+      <span>（最終：滿足）</span>
+    </div>
+
+  </div>
+</div>
 		
 
 <div class="card p-4 border-0 shadow-sm mb-4">
