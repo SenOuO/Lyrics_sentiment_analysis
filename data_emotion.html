@@ -63,6 +63,23 @@
 		h2 {font-weight: bold;
 		   text-align: center;
 		   margin:20px;}
+		.section-title {
+        display: inline-block;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #333; /* 原色 */
+        padding: 4px 15px;
+        margin-bottom: 15px;
+        
+        /* 框的設計：使用深色文青漸層邊框 */
+        border: 1.5px solid;
+        border-image: linear-gradient(to right, #2c3e50, #4ca1af, #2c3e50) 1;
+        
+        /* 讓文字也帶有一點點剛才的漸層回歸感 */
+        background: linear-gradient(to right, #333 0%, #4ca1af 50%, #333 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
     </style>
 </head>
 <body>
@@ -112,7 +129,7 @@
 	</div>
 
 	<div class="card p-4 border-0 shadow-sm mb-3">
-	    <h2>情緒維度</h2>
+	    <h2 class="section-title">情緒維度</h2>
 	    <p class="mb-3">
 	        情緒被視為一個<strong>連續而非離散</strong>的形容詞，維度模型比分類模型有著較低的歧義。因此在情緒分析中，常利用<strong> Valence </strong>與<strong> Arousal </strong>兩個維度來表示情緒:
 	    </p>
