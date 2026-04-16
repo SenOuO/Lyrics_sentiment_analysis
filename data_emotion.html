@@ -108,40 +108,41 @@
 		<h1 class="hero-title">情緒分類</h1>
 	</div>
 
+	<div class="card p-4 border-0 shadow-sm mb-3">
+	    <h2>情緒維度</h2>
+	    <p class="mb-3">
+	        情緒被視為一個<strong>連續而非離散</strong>的形容詞，維度模型比分類模型有著較低的歧義。因此在情緒分析中，常利用<strong> Valence </strong>與<strong> Arousal </strong>兩個維度來表示情緒:
+	    </p>
+	    <ul class="list-unstyled ps-0">
+	        <li class="d-flex mb-2">
+	            <strong style="flex-shrink: 0; white-space: nowrap;">Valence（情緒效價）：</strong>代表情緒的正負向程度，越往右表示情緒越正向(如:快樂、滿足)，越往左則表示情緒越負向(如:悲傷、憤怒)。
+	        </li>
+	        <li class="d-flex mb-0">
+	            <strong style="flex-shrink: 0; white-space: nowrap;">Arousal（情緒強度）：</strong>代表情緒的強度，越往上表示情緒越強烈(如:興奮、激動)，越往下則表示情緒較平靜(如:放鬆、平靜)。
+	        </li>
+	    </ul>
+	</div>
+	
 	<div class="card p-4 border-0 shadow-sm">
-		<h2>情緒維度</h2>
-		<div class="row align-items-center">
-			<div>
-			<p class="mb-3">
-				情緒被視為一個<strong>連續而非離散</strong>的形容詞，維度模型比分類模型有著較低的歧義。因此在情緒分析中，常利用<strong> Valence </strong>與<strong> Arousal </strong>兩個維度來表示情緒:
-			</p>
-			<ul class="list-unstyled ps-0">
-				<li class="d-flex mb-2">
-					<strong style="flex-shrink: 0; white-space: nowrap;">Valence（情緒效價）：</strong>代表情緒的正負向程度，越往右表示情緒越正向(如:快樂、滿足)，越往左則表示情緒越負向(如:悲傷、憤怒)。
-				</li>
-				<li class="d-flex mb-0">
-					<strong style="flex-shrink: 0; white-space: nowrap;">Arousal（情緒強度）：</strong>代表情緒的強度，越往上表示情緒越強烈(如:興奮、激動)，越往下則表示情緒較平靜(如:放鬆、平靜)。
-				</li>
-			</ul>
-			</div>
-			<div class="col-md-6">
-				<p class="mb-0">
-				根據這兩個維度，可以將情緒平面劃分為四個象限，使抽象的情緒概念能夠以數值與位置的方式具體化，以下為四種不同的情緒類型：
-				</p>
-				<ul>
-				<li><strong>Q1 快樂（High Valence / High Arousal）</strong></li>
-				<li><strong>Q2 憤怒（Low Valence / High Arousal）</strong></li>
-				<li><strong>Q3 悲傷（Low Valence / Low Arousal）</strong></li>
-				<li><strong>Q4 平靜（High Valence / Low Arousal）</strong></li>
-				</ul>
-				<p class="mb-0">
-				此模型由心理學家 <strong>Russell</strong> 提出，被廣泛應用於情緒分析與音樂情緒辨識研究。
-				</p>
-			</div>
-			<div class="col-md-6 text-end">
-				<img src="src\emotion.png" class="img-fluid" style="max-height:400px;">
-			</div>
-		</div>
+	    <div class="row align-items-center">
+	        <div class="col-md-6">
+	            <p class="mb-3">
+	                根據這兩個維度，可以將情緒平面劃分為四個象限，使抽象的情緒概念能夠以數值與位置的方式具體化，以下為四種不同的情緒類型：
+	            </p>
+	            <ul>
+	                <li><strong>Q1 快樂（High Valence / High Arousal）</strong></li>
+	                <li><strong>Q2 憤怒（Low Valence / High Arousal）</strong></li>
+	                <li><strong>Q3 悲傷（Low Valence / Low Arousal）</strong></li>
+	                <li><strong>Q4 平靜（High Valence / Low Arousal）</strong></li>
+	            </ul>
+	            <p class="mb-0 mt-3">
+	                此模型由心理學家 <strong>Russell</strong> 提出，被廣泛應用於情緒分析與音樂情緒辨識研究。
+	            </p>
+	        </div>
+	        <div class="col-md-6 text-end">
+	            <img src="src\emotion.png" class="img-fluid" style="max-height:400px;" alt="Emotion Dimensions">
+	        </div>
+	    </div>
 	</div>
 	
 </main>
