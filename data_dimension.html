@@ -196,27 +196,6 @@
 		         <span style='color : red;'>代表它的情緒解讀比較多元</span>、<span style='color : red;'>比較不固定</span>。</li>
 				 </ul>
     </div>
-	<div class="card p-4 border-0 shadow-sm mb-4">
-	<div class="d-flex align-items-start gap-4">
-		<div style="flex: 1; min-width: 300px;">
-			<h2 class="mb-4">中文單詞CVAW資料</h2>
-			  <div style="flex: 1; min-width: 400px; display: flex; justify-content: center;">
-			    <iframe 
-			      src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSIFMEEyiW3Bqvb-LEDryNQdOzIrgvbw8-hOng3khZsBC5ddW0D0yaZ1lRwUtiYtB5GxkySiIYTWAKq/pubhtml?widget=true&amp;headers=false" 
-			      width="72%" 
-			      height="400px"
-			      style="border:1px solid #ccc; border-radius:8px;zoom:1.5;">
-			    </iframe>
-			</div>
-		</div>
-	</div>
-			<ul>
-		    <li>Valence_Mean：愉悅程度平均值(連續數值1~9)。</li>	
-		    <li>Arousal_Mean：情緒強度平均值（連續數值1~9）。</li>
-		    <li>Valence_SD / Arousal_SD：反映語意的模糊程度。</li>
-		    </ul>
-		</div>
-	</div>
 	<h2 class="mb-4">中文片語CVAP</h2>
 	<div class="card p-4 border-0 shadow-sm mb-4">
 	    <p>片語會因不同副詞、語氣或語義組合而呈現不同的情緒強度。  </p>
@@ -227,37 +206,35 @@
 		</ul>
       
 	</div>
-	<div class="d-flex align-items-start gap-4">
-		<div style="flex: 1; min-width: 300px;">
-			<h2 class="mb-4">中文片語CVAP資料</h2>
-			  <div style="flex: 1; min-width: 400px; display: flex; justify-content: center;">
-			    <iframe 
-			      src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRcGccglh-OyCHVkrceVhMcN-zspA3pSUeOGqdXnB_2iqpeC97VI2-HSbDSd5jy7onLAKUCkMjYBgFh/pubhtml?widget=true&amp;headers=false" 
-			      width="72%" 
-			      height="400px"
-			      style="border:1px solid #ccc; border-radius:8px;zoom:1.5;">
-			    </iframe>
-			</div>
-		</div>
-	</div>
 	<div class="card p-4 border-0 shadow-sm mb-4">
-		<ul>
-		<li>Valence_Mean：愉悅程度平均值(連續數值1~9)。</li>	
-		<li>Arousal_Mean：情緒強度平均值（連續數值1~9）。</li>
-		<li>Valence_SD / Arousal_SD：反映語意的模糊程度。</li>
-		</ul>
-	</div>
-	<div class="hero-section">
-    <h1>詞典處理</h1>
-  </div>
+    <div class="d-flex flex-wrap align-items-start gap-4" style="justify-content: center; width: 100%;">
+        <div style="flex: 1; min-width: 400px; display: flex; justify-content: center;">
+            <iframe 
+                src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSIFMEEyiW3Bqvb-LEDryNQdOzIrgvbw8-hOng3khZsBC5ddW0D0yaZ1lRwUtiYtB5GxkySiIYTWAKq/pubhtml?widget=true&amp;headers=false" 
+                width="90%" 
+                height="400px" 
+                style="border:1px solid #ccc; border-radius:8px; zoom:1.1;">
+            </iframe>
+        </div>
 
-  <div class="flowchart">
-    <a class="step" href="#merge">資料整併</a>
-    <a class="step" href="#check">資料清理與轉換</a>
-    <a class="step" href="#convert">情緒建模</a>
-    <a class="step" href="#classify">分類優化</a>
-  </div>
+        <div style="flex: 1; min-width: 400px; display: flex; justify-content: center;">
+            <iframe 
+                src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRcGccglh-OyCHVkrceVhMcN-zspA3pSUeOGqdXnB_2iqpeC97VI2-HSbDSd5jy7onLAKUCkMjYBgFh/pubhtml?widget=true&amp;headers=false" 
+                width="90%" 
+                height="400px" 
+                style="border:1px solid #ccc; border-radius:8px; zoom:1.1;">
+            </iframe>
+        </div>
+    </div>
 
+    <div class="mt-4" style="display: flex; justify-content: center;">
+        <ul style="list-style-position: inside; padding: 0; text-align: center; line-height: 1.8;">
+            <li style="list-style: none;"><strong>Valence_Mean：</strong>愉悅程度平均值 (連續數值 1~9)。</li>   
+            <li style="list-style: none;"><strong>Arousal_Mean：</strong>情緒強度平均值 (連續數值 1~9)。</li>
+            <li style="list-style: none;"><strong>Valence_SD / Arousal_SD：</strong>反映語意的模糊程度。</li>
+        </ul>
+    </div>
+</div>
 <!-- Section 1 -->
 <div id="merge" class="section card p-4 border-0 shadow-sm mb-4">
   <h2>資料整併（單詞＋片語）</h2>
