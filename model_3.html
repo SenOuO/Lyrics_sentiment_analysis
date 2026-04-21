@@ -69,20 +69,24 @@
         h2 { font-weight: bold; margin: 20px; }
 
         /* =========================================
-           新增：流程圖專用樣式 (取代原本混亂的絕對定位)
+           流程圖專用樣式 (完美格線對齊版)
            ========================================= */
+        .flowchart-wrapper {
+            overflow-x: auto; /* 螢幕不夠寬時可滑動，確保不跑版 */
+            padding-bottom: 15px;
+        }
+
         .flowchart-container {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
+            gap: 20px; /* 統一間距 */
             background: transparent;
             padding: 20px 0;
             margin: 0 auto;
-            overflow-x: auto;
+            min-width: 1100px; /* 確保電腦版有足夠空間展示 */
         }
 
-        /* 統一的方框樣式 */
         .chart-box {
             background-color: #fff;
             border: 2px solid #198754;
@@ -93,35 +97,11 @@
             position: relative;
             z-index: 2;
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            overflow: hidden; /* 讓內部的線條不會超出圓角 */
         }
 
-        /* 讓方框內的 hr 分隔線可以完美貼齊左右邊框 */
-        .chart-box hr {
-            margin: 12px -1rem; /* 配合 Bootstrap 的 p-3 (1rem padding) */
-            border: 0;
-            border-top: 2px solid #198754;
-            opacity: 1;
-        }
-
-        .col-start { display: flex; flex-direction: column; align-items: center; gap: 15px; }
-        .col-branches { display: flex; flex-direction: column; gap: 40px; position: relative; }
-        .branch-row { display: flex; align-items: center; gap: 10px; }
-        
-        .bert-box {
-            border: 2px solid #198754;
-            border-radius: 12px;
-            padding: 80px 20px;
-            text-align: center;
-            font-size: 1.3rem;
-            font-weight: bold;
-            background-color: #fff;
-            z-index: 2;
-            line-height: 1.5;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-        }
-
-        .label-text { font-size: 1.1rem; font-weight: bold; text-align: center; line-height: 1.4; }
-        .context-text { font-size: 1.1rem; font-weight: bold; text-align: center; min-width: 140px; line-height: 1.4; }
+        .label-text { font-size: 1.15rem; font-weight: bold; text-align: center; line-height: 1.4; }
+        .context-text { font-size: 1.15rem; font-weight: bold; text-align: center; min-width: 140px; line-height: 1.4; }
         
         /* 一般水平箭頭 */
         .arrow-line { height: 2px; background-color: #000; position: relative; z-index: 1; }
@@ -173,7 +153,7 @@
 
 <main class="container content-section">
     <div class="hero-section">
-        <h1 class="hero-title">BERT微調【VA值】</h1>
+        <h1 class="hero-title"><strong>BERT微調【VA值】</strong></h1>
     </div>
     <div class="card p-4 border-0 shadow-sm">
         <p style="text-indent:2em;">
@@ -193,74 +173,93 @@
         </p>
     </div>
 
-    <div class="card p-4 border-0 shadow-sm  mt-4">
-        <h2 class="mb-4">♬判斷方式</h2>
+    <div class="card p-4 border-0 shadow-sm mt-4">
+        <h2 class="mb-4"><strong>♬流程</strong></h2>
         <p style="text-indent:2em;">
         模型一開始會讀取歌詞中的詞彙與其原始 VA 值（如「眼淚」），接著BERT 會去看前後語境，例如「終於」或「離開」這些關鍵詞，最後再根據這些語境去調整 VA 值，讓情緒判斷更貼近歌詞真正的意思。
         </p>
-        <div class="d-none d-lg-flex justify-content-center w-100 my-4">
+        <br>
+        
+        <div class="d-none d-lg-flex justify-content-center w-100 my-4 flowchart-wrapper">
             <div class="flowchart-container">
-                <div class="col-start">
-                    <div class="chart-box p-3">
+                
+                <div class="chart-box p-0 d-flex flex-column" style="width: 150px; height: 140px;">
+                    <div class="flex-fill d-flex align-items-center justify-content-center px-2">
                         <strong>眼淚</strong>
-                        <hr>
-                        VA值<br>(-2.0，1.0)
+                    </div>
+                    <div style="height: 2px; background-color: #198754; width: 100%;"></div>
+                    <div class="flex-fill d-flex align-items-center justify-content-center px-2">
+                        <strong>VA值<br>(-2.0，1.0)</strong>
                     </div>
                 </div>
 
-                <div style="position: relative; display: flex; align-items: center; width: 100px;">
-                    <div class="label-text position-absolute" style="top: 0px; left: 15px;">久別<br>重逢</div>
-                    <div class="label-text position-absolute" style="bottom: 0px; left: 15px;">失戀<br>分手</div>
-                    <svg viewBox="0 0 100 200" style="width: 100%; height: 200px;" preserveAspectRatio="none">
+                <div style="position: relative; width: 100px; height: 320px;">
+                    <div class="label-text position-absolute" style="top: 45px; left: 10px;"><strong>久別<br>重逢</strong></div>
+                    <div class="label-text position-absolute" style="bottom: 45px; left: 10px;"><strong>失戀<br>分手</strong></div>
+                    <svg viewBox="0 0 100 320" style="width: 100%; height: 100%;" preserveAspectRatio="none">
                         <defs>
                             <marker id="arrow-va" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
                                 <path d="M 0 1 L 10 5 L 0 9 z" fill="#000" />
                             </marker>
                         </defs>
-                        <path d="M 0 100 L 95 35" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrow-va)" />
-                        <path d="M 0 100 L 95 165" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrow-va)" />
+                        <path d="M 0 160 L 95 70" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrow-va)" />
+                        <path d="M 0 160 L 95 250" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrow-va)" />
                     </svg>
                 </div>
 
-                <div class="col-branches">
-                    <div class="branch-row">
-                        <div class="chart-box p-3">
-                            「終於等到你，<br>流下了眼淚...」
-                            <hr>
-                            VA值<br>(-2.0，1.0)
+                <div style="display: flex; flex-direction: column; gap: 40px;">
+                    <div class="chart-box p-0 d-flex flex-column" style="width: 240px; height: 140px;">
+                        <div class="flex-fill d-flex align-items-center justify-content-center px-2">
+                            <strong>「終於等到你，<br>流下了眼淚...」</strong>
                         </div>
-                        <div class="arrow-line" style="width: 30px;"></div>
+                        <div style="height: 2px; background-color: #198754; width: 100%;"></div>
+                        <div class="flex-fill d-flex align-items-center justify-content-center px-2">
+                            <strong>VA值<br>(-2.0，1.0)</strong>
+                        </div>
                     </div>
-                    <div class="branch-row">
-                        <div class="chart-box p-3">
-                            「你轉身離開，<br>只剩下眼淚...」
-                            <hr>
-                            VA值<br>(-2.5，1.0)
+                    <div class="chart-box p-0 d-flex flex-column" style="width: 240px; height: 140px;">
+                        <div class="flex-fill d-flex align-items-center justify-content-center px-2">
+                            <strong>「你轉身離開，<br>只剩下眼淚...」</strong>
                         </div>
-                        <div class="arrow-line" style="width: 30px;"></div>
+                        <div style="height: 2px; background-color: #198754; width: 100%;"></div>
+                        <div class="flex-fill d-flex align-items-center justify-content-center px-2">
+                            <strong>VA值<br>(-2.5，1.0)</strong>
+                        </div>
                     </div>
                 </div>
 
-                <div class="col-bert">
-                    <div class="bert-box">BERT<br><br>微調</div>
+                <div style="display: flex; flex-direction: column; gap: 40px;">
+                    <div style="height: 140px; display: flex; align-items: center;">
+                        <div class="arrow-line" style="width: 25px;"></div>
+                    </div>
+                    <div style="height: 140px; display: flex; align-items: center;">
+                        <div class="arrow-line" style="width: 25px;"></div>
+                    </div>
                 </div>
 
-                <div class="col-branches">
-                    <div class="branch-row">
-                        <div class="arrow-line" style="width: 30px;"></div>
-                        <div class="context-text">偵測語境<br>[終於]</div>
-                        <div class="arrow-line" style="width: 30px;"></div>
-                        <div class="chart-box p-3">
-                            VA值<br>(3.5，3.0)
-                        </div>
+                <div class="chart-box d-flex align-items-center justify-content-center" style="width: 120px; height: 320px; font-size: 1.4rem;">
+                    <strong>BERT<br><br>微調</strong>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 40px;">
+                    <div style="height: 140px; display: flex; align-items: center; gap: 10px;">
+                        <div class="arrow-line" style="width: 25px;"></div>
+                        <div class="context-text"><strong>偵測語境<br>[終於]</strong></div>
+                        <div class="arrow-line" style="width: 25px;"></div>
                     </div>
-                    <div class="branch-row">
-                        <div class="arrow-line" style="width: 30px;"></div>
-                        <div class="context-text">偵測語境<br>[離開]、[只剩下]</div>
-                        <div class="arrow-line" style="width: 30px;"></div>
-                        <div class="chart-box p-3">
-                            VA值<br>(-3.8，-1.5)
-                        </div>
+                    <div style="height: 140px; display: flex; align-items: center; gap: 10px;">
+                        <div class="arrow-line" style="width: 25px;"></div>
+                        <div class="context-text"><strong>偵測語境<br>[離開]、[只剩下]</strong></div>
+                        <div class="arrow-line" style="width: 25px;"></div>
+                    </div>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 40px;">
+                    <div class="chart-box d-flex align-items-center justify-content-center" style="width: 180px; height: 140px;">
+                        <strong>VA值<br>(3.5，3.0)</strong>
+                    </div>
+                    <div class="chart-box d-flex align-items-center justify-content-center" style="width: 180px; height: 140px;">
+                        <strong>VA值<br>(-3.8，-1.5)</strong>
                     </div>
                 </div>
             </div>
@@ -268,55 +267,55 @@
 
         <div class="d-block d-lg-none my-4">
             <div class="chart-box p-3 mb-3 text-start">
-                <strong>輸入：</strong>眼淚 → VA值 (-2.0, 1.0)<br>
-                <strong>核心：</strong>導入 BERT 微調模型
+                <strong>輸入：</strong><strong>眼淚</strong> → <strong>VA值 (-2.0, 1.0)</strong><br>
+                <strong>核心：</strong><strong>導入 BERT 微調模型</strong>
             </div>
             <div class="chart-box p-3 mb-3 text-start">
                 <strong>情境一：久別重逢</strong><br>
-                「終於等到你，流下了眼淚...」<br>
-                → 偵測語境 [終於]<br>
-                <hr>
-                <strong>輸出：</strong>VA值 (3.5, 3.0)
+                <strong>「終於等到你，流下了眼淚...」</strong><br>
+                → <strong>偵測語境 [終於]</strong><br>
+                <hr style="border-top: 2px solid #198754; margin: 10px 0;">
+                <strong>輸出：</strong><strong>VA值 (3.5, 3.0)</strong>
             </div>
             <div class="chart-box p-3 text-start">
                 <strong>情境二：失戀分手</strong><br>
-                「你轉身離開，只剩下眼淚...」<br>
-                → 偵測語境 [離開]、[只剩下]<br>
-                <hr>
-                <strong>輸出：</strong>VA值 (-3.8, -1.5)
+                <strong>「你轉身離開，只剩下眼淚...」</strong><br>
+                → <strong>偵測語境 [離開]、[只剩下]</strong><br>
+                <hr style="border-top: 2px solid #198754; margin: 10px 0;">
+                <strong>輸出：</strong><strong>VA值 (-3.8, -1.5)</strong>
             </div>
         </div>
     </div>
     
 
     <div class="card p-4 border-0 shadow-sm mt-4">
-        <h2 class="mb-4">♬混淆矩陣分析</h2>        
+        <h2 class="mb-4"><strong>♬混淆矩陣分析</strong></h2>        
         <p>此圖為<strong>VA 值微調模型</strong>的混淆矩陣，用來觀察模型在四個情緒象限（Q1～Q4）上的分類表現。</p>
         <div class="row align-items-center">
             <div class="col-md-3">
                 <p><strong>四象限預測正確數量</strong>:<br>
-                    Q1：15筆<br>
-                    Q2：16筆<br>
-                    Q3：14筆<br>
-                    Q4：6筆<br>
+                    <strong>Q1：15筆</strong><br>
+                    <strong>Q2：16筆</strong><br>
+                    <strong>Q3：14筆</strong><br>
+                    <strong>Q4：6筆</strong><br>
                 </p>
             </div>
             <div class="col-md-3">
                 <ul>
-                    <li><strong>總樣本數：</strong>108</li>
-                    <li><strong>預測正確筆數：</strong>51</li>
-                    <li><strong>成功機率：</strong>47.22%</li>
+                    <li><strong>總樣本數：</strong><strong>108</strong></li>
+                    <li><strong>預測正確筆數：</strong><strong>51</strong></li>
+                    <li><strong>成功機率：</strong><strong>47.22%</strong></li>
                 </ul>
             </div>
 
             <div class="col-md-6 text-center">
                 <img src="src/model_3.png" class="img-fluid" style="max-height:400px;" alt="VA值微調混淆矩陣">
-                <p class="mt-2 small" style="font-size: 20px;">圖8、VA值微調的混淆矩陣</p>
+                <p class="mt-2 small" style="font-size: 20px;"><strong>圖8、VA值微調的混淆矩陣</strong></p>
             </div>
         </div>            
         <p>在四個象限中，<strong>Q2（憤怒／焦慮）</strong> 表現最佳，正確預測為 <strong>16 筆</strong>，<strong>Q1（快樂／興奮）</strong>次之，正確預測為 <strong>15 筆</strong>，顯示模型對於<strong>高能量負向情緒</strong>具有較好的辨識能力。</p>      
-        <p><strong>Q3（悲傷／沮喪）</strong> 正確預測為 <strong>14 筆</strong>， 但有 <strong>7 筆</strong> 被誤判為 Q4， 代表模型容易將「低能量負向情緒」誤判為「低能量正向情緒」， 在<strong>Valence（正負）判斷</strong>上出現偏移。</p>          
-        <p><strong>Q4（平靜／滿足）</strong> 表現相對較弱，正確預測為 <strong>6 筆</strong>， 其中有 <strong>12 筆</strong> 被誤判為 Q3， 顯示模型在「低能量情緒」之間容易混淆， 特別是在<strong>正向與負向的邊界</strong>上判斷不穩定。</p>
+        <p><strong>Q3（悲傷／沮喪）</strong> 正確預測為 <strong>14 筆</strong>， 但有 <strong>7 筆</strong> 被誤判為 <strong>Q4</strong>， 代表模型容易將「低能量負向情緒」誤判為「低能量正向情緒」， 在<strong>Valence（正負）判斷</strong>上出現偏移。</p>          
+        <p><strong>Q4（平靜／滿足）</strong> 表現相對較弱，正確預測為 <strong>6 筆</strong>， 其中有 <strong>12 筆</strong> 被誤判為 <strong>Q3</strong>， 顯示模型在「低能量情緒」之間容易混淆， 特別是在<strong>正向與負向的邊界</strong>上判斷不穩定。</p>
         <p> 整體而言，模型在<strong>高強度情緒（Q1、Q2）</strong>的辨識表現較佳， 但在<strong>低強度情緒（Q3、Q4）</strong>上仍存在明顯混淆， 尤其容易在 <strong>Valence（正負）</strong> 與 <strong>Arousal（強度）</strong> 之間產生判斷偏移。</p>
     </div>   
 </main>
@@ -335,7 +334,6 @@
 <script>
     const btn = document.getElementById("backToTop");
 
-    // 滾動時顯示按鈕
     window.onscroll = function () {
         if (document.documentElement.scrollTop > 200) {
             btn.style.display = "block";
@@ -344,7 +342,6 @@
         }
     };
 
-    // 點擊回到最上方
     btn.onclick = function () {
         window.scrollTo({
             top: 0,
