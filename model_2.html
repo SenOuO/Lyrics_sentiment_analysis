@@ -272,7 +272,6 @@
         <p style="text-indent:2em;">  傳統情緒詞典的限制在於，詞彙通常被固定標記在單一情緒類別中，無法隨語境變化而調整。為了解決這個問題，本研究導入 BERT 作為詞典的「語境雷達」，讓模型能根據上下文理解詞彙在歌詞中的實際情緒。</p>
         <ul>
             <li>傳統詞典：「眼淚」這個詞被貼上了悲傷的標籤。只要歌詞出現眼淚，系統就會判定這首歌是難過的。</li>
-            <br>
             <li>BERT模型：讀取語境並進行動態微調。當模型讀到上下文關係，例如：「終於等到你，流下了眼淚」，雷達偵測到了「終於」和「等到」代表圓滿的詞彙，理解當下的氣氛是喜悅的，於是把「眼淚」動態歸類為【快樂】（喜極而泣）。達到去標籤化，由它身處的歌詞環境來決定它的情緒身分。</li>
         </ul>
     </div>
@@ -291,10 +290,16 @@
                 </div>
 
                 <svg class="svg-lines" viewBox="0 0 60 160" preserveAspectRatio="none">
-                    <path d="M 0 80 L 55 25" stroke="black" stroke-width="2" fill="none" />
-                    <polygon points="56,24 48,22 58,16" fill="black" transform="rotate(35 55 25)" />
-                    <path d="M 0 80 L 55 135" stroke="black" stroke-width="2" fill="none" />
-                    <polygon points="56,136 48,138 58,144" fill="black" transform="rotate(-35 55 135)" />
+                    <defs>
+                        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+                                markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+                            <path d="M 0 1 L 10 5 L 0 9 z" fill="#000" />
+                        </marker>
+                    </defs>
+                    
+                    <path d="M 2 80 L 55 25" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+                    
+                    <path d="M 2 80 L 55 135" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrow)" />
                 </svg>
 
                 <div class="col-branches">
