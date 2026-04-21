@@ -101,7 +101,7 @@
         }
 
         .label-text { font-size: 1.15rem; font-weight: bold; text-align: center; line-height: 1.4; }
-        .context-text { font-size: 1.15rem; font-weight: bold; text-align: center; min-width: 140px; line-height: 1.4; }
+        .context-text { font-size: 1.15rem; font-weight: bold; text-align: center; line-height: 1.4; }
         
         /* 一般水平箭頭 */
         .arrow-line { height: 2px; background-color: #000; position: relative; z-index: 1; }
@@ -153,7 +153,7 @@
 
 <main class="container content-section">
     <div class="hero-section">
-        <h1 class="hero-title">BERT微調【VA值】</strong></h1>
+        <h1 class="hero-title"><strong>BERT微調【VA值】</strong></h1>
     </div>
     <div class="card p-4 border-0 shadow-sm">
         <p style="text-indent:2em;">
@@ -242,22 +242,38 @@
                 <div style="display: flex; flex-direction: column; gap: 40px;">
                     <div style="height: 140px; display: flex; align-items: center; gap: 10px;">
                         <div class="arrow-line" style="width: 25px;"></div>
-                        <div class="context-text"><strong>偵測語境<br>   [終於]   </strong></div>
+                        <div class="context-text" style="display: flex; align-items: center; justify-content: center; height: 100px; width: 180px;">
+                            <span><strong>偵測語境<br>[終於]</strong></span>
+                        </div>
                         <div class="arrow-line" style="width: 25px;"></div>
                     </div>
                     <div style="height: 140px; display: flex; align-items: center; gap: 10px;">
                         <div class="arrow-line" style="width: 25px;"></div>
-                        <div class="context-text"><strong>偵測語境<br>[離開]、[只剩下]</strong></div>
+                        <div class="context-text" style="display: flex; align-items: center; justify-content: center; height: 100px; width: 180px;">
+                            <span><strong>偵測語境<br>[離開]、[只剩下]</strong></span>
+                        </div>
                         <div class="arrow-line" style="width: 25px;"></div>
                     </div>
                 </div>
 
                 <div style="display: flex; flex-direction: column; gap: 40px;">
-                    <div class="chart-box d-flex align-items-center justify-content-center" style="width: 180px; height: 140px;">
-                        <strong>VA值<br>(3.5，3.0)</strong>
+                    <div class="chart-box p-0 d-flex flex-column" style="width: 160px; height: 140px;">
+                        <div class="flex-fill d-flex align-items-center justify-content-center px-2">
+                            <strong>眼淚</strong>
+                        </div>
+                        <div style="height: 2px; background-color: #198754; width: 100%;"></div>
+                        <div class="flex-fill d-flex align-items-center justify-content-center px-2">
+                            <strong>VA值<br>(3.5，3.0)</strong>
+                        </div>
                     </div>
-                    <div class="chart-box d-flex align-items-center justify-content-center" style="width: 180px; height: 140px;">
-                        <strong>VA值<br>(-3.8，-1.5)</strong>
+                    <div class="chart-box p-0 d-flex flex-column" style="width: 160px; height: 140px;">
+                        <div class="flex-fill d-flex align-items-center justify-content-center px-2">
+                            <strong>眼淚</strong>
+                        </div>
+                        <div style="height: 2px; background-color: #198754; width: 100%;"></div>
+                        <div class="flex-fill d-flex align-items-center justify-content-center px-2">
+                            <strong>VA值<br>(-3.8，-1.5)</strong>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -273,14 +289,14 @@
                 <strong>「終於等到你，流下了眼淚...」</strong><br>
                 → <strong>偵測語境 [終於]</strong><br>
                 <hr style="border-top: 2px solid #198754; margin: 10px 0;">
-                <strong>輸出：</strong><strong>VA值 (3.5, 3.0)</strong>
+                <strong>輸出：</strong><strong>眼淚</strong> → <strong>VA值 (3.5, 3.0)</strong>
             </div>
             <div class="chart-box p-3 text-start">
                 <strong>情境二：失戀分手</strong><br>
                 <strong>「你轉身離開，只剩下眼淚...」</strong><br>
                 → <strong>偵測語境 [離開]、[只剩下]</strong><br>
                 <hr style="border-top: 2px solid #198754; margin: 10px 0;">
-                <strong>輸出：</strong><strong>VA值 (-3.8, -1.5)</strong>
+                <strong>輸出：</strong><strong>眼淚</strong> → <strong>VA值 (-3.8, -1.5)</strong>
             </div>
         </div>
     </div>
