@@ -110,19 +110,24 @@
         }
 
         /* --- 新增：流程圖專用樣式 --- */
+        .flowchart-wrapper {
+            overflow-x: auto;
+        }
+
         .flowchart-container {
             display: flex;
             align-items: center;
-            gap: 15px;
+            justify-content: center; /* 置中對齊 */
+            gap: 20px; /* 統一間距 */
             background: transparent;
             padding: 20px 0;
             margin: 0 auto;
-            overflow-x: auto;
+            min-width: 1000px; /* 確保內容不會擠在一起 */
         }
 
         .chart-box {
             background-color: #fff;
-            border: 2px solid #198754; /* 配合您的 Bootstrap success 綠色 */
+            border: 2px solid #198754; 
             border-radius: 12px;
             padding: 15px 20px;
             text-align: center;
@@ -132,6 +137,15 @@
             position: relative;
             z-index: 2;
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            display: flex;             /* 新增：使用 Flexbox 讓內容置中 */
+            align-items: center;       /* 新增：垂直置中 */
+            justify-content: center;   /* 新增：水平置中 */
+        }
+
+        /* 新增：固定結果方塊的大小 */
+        .result-box {
+            width: 200px; 
+            height: 100px;
         }
 
         .col-start {
@@ -144,7 +158,7 @@
         .col-branches {
             display: flex;
             flex-direction: column;
-            gap: 50px;
+            gap: 50px; 
             position: relative;
         }
 
@@ -186,7 +200,7 @@
         .context-text {
             font-size: 1.2rem;
             text-align: center;
-            min-width: 140px;
+            min-width: 160px; /* 稍微加寬以容納文字 */
             line-height: 1.4;
             font-weight: bold;
         }
@@ -282,7 +296,7 @@
         首先，模型會讀取歌詞中的關鍵詞（例如「眼淚」），並將其輸入到 BERT 模型中。接著，BERT 會根據整句歌詞的語境進行理解，例如判斷是「久別重逢」還是「失戀分手」的情境。在理解語境後，模型會偵測關鍵詞周圍的語意線索，例如「終於」、「等到」或「離開」、「只剩下」等詞，用來判斷當下的情緒方向。最後，系統會依據語境進行動態情緒分類，將原本可能被固定為「悲傷」的詞（如眼淚），重新判斷為「快樂／感動」或「悲傷」，讓情緒判斷更貼近真實語意。
         </p>
 
-        <div class="d-none d-lg-flex justify-content-center w-100 my-4">
+        <div class="d-none d-lg-flex justify-content-center w-100 my-4 flowchart-wrapper">
             <div class="flowchart-container">
                 <div class="col-start">
                     <div class="chart-box">眼<br><br>淚</div>
@@ -322,15 +336,19 @@
                 <div class="col-branches">
                     <div class="branch-row">
                         <div class="arrow-line" style="width: 20px;"></div>
-                        <div class="context-text">偵測語境<br>[終於]、[等到]</div>
+                        <div class="context-text" style="display: flex; align-items: center; justify-content: center; height: 100px;">
+                            <span>偵測語境<br>[終於]、[等到]</span>
+                        </div>
                         <div class="arrow-line"></div>
-                        <div class="chart-box">動態歸類<br>[快樂／感動]</div>
+                        <div class="chart-box result-box">動態歸類<br>[快樂／感動]</div>
                     </div>
                     <div class="branch-row">
                         <div class="arrow-line" style="width: 20px;"></div>
-                        <div class="context-text">偵測語境<br>[離開]、[只剩下]</div>
+                         <div class="context-text" style="display: flex; align-items: center; justify-content: center; height: 100px;">
+                           <span>偵測語境<br>[離開]、[只剩下]</span>
+                        </div>
                         <div class="arrow-line"></div>
-                        <div class="chart-box">動態歸類<br>[悲傷]</div>
+                        <div class="chart-box result-box">動態歸類<br>[悲傷]</div>
                     </div>
                 </div>
             </div>
