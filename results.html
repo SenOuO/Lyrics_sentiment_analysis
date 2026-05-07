@@ -786,9 +786,10 @@ document.getElementById('feedback-form').addEventListener('submit', async functi
         m5_result: res.model5 || "無",
         
         // 使用者意見
-        user_label: finalEmotion, // 你之前處理過的變數
-        accurate_models: accurateModels.join(', '), // 你之前處理過的變數
-        timestamp: new Date().toLocaleString()
+        user_label: finalEmotion, 
+        accurate_models: accurateModels.join(', '), 
+        execution_time: parseFloat(window.lastExecutionTime) || 0.0,
+   		timestamp: new Date().toLocaleString() 
     };
 
     console.log("準備傳送的回饋資料：", feedbackData);
