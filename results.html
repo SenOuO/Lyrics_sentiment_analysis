@@ -135,14 +135,14 @@
     <div class="card p-4 border-0 shadow-sm">
         <div class="row">
             <div class="col-md-5 border-end">
-                <h4 class="mb-3">歌曲資訊輸入</h4>
+                <h4 class="mb-3 fw-bold">歌曲資訊輸入</h4>
 
 <ul class="nav nav-tabs mb-3" id="inputModeTabs" role="tablist">
     <li class="nav-item" role="presentation">
-        <button class="nav-link active " id="search-tab" data-bs-toggle="tab" data-bs-target="#search-pane" type="button" role="tab" aria-selected="true" style="color: black !important;">網搜歌詞</button>
+        <button class="nav-link active py-1 px-3" id="search-tab" data-bs-toggle="tab" data-bs-target="#search-pane" type="button" role="tab" aria-selected="true" style="color: black !important;font-size: 1.5rem;"">網搜歌詞</button>
     </li>
     <li class="nav-item" role="presentation">
-        <button class="nav-link " id="paste-tab" data-bs-toggle="tab" data-bs-target="#paste-pane" type="button" role="tab" aria-selected="false" style="color: black !important;">貼上歌詞</button>
+        <button class="nav-link py-1 px-3" id="paste-tab" data-bs-toggle="tab" data-bs-target="#paste-pane" type="button" role="tab" aria-selected="false" style="color: black !important;font-size: 1.5rem;"">貼上歌詞</button>
     </li>
 </ul>
 
@@ -153,11 +153,11 @@
             <div class="mb-4">
                 <label class="form-label text-muted" style="font-size: 1.0em;">快速選擇 (預設歌曲)</label>
                 <div class="d-flex flex-wrap gap-2">
-                    <button type="button" class="btn btn-outline-secondary btn-sm quick-pick" data-song="我只在乎你" data-singer="鄧麗君">我只在乎你</button>
-                    <button type="button" class="btn btn-outline-secondary btn-sm quick-pick" data-song="愛你" data-singer="陳芳語">愛你</button>
-                    <button type="button" class="btn btn-outline-secondary btn-sm quick-pick" data-song="痴心絕對" data-singer="李聖傑">痴心絕對</button>
-                    <button type="button" class="btn btn-outline-secondary btn-sm quick-pick" data-song="一場遊戲一場夢" data-singer="王傑">一場遊戲一場夢</button>
-                    <button type="button" class="btn btn-outline-secondary btn-sm quick-pick" data-song="左邊的人" data-singer="陳華">左邊的人</button>
+                    <button type="button" class="btn btn-outline-secondary quick-pick" style="font-size: 1.1rem;" data-song="我只在乎你" data-singer="鄧麗君">我只在乎你</button>
+                    <button type="button" class="btn btn-outline-secondary quick-pick" style="font-size: 1.1rem;" data-song="愛你" data-singer="陳芳語">愛你</button>
+                    <button type="button" class="btn btn-outline-secondary quick-pick" style="font-size: 1.1rem;" data-song="痴心絕對" data-singer="李聖傑">痴心絕對</button>
+                    <button type="button" class="btn btn-outline-secondary quick-pick" style="font-size: 1.1rem;" data-song="一場遊戲一場夢" data-singer="王傑">一場遊戲一場夢</button>
+                    <button type="button" class="btn btn-outline-secondary quick-pick" style="font-size: 1.1rem;" data-song="左邊的人" data-singer="陳華">左邊的人</button>
                 </div>
             </div>
             <div class="mb-3">
@@ -177,10 +177,10 @@
             </div>
             <div class="row">
                 <div class="col-6 mb-3">
-                    <input type="text" class="form-control form-control-sm" id="paste-song" placeholder="歌名 (選填，方便記錄)">
+                    <input type="text" class="form-control" id="paste-song" placeholder="歌名 (選填，方便記錄)">
                 </div>
                 <div class="col-6 mb-3">
-                    <input type="text" class="form-control form-control-sm" id="paste-singer" placeholder="歌手 (選填)">
+                    <input type="text" class="form-control" id="paste-singer" placeholder="歌手 (選填)">
                 </div>
             </div>
         </div>
@@ -191,7 +191,7 @@
 </form>
             </div>
             <div class="col-md-7 ps-md-4 mt-4 mt-md-0">
-                <h4 class="mb-3">網路抓取歌詞結果</h4>
+                <h4 class="mb-3 fw-bold">網路抓取歌詞結果</h4>
                 <div id="crawl-info" class="mb-2 p-2 border-start border-4 border-info bg-light" style="display: none;">
                     <div style="font-size: 0.9rem; color: #666;">系統實際抓取到：</div>
                     <div class="fw-bold text-dark" style="font-size: 1.1rem;">
