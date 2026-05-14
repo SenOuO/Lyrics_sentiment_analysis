@@ -135,28 +135,60 @@
     <div class="card p-4 border-0 shadow-sm">
         <div class="row">
             <div class="col-md-5 border-end">
-                <h4 class="mb-3">歌曲資訊輸入(盡量使用中文歌)</h4>
-                <div class="mb-4">
-                <label class="form-label text-muted" style="font-size: 1.0em;">快速選擇</label>
-                    <div class="d-flex flex-wrap gap-2">
-                        <button type="button" class="btn btn-outline-secondary btn-sm quick-pick" data-song="我只在乎你" data-singer="鄧麗君">我只在乎你</button>
-                        <button type="button" class="btn btn-outline-secondary btn-sm quick-pick" data-song="愛你" data-singer="陳芳語">愛你</button>
-                        <button type="button" class="btn btn-outline-secondary btn-sm quick-pick" data-song="痴心絕對" data-singer="李聖傑">痴心絕對</button>
-                        <button type="button" class="btn btn-outline-secondary btn-sm quick-pick" data-song="一場遊戲一場夢" data-singer="王傑">一場遊戲一場夢</button>
-                        <button type="button" class="btn btn-outline-secondary btn-sm quick-pick" data-song="左邊的人" data-singer="陳華">左邊的人</button>
-                    </div>
+                <h4 class="mb-3">歌曲資訊輸入(請使用中文歌)</h4>
+
+<ul class="nav nav-tabs mb-3" id="inputModeTabs" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active fw-bold" id="search-tab" data-bs-toggle="tab" data-bs-target="#search-pane" type="button" role="tab" aria-selected="true" style="color: var(--primary-color);">網搜歌詞</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link fw-bold" id="paste-tab" data-bs-toggle="tab" data-bs-target="#paste-pane" type="button" role="tab" aria-selected="false" style="color: var(--primary-color);">直接貼上</button>
+    </li>
+</ul>
+
+<form id="predict-form">
+    <div class="tab-content" id="inputModeTabsContent">
+        
+        <div class="tab-pane fade show active" id="search-pane" role="tabpanel" aria-labelledby="search-tab">
+            <div class="mb-4">
+                <label class="form-label text-muted" style="font-size: 1.0em;">快速選擇 (預設歌曲)</label>
+                <div class="d-flex flex-wrap gap-2">
+                    <button type="button" class="btn btn-outline-secondary btn-sm quick-pick" data-song="我只在乎你" data-singer="鄧麗君">我只在乎你</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm quick-pick" data-song="愛你" data-singer="陳芳語">愛你</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm quick-pick" data-song="痴心絕對" data-singer="李聖傑">痴心絕對</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm quick-pick" data-song="一場遊戲一場夢" data-singer="王傑">一場遊戲一場夢</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm quick-pick" data-song="左邊的人" data-singer="陳華">左邊的人</button>
                 </div>
-                <form id="predict-form">
-                    <div class="mb-3">
-                        <label for="song" class="form-label">歌名</label>
-                        <input type="text" class="form-control" id="song" placeholder="例如：稻香">
-                    </div>
-                    <div class="mb-3">
-                        <label for="singer" class="form-label">歌手 <span class="text-muted" style="font-size: 0.85em;">(選填)</span></label>
-                        <input type="text" class="form-control" id="singer" placeholder="例如：周杰倫">
-                    </div>
-                    <button type="submit" id="submit-btn" class="btn btn-gradient w-100">開始預測並抓取歌詞</button>
-                </form>
+            </div>
+            <div class="mb-3">
+                <label for="song" class="form-label">歌名</label>
+                <input type="text" class="form-control" id="song" placeholder="例如：稻香">
+            </div>
+            <div class="mb-3">
+                <label for="singer" class="form-label">歌手 <span class="text-muted" style="font-size: 0.85em;">(選填)</span></label>
+                <input type="text" class="form-control" id="singer" placeholder="例如：周杰倫">
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="paste-pane" role="tabpanel" aria-labelledby="paste-tab">
+            <div class="mb-3">
+                <label for="pasted-lyrics" class="form-label">自訂歌詞內容</label>
+                <textarea class="form-control" id="pasted-lyrics" rows="7" placeholder="請在此處貼上完整的歌詞..."></textarea>
+            </div>
+            <div class="row">
+                <div class="col-6 mb-3">
+                    <input type="text" class="form-control form-control-sm" id="paste-song" placeholder="歌名 (選填，方便記錄)">
+                </div>
+                <div class="col-6 mb-3">
+                    <input type="text" class="form-control form-control-sm" id="paste-singer" placeholder="歌手 (選填)">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <button type="submit" id="submit-btn" class="btn btn-gradient w-100 mt-2">開始預測</button>
+</form>
             </div>
             <div class="col-md-7 ps-md-4 mt-4 mt-md-0">
                 <h4 class="mb-3">網路抓取歌詞結果</h4>
@@ -361,6 +393,11 @@ const BASE_URL = "https://jerlene-unobjective-zina.ngrok-free.dev";
 // 快速點選按鈕的事件綁定
 document.querySelectorAll('.quick-pick').forEach(button => {
     button.onclick = function() {
+        // 確保切換回「網搜歌詞」的頁籤
+        const searchTabNode = document.getElementById('search-tab');
+        const searchTab = new bootstrap.Tab(searchTabNode);
+        searchTab.show();
+
         // 1. 自動填入輸入框
         document.getElementById('song').value = this.getAttribute('data-song');
         document.getElementById('singer').value = this.getAttribute('data-singer');
@@ -372,93 +409,114 @@ document.querySelectorAll('.quick-pick').forEach(button => {
 
 document.getElementById('predict-form').addEventListener('submit', async function(event) {
     event.preventDefault();
-    const songName = document.getElementById('song').value.trim();
-    const singerName = document.getElementById('singer').value.trim();
+    
+    // 判斷目前使用者是在哪個頁籤 (模式)
+    const isPasteMode = document.getElementById('paste-pane').classList.contains('active');
+    
+    let songName = "";
+    let singerName = "";
+    let lyricsText = "";
+
+    if (isPasteMode) {
+        // 抓取貼上模式的資料
+        lyricsText = document.getElementById('pasted-lyrics').value.trim();
+        songName = document.getElementById('paste-song').value.trim() || "自訂歌曲";
+        singerName = document.getElementById('paste-singer').value.trim() || "未知歌手";
+        
+        if (!lyricsText) { alert('請貼上歌詞！'); return; }
+    } else {
+        // 抓取網搜模式的資料
+        songName = document.getElementById('song').value.trim();
+        singerName = document.getElementById('singer').value.trim();
+        
+        if (!songName) { alert('請輸入歌名！'); return; }
+    }
+
     const lyricsDiv = document.getElementById('lyrics-result');
     const submitBtn = document.getElementById('submit-btn');
 
-    if (!songName) { alert('請輸入歌名！'); return; }
-
     submitBtn.disabled = true;
     submitBtn.innerText = '運算中...';
-    lyricsDiv.innerHTML = '<p class="text-primary fw-bold">⏳ 正在爬取歌詞並執行 5 個模型運算，請稍候...</p>';
+    lyricsDiv.innerHTML = '<p class="text-primary fw-bold">⏳ 正在執行模型運算，請稍候...</p>';
 
     // 先隱藏回饋表單，等這次分析完再顯示新的
     document.getElementById('feedback-section').style.display = 'none';
 
-
     function getEmotionBadge(emotionText) {
         if (!emotionText || emotionText === "無資料" || emotionText === "無匹配") {
-                return '<span class="text-muted" style="font-weight: bold; font-size: 1.3rem;">無資料</span>';
-            }
-
-            // 1. 依照 " & " 拆分多個情緒
-            const emotions = emotionText.split(" & ");
-            
-            // 2. 處理每個情緒的專屬顏色
-            const styledEmotions = emotions.map(text => {
-                let color = "#6c757d"; // 預設灰
-
-                if (text.includes("Q1")) color = "#d4ac0d";      // Q1 金黃
-                else if (text.includes("Q2")) color = "#e74c3c"; // Q2 紅
-                else if (text.includes("Q3")) color = "#3498db"; // Q3 藍
-                else if (text.includes("Q4")) color = "#27ae60"; // Q4 綠
-
-                return `<span style="color: ${color}; font-weight: bold; font-size: 1.3rem;">${text}</span>`;
-            });
-
-            // 3. 用斜線符號將彩色文字連起來
-            return styledEmotions.join(' <span style="color: #ccc; margin: 0 5px;">/</span> ');
+            return '<span class="text-muted" style="font-weight: bold; font-size: 1.3rem;">無資料</span>';
         }
+
+        const emotions = emotionText.split(" & ");
+        const styledEmotions = emotions.map(text => {
+            let color = "#6c757d"; // 預設灰
+            if (text.includes("Q1")) color = "#d4ac0d";      // Q1 金黃
+            else if (text.includes("Q2")) color = "#e74c3c"; // Q2 紅
+            else if (text.includes("Q3")) color = "#3498db"; // Q3 藍
+            else if (text.includes("Q4")) color = "#27ae60"; // Q4 綠
+            return `<span style="color: ${color}; font-weight: bold; font-size: 1.3rem;">${text}</span>`;
+        });
+        return styledEmotions.join(' <span style="color: #ccc; margin: 0 5px;">/</span> ');
+    }
 
     try {
-            const response = await fetch(`${BASE_URL}/analyze`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ song_name: songName, artist: singerName })
-            });
+        // 將資料發送給後端，加入 lyrics 欄位
+        const response = await fetch(`${BASE_URL}/analyze`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 
+                song_name: songName, 
+                artist: singerName,
+                lyrics: lyricsText // 這裡加上了我們新增的屬性
+            })
+        });
+        
+        const data = await response.json();
+
+        if (data.status === 'success') {
+            window.currentResults = data.results; 
+            window.lastFoundSong = data.found_title;
+            window.lastFoundArtist = data.found_artist;
+            // 記錄這筆預測的耗時給回饋表單使用
+            window.lastExecutionTime = data.execution_time;
+
+            lyricsDiv.innerHTML = `<pre style="white-space: pre-wrap; font-family: '我的字體';">${data.lyrics}</pre>`;
             
-            const data = await response.json();
+            // --- 顯示爬蟲真正抓到的歌曲資訊 ---
+            const infoDiv = document.getElementById('crawl-info');
+            const songSpan = document.getElementById('found-song');
+            const artistSpan = document.getElementById('found-artist');
 
-            if (data.status === 'success') {
-                window.currentResults = data.results; 
-				window.lastFoundSong = data.found_title;
-    			window.lastFoundArtist = data.found_artist;
-                lyricsDiv.innerHTML = `<pre style="white-space: pre-wrap; font-family: '我的字體';">${data.lyrics}</pre>`;
-                
-                // --- 顯示爬蟲真正抓到的歌曲資訊 ---
-                // 取得元件並填入資料
-                const infoDiv = document.getElementById('crawl-info');
-                const songSpan = document.getElementById('found-song');
-                const artistSpan = document.getElementById('found-artist');
-
-                if (infoDiv && songSpan && artistSpan) {
+            if (infoDiv && songSpan && artistSpan) {
+                // 如果是貼上模式，可以隱藏「系統實際抓取到」的提示框
+                if (isPasteMode) {
+                    infoDiv.style.display = 'none';
+                } else {
                     songSpan.innerText = data.found_title;
                     artistSpan.innerText = data.found_artist;
-                    infoDiv.style.display = 'block'; // 顯示這個資訊列
+                    infoDiv.style.display = 'block'; 
                 }
-                
-                const results = data.results; // 這裡改用 results 避免混淆
-                
-                // --- 修正點：ID 必須與 HTML 的 model-1-result 對齊 ---
-                document.getElementById('model-1-result').innerHTML = getEmotionBadge(results.model1);
-                document.getElementById('model-2-result').innerHTML = getEmotionBadge(results.model2);
-                document.getElementById('model-3-result').innerHTML = getEmotionBadge(results.model3);
-                document.getElementById('model-4-result').innerHTML = getEmotionBadge(results.model4);
-                document.getElementById('model-5-result').innerHTML = getEmotionBadge(results.model5);
-
-                document.getElementById('feedback-section').style.display = 'block';
-            } else {
-                lyricsDiv.innerHTML = `<p class="text-danger">錯誤：${data.message}</p>`;
             }
-        } catch (e) {
-            console.error("Debug 錯誤資訊:", e);
-            lyricsDiv.innerHTML = `<p class="text-danger">執行失敗。請檢查：1. 後端 Ngrok 是否過期 2. 瀏覽器 Console 是否有報錯。</p>`;
-        } finally {
-            submitBtn.disabled = false;
-            submitBtn.innerText = '開始預測並抓取歌詞';
+            
+            const results = data.results; 
+            document.getElementById('model-1-result').innerHTML = getEmotionBadge(results.model1);
+            document.getElementById('model-2-result').innerHTML = getEmotionBadge(results.model2);
+            document.getElementById('model-3-result').innerHTML = getEmotionBadge(results.model3);
+            document.getElementById('model-4-result').innerHTML = getEmotionBadge(results.model4);
+            document.getElementById('model-5-result').innerHTML = getEmotionBadge(results.model5);
+
+            document.getElementById('feedback-section').style.display = 'block';
+        } else {
+            lyricsDiv.innerHTML = `<p class="text-danger">錯誤：${data.message}</p>`;
         }
-    });
+    } catch (e) {
+        console.error("Debug 錯誤資訊:", e);
+        lyricsDiv.innerHTML = `<p class="text-danger">執行失敗。請檢查：1. 後端 Ngrok 是否過期 2. 瀏覽器 Console 是否有報錯。</p>`;
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerText = '開始預測';
+    }
+});
 
 const detailModal = new bootstrap.Modal(document.getElementById('unifiedModal'));
 
